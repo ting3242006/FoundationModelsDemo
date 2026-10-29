@@ -1,0 +1,28 @@
+4:2026-10-22 17:52:22.972 I  MessyNote[72120:4daa6d] [com.demo.MessyNote:AcceptanceDiagnostics] generation.begin id=E56F4E6A-3E0D-480F-9212-744E3508874C previousStart=nil pending=false
+6:2026-10-22 17:52:32.900 I  MessyNote[72120:4daa6d] [com.demo.MessyNote:AcceptanceDiagnostics] merge.after id=E56F4E6A-3E0D-480F-9212-744E3508874C dateKind=explicit offset=0 weekday=1 y=2026 m=10 d=28 hour=nil minute=0
+7:2026-10-22 17:52:35.180 I  MessyNote[72120:4daa6d] [com.demo.MessyNote:AcceptanceDiagnostics] clock.complete hour=15 minute=0
+8:2026-10-22 17:52:35.185 I  MessyNote[72120:4daa6d] [com.demo.MessyNote:AcceptanceDiagnostics] review.begin id=E56F4E6A-3E0D-480F-9212-744E3508874C start=2026-10-28T07:00:00Z
+9:2026-10-22 17:54:23.647 I  MessyNote[72120:4daa6d] [com.demo.MessyNote:AcceptanceDiagnostics] generation.begin id=8F1532DA-36C0-4792-9F15-7219D4DCB211 previousStart=2026-10-28T07:00:00Z pending=true
+13:2026-10-22 17:54:34.421 I  MessyNote[72120:4daa6d] [com.demo.MessyNote:AcceptanceDiagnostics] merge.after id=8F1532DA-36C0-4792-9F15-7219D4DCB211 dateKind=explicit offset=0 weekday=1 y=2026 m=10 d=28 hour=16 minute=30
+14:2026-10-22 17:54:34.443 I  MessyNote[72120:4daa6d] [com.demo.MessyNote:AcceptanceDiagnostics] review.begin id=8F1532DA-36C0-4792-9F15-7219D4DCB211 start=2026-10-28T08:30:00Z
+15:2026-10-22 17:58:06.984 I  MessyNote[75607:4df04f] [com.demo.MessyNote:AcceptanceDiagnostics] generation.begin id=494B3442-B56B-4319-8EBD-260941B7E795 previousStart=nil pending=false
+17:2026-10-22 17:58:13.436 I  MessyNote[75607:4df04f] [com.demo.MessyNote:AcceptanceDiagnostics] merge.after id=494B3442-B56B-4319-8EBD-260941B7E795 dateKind=explicit offset=0 weekday=1 y=2026 m=10 d=30 hour=nil minute=0
+18:2026-10-22 17:58:15.046 I  MessyNote[75607:4df04f] [com.demo.MessyNote:AcceptanceDiagnostics] clock.complete hour=18 minute=nil
+19:2026-10-22 17:58:15.052 I  MessyNote[75607:4df04f] [com.demo.MessyNote:AcceptanceDiagnostics] review.begin id=494B3442-B56B-4319-8EBD-260941B7E795 start=2026-10-30T10:00:00Z
+20:2026-10-22 18:06:53.154 I  MessyNote[80513:4e5a38] [com.demo.MessyNote:AcceptanceDiagnostics] generation.begin id=31B019CA-1667-4BA0-9AFC-E040B755C2BF previousStart=nil pending=false
+22:2026-10-22 18:07:01.605 I  MessyNote[80513:4e5a38] [com.demo.MessyNote:AcceptanceDiagnostics] merge.after id=31B019CA-1667-4BA0-9AFC-E040B755C2BF dateKind=explicit offset=0 weekday=1 y=2026 m=10 d=30 hour=nil minute=0
+23:2026-10-22 18:07:03.227 I  MessyNote[80513:4e5a38] [com.demo.MessyNote:AcceptanceDiagnostics] clock.complete explicit=false hour=nil minute=nil
+24:2026-10-22 18:07:17.211 I  MessyNote[80513:4e5a38] [com.demo.MessyNote:AcceptanceDiagnostics] generation.begin id=87CE38FB-7331-4C62-804E-6AB801E1E8CB previousStart=nil pending=true
+28:2026-10-22 18:07:26.523 I  MessyNote[80513:4e5a38] [com.demo.MessyNote:AcceptanceDiagnostics] merge.after id=87CE38FB-7331-4C62-804E-6AB801E1E8CB dateKind=explicit offset=0 weekday=1 y=2026 m=10 d=30 hour=nil minute=0
+29:2026-10-22 18:07:27.655 I  MessyNote[80513:4e5a38] [com.demo.MessyNote:AcceptanceDiagnostics] clock.complete explicit=false hour=nil minute=nil
+30:2026-10-22 18:14:00.421 I  MessyNote[92547:4eeadd] [com.demo.MessyNote:AcceptanceDiagnostics] generation.begin id=38E2725C-D02E-456F-8CF8-DE9884D27DB1 previousStart=nil pending=false
+31:2026-10-22 18:14:08.001 I  MessyNote[92547:4eeadd] [com.demo.MessyNote:AcceptanceDiagnostics] merge.before id=38E2725C-D02E-456F-8CF8-DE9884D27DB1 previousStart=nil pending=false
+32:2026-10-22 18:14:08.004 I  MessyNote[92547:4eeadd] [com.demo.MessyNote:AcceptanceDiagnostics] merge.after id=38E2725C-D02E-456F-8CF8-DE9884D27DB1 dateKind=explicit offset=0 weekday=1 y=2026 m=10 d=30 hour=nil minute=0
+33:2026-10-22 18:14:09.630 I  MessyNote[92547:4eeadd] [com.demo.MessyNote:AcceptanceDiagnostics] clock.complete explicit=false hour=nil minute=nil
+34:2026-10-22 18:14:21.794 I  MessyNote[92547:4eeadd] [com.demo.MessyNote:AcceptanceDiagnostics] generation.begin id=520E3A58-8545-4F67-B504-599DE683D2B2 previousStart=nil pending=true
+35:2026-10-22 18:14:21.794 I  MessyNote[92547:4eeadd] [com.demo.MessyNote:AcceptanceDiagnostics] generation.baseline id=520E3A58-8545-4F67-B504-599DE683D2B2 dateKind=explicit offset=0 weekday=1 y=2026 m=10 d=30 hour=nil minute=0
+36:2026-10-22 18:14:28.642 I  MessyNote[92547:4eeadd] [com.demo.MessyNote:AcceptanceDiagnostics] revision.complete changes=attendee dateKind=nextWeek offset=0 weekday=6 y=2026 m=11 d=30 hour=19 minute=0
+37:2026-10-22 18:14:28.652 I  MessyNote[92547:4eeadd] [com.demo.MessyNote:AcceptanceDiagnostics] merge.before id=520E3A58-8545-4F67-B504-599DE683D2B2 previousStart=nil pending=true
+38:2026-10-22 18:14:28.655 I  MessyNote[92547:4eeadd] [com.demo.MessyNote:AcceptanceDiagnostics] merge.after id=520E3A58-8545-4F67-B504-599DE683D2B2 dateKind=explicit offset=0 weekday=1 y=2026 m=10 d=30 hour=nil minute=0
+39:2026-10-22 18:14:29.759 I  MessyNote[92547:4eeadd] [com.demo.MessyNote:AcceptanceDiagnostics] clock.complete explicit=true hour=19 minute=0
+40:2026-10-22 18:14:29.766 I  MessyNote[92547:4eeadd] [com.demo.MessyNote:AcceptanceDiagnostics] review.begin id=520E3A58-8545-4F67-B504-599DE683D2B2 start=2026-10-30T11:00:00Z

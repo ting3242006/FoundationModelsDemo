@@ -1,0 +1,228 @@
+[
+  {
+    "test": "ScenarioABUITests/testScenarioA()",
+    "stage": "A05 event fields",
+    "originalAttachment": "75F836FC-4248-452B-94EE-6DE77293DF3A.txt",
+    "file": "a-event.txt"
+  },
+  {
+    "test": "ScenarioABUITests/testScenarioA()",
+    "stage": "A05 event fields",
+    "originalAttachment": "14234D19-76AA-4942-9679-15C9C09C5719.png",
+    "file": "a-event.png"
+  },
+  {
+    "test": "ScenarioABUITests/testScenarioA()",
+    "stage": "A03 tools both calls",
+    "originalAttachment": "C1EB5643-3E9C-48B2-80D6-E13EB5370E3C.txt",
+    "file": "a-tools.txt"
+  },
+  {
+    "test": "ScenarioABUITests/testScenarioA()",
+    "stage": "A03 tools both calls",
+    "originalAttachment": "D7DBBD56-4BBD-4FA9-BDC4-4FD389418DB0.png",
+    "file": "a-tools.png"
+  },
+  {
+    "test": "ScenarioABUITests/testScenarioA()",
+    "stage": "A04 no conflicts",
+    "originalAttachment": "2BD0BCD1-4111-4275-903A-18058E9D38F7.txt",
+    "file": "a-no-conflict.txt"
+  },
+  {
+    "test": "ScenarioABUITests/testScenarioA()",
+    "stage": "A04 no conflicts",
+    "originalAttachment": "4198B016-8D8C-4E9E-B2F1-1F2197288F58.png",
+    "file": "a-no-conflict.png"
+  },
+  {
+    "test": "ScenarioABUITests/testScenarioA()",
+    "stage": "A07 review and cancel opened",
+    "originalAttachment": "19F631DB-0A15-4B5D-8E58-37DB5C93E67E.txt",
+    "file": "a-review.txt"
+  },
+  {
+    "test": "ScenarioABUITests/testScenarioA()",
+    "stage": "A07 review and cancel opened",
+    "originalAttachment": "B1EB7ACE-095F-4821-9A4B-AED0ECC72F21.png",
+    "file": "a-review.png"
+  },
+  {
+    "test": "ScenarioABUITests/testScenarioA()",
+    "stage": "A07 review and cancel dismissed",
+    "originalAttachment": "8BE2B5A3-8074-41A0-B2D9-41C6075C2AC9.txt",
+    "file": "a-canceled.txt"
+  },
+  {
+    "test": "ScenarioABUITests/testScenarioA()",
+    "stage": "A07 review and cancel dismissed",
+    "originalAttachment": "EE9DD3D1-031A-4959-8E32-012F087643B8.png",
+    "file": "a-canceled.png"
+  },
+  {
+    "test": "CaseCUITests/testCaseCNaturalLanguageCompletion()",
+    "stage": "04 fixed Friday captured",
+    "originalAttachment": "1D6A481C-FA1D-40DF-A51C-6E9C927DBF5C.txt",
+    "file": "c-pending.txt"
+  },
+  {
+    "test": "CaseCUITests/testCaseCNaturalLanguageCompletion()",
+    "stage": "04 fixed Friday captured",
+    "originalAttachment": "D041BBC7-0182-4170-A181-65D7DF394CFB.png",
+    "file": "c-pending.png"
+  },
+  {
+    "test": "CaseCUITests/testCaseCNaturalLanguageCompletion()",
+    "stage": "07 event date time duration and attendee",
+    "originalAttachment": "CCE98737-0C82-4510-AD4B-0F301EEF3D89.txt",
+    "file": "c-event.txt"
+  },
+  {
+    "test": "CaseCUITests/testCaseCNaturalLanguageCompletion()",
+    "stage": "07 event date time duration and attendee",
+    "originalAttachment": "FC84A7FC-BC05-4414-9A73-B05AD884F2D5.png",
+    "file": "c-event.png"
+  },
+  {
+    "test": "CaseCUITests/testCaseCNaturalLanguageCompletion()",
+    "stage": "10 true tool activity; no calendar save",
+    "originalAttachment": "42752B22-FDAE-48AF-B736-15F5555E7B1B.txt",
+    "file": "c-tools.txt"
+  },
+  {
+    "test": "CaseCUITests/testCaseCNaturalLanguageCompletion()",
+    "stage": "10 true tool activity; no calendar save",
+    "originalAttachment": "7C089DCB-C679-4052-BA42-AF2D3261C8B8.png",
+    "file": "c-tools.png"
+  },
+  {
+    "test": "ScenarioDUITests/testCalendarPermissionDeniedPreservesDraft()",
+    "stage": "D04 SpringBoard permission state 1",
+    "originalAttachment": "54CB6575-42C9-4E12-9261-34D513D5C161.txt",
+    "file": "d-system-prompt.txt"
+  },
+  {
+    "test": "ScenarioDUITests/testCalendarPermissionDeniedPreservesDraft()",
+    "stage": "D04 SpringBoard permission state 1",
+    "originalAttachment": "570B8912-FC6E-4FF8-8FFA-1633390F3163.png",
+    "file": "d-system-prompt.png"
+  },
+  {
+    "test": "ScenarioDUITests/testCalendarPermissionDeniedPreservesDraft()",
+    "stage": "D05 calendar denial explanation",
+    "originalAttachment": "6C4247A3-EE9B-4EB1-8F16-29B5F6FD68F9.txt",
+    "file": "d-denied.txt"
+  },
+  {
+    "test": "ScenarioDUITests/testCalendarPermissionDeniedPreservesDraft()",
+    "stage": "D05 calendar denial explanation",
+    "originalAttachment": "774C3D75-A380-4F38-A282-E917D73839EC.png",
+    "file": "d-denied.png"
+  },
+  {
+    "test": "ScenarioDUITests/testCalendarPermissionDeniedPreservesDraft()",
+    "stage": "D06 Calendar remains unknown",
+    "originalAttachment": "CC234451-DCFB-4762-9554-D64D53EC492D.txt",
+    "file": "d-unknown.txt"
+  },
+  {
+    "test": "ScenarioDUITests/testCalendarPermissionDeniedPreservesDraft()",
+    "stage": "D06 Calendar remains unknown",
+    "originalAttachment": "5BB041E1-AD15-4F4D-95E6-8BECC4EF8B8D.png",
+    "file": "d-unknown.png"
+  },
+  {
+    "test": "ScenarioDUITests/testCalendarPermissionDeniedPreservesDraft()",
+    "stage": "D07 preserved tomorrow 1600 thirty-minute draft",
+    "originalAttachment": "27AFF2FF-CBF8-48C2-8652-46408D886FAB.txt",
+    "file": "d-draft.txt"
+  },
+  {
+    "test": "ScenarioDUITests/testCalendarPermissionDeniedPreservesDraft()",
+    "stage": "D07 preserved tomorrow 1600 thirty-minute draft",
+    "originalAttachment": "267FDA14-ED4D-4D05-9BCA-28C0E983172B.png",
+    "file": "d-draft.png"
+  },
+  {
+    "test": "ScenarioDUITests/testCalendarPermissionDeniedPreservesDraft()",
+    "stage": "D08 real Calendar tool denied; no save",
+    "originalAttachment": "C8173373-BE12-46E0-92B1-6B3AD7346058.txt",
+    "file": "d-tools.txt"
+  },
+  {
+    "test": "ScenarioDUITests/testCalendarPermissionDeniedPreservesDraft()",
+    "stage": "D08 real Calendar tool denied; no save",
+    "originalAttachment": "FF22EEAB-9E54-4062-914F-639BA63E3537.png",
+    "file": "d-tools.png"
+  },
+  {
+    "test": "ScenarioABUITests/testScenarioBAndFollowUp()",
+    "stage": "B09 follow-up tools both calls",
+    "originalAttachment": "40AE59A0-4EF0-4E4A-ADA6-2D857C8A6625.txt",
+    "file": "b-followup-tools.txt",
+    "sourceResult": "/private/tmp/messynote-b-placeholder-final-validation/b-final.xcresult"
+  },
+  {
+    "test": "ScenarioABUITests/testScenarioBAndFollowUp()",
+    "stage": "B09 follow-up tools both calls",
+    "originalAttachment": "C220F05A-E310-49F2-AB29-9A4B814E9E9A.png",
+    "file": "b-followup-tools.png",
+    "sourceResult": "/private/tmp/messynote-b-placeholder-final-validation/b-final.xcresult"
+  },
+  {
+    "test": "ScenarioABUITests/testScenarioBAndFollowUp()",
+    "stage": "B11 preserved fields",
+    "originalAttachment": "CCCBC88B-6422-4AFC-83B7-5564C7D63F56.txt",
+    "file": "b-preserved-fields.txt",
+    "sourceResult": "/private/tmp/messynote-b-placeholder-final-validation/b-final.xcresult"
+  },
+  {
+    "test": "ScenarioABUITests/testScenarioBAndFollowUp()",
+    "stage": "B11 preserved fields",
+    "originalAttachment": "6F1B3D84-B14C-47B6-8729-082BBD230704.png",
+    "file": "b-preserved-fields.png",
+    "sourceResult": "/private/tmp/messynote-b-placeholder-final-validation/b-final.xcresult"
+  },
+  {
+    "test": "ScenarioABUITests/testScenarioBAndFollowUp()",
+    "stage": "B12 user selected Wang",
+    "originalAttachment": "CC38F9CC-F7DA-475A-BCC4-6356CE7DD87D.txt",
+    "file": "b-selected-wang.txt",
+    "sourceResult": "/private/tmp/messynote-b-placeholder-final-validation/b-final.xcresult"
+  },
+  {
+    "test": "ScenarioABUITests/testScenarioBAndFollowUp()",
+    "stage": "B12 user selected Wang",
+    "originalAttachment": "F0F0D7DB-BD9D-48D2-AF6B-C57E31D88719.png",
+    "file": "b-selected-wang.png",
+    "sourceResult": "/private/tmp/messynote-b-placeholder-final-validation/b-final.xcresult"
+  },
+  {
+    "test": "ScenarioABUITests/testScenarioBAndFollowUp()",
+    "stage": "B13 review opened; cancellation not reached",
+    "originalAttachment": "46738516-46CC-426B-910F-C69A7FC14256.txt",
+    "file": "b-review.txt",
+    "sourceResult": "/private/tmp/messynote-b-placeholder-final-validation/b-final.xcresult"
+  },
+  {
+    "test": "ScenarioABUITests/testScenarioBAndFollowUp()",
+    "stage": "B13 review opened; cancellation not reached",
+    "originalAttachment": "A9B9940D-F6D7-4B80-B8F8-6DFE1AF4169D.png",
+    "file": "b-review.png",
+    "sourceResult": "/private/tmp/messynote-b-placeholder-final-validation/b-final.xcresult"
+  },
+  {
+    "test": "ScenarioABUITests/testScenarioBAndFollowUp()",
+    "stage": "Final fixture ON; clear assertion failed before generation",
+    "originalAttachment": "670151C5-A89F-4F19-9026-14F42DCAEAE2.txt",
+    "file": "b-final-input-failure.txt",
+    "sourceResult": "/private/tmp/messynote-b-fixture-final-validation/b-final.xcresult"
+  },
+  {
+    "test": "ScenarioABUITests/testScenarioBAndFollowUp()",
+    "stage": "Final fixture ON; clear assertion failed before generation",
+    "originalAttachment": "9221F7C8-A8D4-4AB6-B93B-7D69469DBB24.png",
+    "file": "b-final-input-failure.png",
+    "sourceResult": "/private/tmp/messynote-b-fixture-final-validation/b-final.xcresult"
+  }
+]

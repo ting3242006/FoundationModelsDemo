@@ -1,0 +1,6 @@
+XcodeBuildMCP test_sim: SUCCEEDED
+42 passed, 0 failed, 0 skipped
+Duration 25.8 seconds
+Result: /private/tmp/messynote-c-validation/full-tests.xcresult
+Build log: /Users/yitingsung/Library/Developer/XcodeBuildMCP/workspaces/FoundationModelsDemo-1b099d4986f5/logs/test_sim_2026-10-22T03-52-18-028Z_pid49153_5d5ee527.log
+Extra arguments: -parallel-testing-enabled NO -collect-test-diagnostics never

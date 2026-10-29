@@ -1,0 +1,122 @@
+[
+  {
+    "stage": "B13 review and cancel dismissed",
+    "originalAttachment": "10D62D30-445B-4DB8-AB87-27BA74E440EE.txt",
+    "file": "b-canceled.txt",
+    "sourceResult": "/private/tmp/messynote-b-minute-v7-validation/b-final.xcresult"
+  },
+  {
+    "stage": "B13 review and cancel dismissed",
+    "originalAttachment": "D829A28D-D130-4BF8-9DC8-655A1A0C47AF.png",
+    "file": "b-canceled.png",
+    "sourceResult": "/private/tmp/messynote-b-minute-v7-validation/b-final.xcresult"
+  },
+  {
+    "stage": "B13 review and cancel before cancel; never confirm save",
+    "originalAttachment": "9BA0DB75-E6D0-4B75-83D3-AA4148ED19ED.txt",
+    "file": "b-before-cancel.txt",
+    "sourceResult": "/private/tmp/messynote-b-minute-v7-validation/b-final.xcresult"
+  },
+  {
+    "stage": "B13 review and cancel before cancel; never confirm save",
+    "originalAttachment": "69DBB6CA-9870-4056-9F1D-C2928226905B.png",
+    "file": "b-before-cancel.png",
+    "sourceResult": "/private/tmp/messynote-b-minute-v7-validation/b-final.xcresult"
+  },
+  {
+    "stage": "B13 review and cancel opened",
+    "originalAttachment": "B6D44627-9E4B-4984-B5CC-4C785A460387.txt",
+    "file": "b-review.txt",
+    "sourceResult": "/private/tmp/messynote-b-minute-v7-validation/b-final.xcresult"
+  },
+  {
+    "stage": "B13 review and cancel opened",
+    "originalAttachment": "2552D779-25AE-4C3A-8145-108245B0E42B.png",
+    "file": "b-review.png",
+    "sourceResult": "/private/tmp/messynote-b-minute-v7-validation/b-final.xcresult"
+  },
+  {
+    "stage": "B11 preserved fields",
+    "originalAttachment": "BD28FC21-C41C-4E98-9E44-97E18DC321BB.txt",
+    "file": "b-fields.txt",
+    "sourceResult": "/private/tmp/messynote-b-minute-v7-validation/b-final.xcresult"
+  },
+  {
+    "stage": "B11 preserved fields",
+    "originalAttachment": "3A9B2084-6907-4F09-B284-7018A42D68E9.png",
+    "file": "b-fields.png",
+    "sourceResult": "/private/tmp/messynote-b-minute-v7-validation/b-final.xcresult"
+  },
+  {
+    "stage": "B09 follow-up tools both calls located",
+    "originalAttachment": "B84D595C-21CA-42EA-BFAB-4A602BC95D4D.txt",
+    "file": "b-tools.txt",
+    "sourceResult": "/private/tmp/messynote-b-minute-v7-validation/b-final.xcresult"
+  },
+  {
+    "stage": "B09 follow-up tools both calls located",
+    "originalAttachment": "649C52D9-85C5-4625-9DFF-6F1581E0A369.png",
+    "file": "b-tools.png",
+    "sourceResult": "/private/tmp/messynote-b-minute-v7-validation/b-final.xcresult"
+  },
+  {
+    "stage": "B08 follow-up input submission start observation",
+    "originalAttachment": "6A4E8B81-6497-44ED-A12F-FDA10C8988C9.txt",
+    "file": "b-submission-start.txt",
+    "sourceResult": "/private/tmp/messynote-b-minute-v7-validation/b-final.xcresult"
+  },
+  {
+    "stage": "B08 follow-up input submission start observation",
+    "originalAttachment": "AA5A4E02-C180-4688-8BD0-934CC0B7EBB0.png",
+    "file": "b-submission-start.png",
+    "sourceResult": "/private/tmp/messynote-b-minute-v7-validation/b-final.xcresult"
+  },
+  {
+    "stage": "B08 follow-up input",
+    "originalAttachment": "76AEB984-BCC9-41B9-8297-2BAA7165DD26.txt",
+    "file": "b-followup.txt",
+    "sourceResult": "/private/tmp/messynote-b-minute-v7-validation/b-final.xcresult"
+  },
+  {
+    "stage": "B08 follow-up input",
+    "originalAttachment": "A5F2C432-6784-402E-AF36-779CC8013AB1.png",
+    "file": "b-followup.png",
+    "sourceResult": "/private/tmp/messynote-b-minute-v7-validation/b-final.xcresult"
+  },
+  {
+    "stage": "After replacement text raw input attributes_0_ACA91CFE-7C5A-42E9-8F91-5EDB63F9DCAC.txt",
+    "originalAttachment": "2F4C4F40-D2F6-4B2C-AFAE-B4A8CEFDDCF9.txt",
+    "file": "raw-2F4C4F40-D2F6-4B2C-AFAE-B4A8CEFDDCF9.txt",
+    "sourceResult": "/private/tmp/messynote-b-minute-v7-validation/b-final.xcresult"
+  },
+  {
+    "stage": "After clear wait raw input attributes_0_360B7EA3-BBEB-42DA-BF41-B323AE3C531C.txt",
+    "originalAttachment": "85940F08-1B45-4077-9A9E-1DAF9B9AC410.txt",
+    "file": "raw-85940F08-1B45-4077-9A9E-1DAF9B9AC410.txt",
+    "sourceResult": "/private/tmp/messynote-b-minute-v7-validation/b-final.xcresult"
+  },
+  {
+    "stage": "Before clear raw input attributes_0_B6A70E92-BC79-494E-A1A4-0149007D6E0E.txt",
+    "originalAttachment": "634D928D-A356-4437-9BC2-F976C6392AA7.txt",
+    "file": "raw-634D928D-A356-4437-9BC2-F976C6392AA7.txt",
+    "sourceResult": "/private/tmp/messynote-b-minute-v7-validation/b-final.xcresult"
+  },
+  {
+    "stage": "After replacement text raw input attributes_0_496146FF-8DA4-4E42-A7B6-0CAFD9462430.txt",
+    "originalAttachment": "D14575FE-D951-4852-8BBB-96EC406B5B69.txt",
+    "file": "raw-D14575FE-D951-4852-8BBB-96EC406B5B69.txt",
+    "sourceResult": "/private/tmp/messynote-b-minute-v7-validation/b-final.xcresult"
+  },
+  {
+    "stage": "After clear wait raw input attributes_0_C0BFE6D0-11B4-411B-9883-B38CFE99F270.txt",
+    "originalAttachment": "22DAC822-FB83-4756-AEC9-DFD88AC206C8.txt",
+    "file": "raw-22DAC822-FB83-4756-AEC9-DFD88AC206C8.txt",
+    "sourceResult": "/private/tmp/messynote-b-minute-v7-validation/b-final.xcresult"
+  },
+  {
+    "stage": "Before clear raw input attributes_0_7AC758C1-D153-4203-8FB1-0C32D4387274.txt",
+    "originalAttachment": "E27DAD04-2F6C-4937-9EE9-40AA32F6DF6A.txt",
+    "file": "raw-E27DAD04-2F6C-4937-9EE9-40AA32F6DF6A.txt",
+    "sourceResult": "/private/tmp/messynote-b-minute-v7-validation/b-final.xcresult"
+  }
+]

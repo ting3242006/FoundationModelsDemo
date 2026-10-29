@@ -1,0 +1,10 @@
+v10 current frozen product
+Unit: exit0, TEST SUCCEEDED; sealed summary58 passed / 0failed / 0skipped.
+Unit result: /private/tmp/messynote-clock-language-v10-validation/unit-green.xcresult
+UI build and final unit bundle restore: exit0, TEST BUILD SUCCEEDED.
+Release command (cwd project root): xcodebuild -project MessyNote.xcodeproj -scheme MessyNote -configuration Release -destination 'generic/platform=iOS' -derivedDataPath /private/tmp/messynote-b-minute-v7-release CODE_SIGNING_ALLOWED=NO build
+Release: exit0, BUILD SUCCEEDED.
+Release log: /private/tmp/messynote-clock-language-v10-validation/release-build.log
+Unsigned generic iOS build only; no device deployment.
+C UI: exit0 / 1 passed / 0failed / 0skipped.
+A/B/D current-source UI result pending at this preparation stage.

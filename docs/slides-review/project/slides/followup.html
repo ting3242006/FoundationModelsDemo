@@ -1,0 +1,19 @@
+<section id="followup" data-transition="fade" style="background:#f8f2ea;color:#2b1a14;font-family:'Noto Sans TC', Arial, sans-serif;padding:176px 128px 128px;display:flex;flex-direction:column;gap:40px">
+<p style="position:absolute;left:128px;top:72px;width:160px;font-size:28px;letter-spacing:6px;color:#c4512f">●●●</p>
+<p style="position:absolute;left:1312px;top:72px;width:480px;text-align:right;font-family:'Montserrat', 'Noto Sans TC', Arial, sans-serif;font-size:24px;font-weight:800;color:#c4512f">▲ iOS TECH SHARING</p>
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:700;letter-spacing:3px;color:#8a2e1c">FOLLOW-UP 對話</p>
+<h2 style="font-family:'Montserrat', 'Noto Sans TC', Arial, sans-serif;font-size:72px;font-weight:800;line-height:1.1;color:#c4512f">「改成四點半」只改時間，其他不動</h2>
+</div>
+<div style="display:flex;gap:56px;flex:1">
+<div style="width:860px;display:flex;flex-direction:column;justify-content:center;background:#2b1a14;border-radius:4px;padding:36px 44px">
+<p style="font-family:'JetBrains Mono', 'Noto Sans TC', 'Courier New', monospace;font-size:25px;line-height:1.6;color:#f8f2ea"><span style="color:#e9785a">@Generable</span> struct EventRevision {<br>&#160;&#160;&#160;&#160;var changes: [EventField]&#160;&#160;<span style="color:#b89a88">// 白名單</span><br>&#160;&#160;&#160;&#160;var values: EventDraft<br>}<br><span style="color:#e9785a">@Generable</span> enum EventField {<br>&#160;&#160;&#160;&#160;case title, date, time, duration,<br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;location, attendee, notes, reminder<br>}</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;justify-content:center;border-top:1px solid #c4512f">
+<div style="display:flex;gap:24px;align-items:baseline;border-bottom:1px solid #e3cdbb;padding:20px 0"><p style="font-family:'Montserrat', Arial, sans-serif;font-size:36px;font-weight:800;color:#c4512f">01</p><p style="flex:1;font-size:27px;line-height:1.5;color:#2b1a14">重用同一個 session，<span style="color:#6b5446">附上使用者目前改過的草稿</span></p></div>
+<div style="display:flex;gap:24px;align-items:baseline;border-bottom:1px solid #e3cdbb;padding:20px 0"><p style="font-family:'Montserrat', Arial, sans-serif;font-size:36px;font-weight:800;color:#c4512f">02</p><p style="flex:1;font-size:27px;line-height:1.5;color:#2b1a14">Swift 只套用 <span style="color:#8a2e1c">changes</span> 列出的欄位</p></div>
+<div style="display:flex;gap:24px;align-items:baseline;border-bottom:1px solid #e3cdbb;padding:20px 0"><p style="font-family:'Montserrat', Arial, sans-serif;font-size:36px;font-weight:800;color:#c4512f">03</p><p style="flex:1;font-size:27px;line-height:1.5;color:#2b1a14">漏抽時間？<span style="color:#6b5446">再用窄型 </span><span style="color:#8a2e1c">ClockCompletion</span><span style="color:#6b5446"> 補一次</span></p></div>
+</div>
+</div>
+<aside>使用者說「好，那改成 16:30」時，模型不是重新產生整份草稿，而是產生 EventRevision：changes 列出要改哪些欄位，values 是新值。Swift 只套用 changes 裡的欄位，所以日期、地點、提醒都會保留。如果模型漏掉時間，再開一個全新的小 session，只問 hour 和 minute 兩個欄位。窄型別、小任務，正確率就高很多。</aside>
+</section>

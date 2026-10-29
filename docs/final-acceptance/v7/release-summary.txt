@@ -1,0 +1,7 @@
+Current source generic iOS unsigned Release build
+Command (cwd /Users/yitingsung/Developer/FMDemo):
+xcodebuild -project MessyNote.xcodeproj -scheme MessyNote -configuration Release -destination 'generic/platform=iOS' -derivedDataPath /private/tmp/messynote-b-minute-v7-release CODE_SIGNING_ALLOWED=NO build
+Result: exit 0; BUILD SUCCEEDED.
+Log: /private/tmp/messynote-b-minute-v7-validation/release-build.log
+Product: /private/tmp/messynote-b-minute-v7-release/Build/Products/Release-iphoneos/MessyNote.app
+No source/docs edits, Simulator operation, signing, physical-device installation or execution performed.

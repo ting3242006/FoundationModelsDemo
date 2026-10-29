@@ -1,0 +1,15 @@
+{
+  "baseline": "/Users/yitingsung/Developer/FMDemo/docs/native-note-studio-2026-10-27/source-hashes.json",
+  "currentManifest": "/private/tmp/fmdemo-followup-final-hashes.json",
+  "productionSwift": { "total": 35, "unchanged": 35, "changed": [] },
+  "uiTests": {
+    "changed": [
+      { "path": "MessyNoteUITests/CaseCUITests.swift", "baseline": "7defd4f180039a4340a68afeac29747de1a297aa862f8df3227ccc0d716b33ac", "current": "e33bf15fdb3d7ae08b5afd24294e25db2f77d0d7bd07ff634ef19a01760c41cf" },
+      { "path": "MessyNoteUITests/ScenarioABUITests.swift", "baseline": "ddd439d7f0c459d6296ea76d5fb80fe87f98b278d779d263ec35075b50b65163", "current": "2763fc3cbe37618d05afb134b92db9d8e0e35ead3034fcef000cdd97e83e8cb2" }
+    ],
+    "unchanged": [
+      { "path": "MessyNoteUITests/ScenarioDUITests.swift", "hash": "4cab2e9bc3b6febaa122c1ac6238cdd58f9e0674445c0614feb379341ff59a2f" }
+    ]
+  },
+  "unexpectedChanges": []
+}

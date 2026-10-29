@@ -1,0 +1,10 @@
+2026-10-22 documentation-only finalization
+Source manifest: 52 entries, relative to project root.
+Command: shasum -a 256 -c docs/final-source-sha256.txt
+Result: exit 0; all 52 entries OK.
+Mirror manifest docs/final-acceptance/sources.sha256 is byte-identical.
+Relative Markdown file-link validation: exit 0; 13 Markdown files / 88 local file links checked / 0 missing.
+Independent parent checksum verification: exit 0; all 52 entries OK.
+Five isolated B summary copies retain Failed / 0 passed / 1 failed.
+No Swift/project/scheme changes, no build/test/simulator operation in this documentation task.
+Overall acceptance remains incomplete: B has no complete PASS.

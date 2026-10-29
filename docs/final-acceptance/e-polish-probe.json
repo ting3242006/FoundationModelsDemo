@@ -1,0 +1,63 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "\n📷 Snapshot UI\n\nTargets (6) — ref|action|role|label|value|id\n  e66|typeText|text-field|隨手筆記或修改指令|下週三下午三點跟小明在信義區喝咖啡一小時，記得帶合約，前一天提醒我|\n  e36|tap|button|重新檢查||\n  e46|tap|switch|Demo Fixture Mode|0|\n  e48|tap|switch||0|\n  e62|tap|button|填入範例筆記||\n  e78|tap|button|重置對話||\n\nScroll (11) — ref|action|role|label|value|id\n  e2|swipe|other|||\n  e3|swipe|other|||\n  e4|swipe|other|||\n  e5|swipe|other|||\n  e6|swipe|other|||\n  e7|swipe|other|||\n  e10|swipe|other|||\n  e11|swipe|other|||\n  e12|swipe|other|||\n  e13|swipe|other|||\n  e14|swipe|other|||\n\nTips\n  - Use target refs with tap, type_text, long_press, and touch.\n  - Use scroll refs with swipe.\n  - Refs are snapshot-specific; after snapshot_ui or wait_for_ui, use refs from the latest output.\n  - Use wait_for_ui for text/assertions or changing UI.\n\n✅ Runtime UI snapshot captured with 85 elements, 6 likely targets, and 11 scroll areas.\n\nNext steps:\n1. Refresh after layout changes: snapshot_ui({ simulatorId: \"<SIMULATOR_UDID>\" })\n2. Wait for UI to settle: wait_for_ui({ simulatorId: \"<SIMULATOR_UDID>\", predicate: \"settled\" })\n3. Batch visible switch toggles: batch({ simulatorId: \"<SIMULATOR_UDID>\", steps: [{\"action\":\"tap\",\"elementRef\":\"e46\"},{\"action\":\"tap\",\"elementRef\":\"e48\"}] })\n4. Tap an elementRef: tap({ simulatorId: \"<SIMULATOR_UDID>\", elementRef: \"e36\" })\n"
+    }
+  ],
+  "structuredContent": {
+    "schema": "xcodebuildmcp.output.capture-result",
+    "schemaVersion": "2",
+    "didError": false,
+    "error": null,
+    "data": {
+      "summary": {
+        "status": "SUCCEEDED"
+      },
+      "artifacts": {
+        "simulatorId": "<SIMULATOR_UDID>"
+      },
+      "capture": {
+        "type": "runtime-snapshot",
+        "rs": "1",
+        "screenHash": "15vkxs8",
+        "seq": 36,
+        "count": 85,
+        "targets": [
+          "e66|typeText|text-field|隨手筆記或修改指令|下週三下午三點跟小明在信義區喝咖啡一小時，記得帶合約，前一天提醒我|",
+          "e36|tap|button|重新檢查||",
+          "e46|tap|switch|Demo Fixture Mode|0|",
+          "e48|tap|switch||0|",
+          "e62|tap|button|填入範例筆記||",
+          "e78|tap|button|重置對話||"
+        ],
+        "scroll": [
+          "e2|swipe|other|||",
+          "e3|swipe|other|||",
+          "e4|swipe|other|||",
+          "e5|swipe|other|||",
+          "e6|swipe|other|||",
+          "e7|swipe|other|||",
+          "e10|swipe|other|||",
+          "e11|swipe|other|||",
+          "e12|swipe|other|||",
+          "e13|swipe|other|||",
+          "e14|swipe|other|||"
+        ],
+        "text": [
+          "e22|text|text|Turn messy thoughts into plans.||",
+          "e31|text|text|系統模型尚未就緒，可能仍在下載。完成後請重新檢查。||",
+          "e47|text|text|Demo Fixture Mode||",
+          "e52|text|text|Real Mode · 查詢系統聯絡人與行事曆||"
+        ],
+        "udid": "<SIMULATOR_UDID>"
+      }
+    },
+    "nextSteps": [
+      "Refresh after layout changes: snapshot_ui({ simulatorId: \"<SIMULATOR_UDID>\" })",
+      "Wait for UI to settle: wait_for_ui({ simulatorId: \"<SIMULATOR_UDID>\", predicate: \"settled\" })",
+      "Batch visible switch toggles: batch({ simulatorId: \"<SIMULATOR_UDID>\", steps: [{\"action\":\"tap\",\"elementRef\":\"e46\"},{\"action\":\"tap\",\"elementRef\":\"e48\"}] })",
+      "Tap an elementRef: tap({ simulatorId: \"<SIMULATOR_UDID>\", elementRef: \"e36\" })"
+    ]
+  }
+}

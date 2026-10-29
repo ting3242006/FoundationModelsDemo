@@ -1,0 +1,21 @@
+SCOPE macOS real Foundation Models; fixture reads; no writer; historical regression reference 2026-10-21 Asia/Taipei
+INITIAL initial(MessyNoteCHarness.EventDraft(title: "跟一個不存在於 Contacts 的人吃飯", date: MessyNoteCHarness.DateIntent(kind: "nextWeek", dayOffset: 5, weekday: 5, year: 2026, month: 11, day: 10), hour: nil, minute: 0, durationMinutes: 60, attendeeQuery: nil, location: nil, notes: nil, reminderMinutesBefore: nil)); snapshots=35
+REVISION revision(MessyNoteCHarness.EventRevision(changes: [MessyNoteCHarness.EventField.title, MessyNoteCHarness.EventField.attendee], values: MessyNoteCHarness.EventDraft(title: "晚上七點，吃飯一小時，同行者叫阿不存在", date: MessyNoteCHarness.DateIntent(kind: "nextWeek", dayOffset: 5, weekday: 5, year: 2026, month: 11, day: 10), hour: Optional(19), minute: 0, durationMinutes: 60, attendeeQuery: Optional("阿不存在"), location: nil, notes: nil, reminderMinutesBefore: nil))); snapshots=45
+CLOCK PARTIAL Optional(19) / nil
+CLOCK PARTIAL Optional(19) / nil
+CLOCK PARTIAL Optional(19) / nil
+CLOCK PARTIAL Optional(19) / Optional(0)
+CLOCK PARTIAL Optional(19) / Optional(0)
+CLOCK PARTIAL Optional(19) / Optional(0)
+CLOCK PARTIAL Optional(19) / Optional(0)
+CLOCK EXTRACTION snapshots=7
+EVENT title=晚上七點，吃飯一小時，同行者叫阿不存在; start=2026-10-30T11:00:00Z; duration=60; location=; attendee=阿不存在; notes=; reminder=none; timezone=Asia/Taipei
+CONTACTS Optional([]); CONFLICTS Optional([]); ACTIVITY [MessyNoteCHarness.ActivityEvent(id: A9AE0846-79E5-4C00-A9DE-FB54756E5FF3, message: "→ FindContactTool(阿不存在)"), MessyNoteCHarness.ActivityEvent(id: CFEA4893-4A30-4F97-B0DD-20530E1F6128, message: "✓ 找到 0 位候選人；多位時由使用者選擇"), MessyNoteCHarness.ActivityEvent(id: 379CEF80-03D6-41DC-9692-625E29E94E92, message: "→ CheckCalendarTool(7:00 PM)"), MessyNoteCHarness.ActivityEvent(id: 90524CC0-8688-4A3A-9CE4-AD2F87D8801B, message: "✓ 此時段沒有衝突（查詢當下）")]
+C NATURAL-LANGUAGE COMPLETION PASS
+CLOCK CASE 晚上七點半: ClockCompletion(hour: Optional(19), minute: 30)
+CLOCK CASE 19:45: ClockCompletion(hour: Optional(19), minute: 45)
+CLOCK CASE 晚上再說，時間還沒決定: ClockCompletion(hour: nil, minute: 0)
+CLOCK CASE 一小時，提前兩小時提醒: ClockCompletion(hour: nil, minute: 0)
+CLOCK CASE 晚上七點，開會一小時，提前兩小時提醒: ClockCompletion(hour: Optional(19), minute: 0)
+CLOCK CASE 改到下週六，吃飯九十分鐘: ClockCompletion(hour: nil, minute: 0)
+CLOCK VARIANTS PASS

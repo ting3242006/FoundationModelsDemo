@@ -1,0 +1,17 @@
+v12 source candidate
+Unit: exit 0; TEST SUCCEEDED; 62 passed / 0 failed / 0 skipped.
+UI build-for-testing: exit 0; TEST BUILD SUCCEEDED.
+Unit restore build-for-testing: exit 0; TEST BUILD SUCCEEDED.
+Generic iOS unsigned Release: exit 0; BUILD SUCCEEDED.
+
+Commands (run from project root; substitute a dedicated test Simulator):
+xcodebuild -project MessyNote.xcodeproj -scheme MessyNote -configuration Debug -destination 'platform=iOS Simulator,id=<YOUR_SIMULATOR_UDID>' -parallel-testing-enabled NO -collect-test-diagnostics never test
+xcodebuild -project MessyNote.xcodeproj -scheme MessyNoteAcceptanceUI -configuration Debug -destination 'generic/platform=iOS Simulator' build-for-testing
+xcodebuild -project MessyNote.xcodeproj -scheme MessyNote -configuration Debug -destination 'generic/platform=iOS Simulator' build-for-testing
+xcodebuild -project MessyNote.xcodeproj -scheme MessyNote -configuration Release -destination 'generic/platform=iOS' CODE_SIGNING_ALLOWED=NO build
+
+Original evidence: /private/tmp/messynote-clock-grounding-v12-validation
+unit-green.xcresult / unit-green.log / ui-build.log / unit-restore-build.log / release-build.log
+BC UI: exit 0; TEST EXECUTE SUCCEEDED; 2 passed / 0 failed / 0 skipped.
+AD UI: exit 0; TEST EXECUTE SUCCEEDED; 2 passed / 0 failed / 0 skipped.
+Both runs use the same v12 source/build. Release is compilation, not device deployment.

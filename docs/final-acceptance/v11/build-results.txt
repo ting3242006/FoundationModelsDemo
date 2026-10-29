@@ -1,0 +1,8 @@
+v11 frozen product
+Unit: exit0, TEST SUCCEEDED; sealed summary58 passed / 0failed / 0skipped.
+Focused pre-fix red: exit65; initialExistingClockBypassesExtractionAndKeepsOtherFields failed as expected.
+UI build and unit bundle restore: exit0, TEST BUILD SUCCEEDED.
+Release command: xcodebuild -project MessyNote.xcodeproj -scheme MessyNote -configuration Release -destination 'generic/platform=iOS' -derivedDataPath /private/tmp/messynote-b-minute-v7-release CODE_SIGNING_ALLOWED=NO build
+Release: exit0, BUILD SUCCEEDED; no physical-device deployment.
+Evidence directory: /private/tmp/messynote-clock-fallback-v11-validation
+A-D same-version UI suite is in progress; no final UI verdict yet.

@@ -1,0 +1,42 @@
+{
+  "devicesAndConfigurations": [
+    {
+      "device": {
+        "architecture": "arm64",
+        "deviceId": "<REDACTED_DEVICE_ID>",
+        "deviceName": "MessyNote Case C QA",
+        "modelName": "iPhone 18 Pro",
+        "osBuildNumber": "24A434",
+        "osVersion": "27.0",
+        "platform": "iOS Simulator"
+      },
+      "expectedFailures": 0,
+      "failedTests": 0,
+      "passedTests": 84,
+      "skippedTests": 0,
+      "testPlanConfiguration": {
+        "configurationId": "1",
+        "configurationName": "Test Scheme Action"
+      }
+    }
+  ],
+  "environmentDescription": "MessyNote · Built with macOS 27.0.1",
+  "expectedFailures": 0,
+  "failedTests": 0,
+  "finishTime": 1792682765.313,
+  "passedTests": 62,
+  "result": "Passed",
+  "runtimeWarnings": [],
+  "skippedTests": 0,
+  "startTime": 1792682740.246,
+  "statistics": [
+    {
+      "subtitle": "34 test runs",
+      "title": "12 tests ran with dynamic parameters"
+    }
+  ],
+  "testFailures": [],
+  "title": "Test - MessyNote",
+  "topInsights": [],
+  "totalTestCount": 62
+}

@@ -1,0 +1,46 @@
+{
+  "devicesAndConfigurations": [
+    {
+      "device": {
+        "architecture": "arm64",
+        "deviceId": "[REDACTED]",
+        "deviceName": "MessyNote Case C QA",
+        "modelName": "iPhone 18 Pro",
+        "osBuildNumber": "24A434",
+        "osVersion": "27.0",
+        "platform": "iOS Simulator"
+      },
+      "expectedFailures": 0,
+      "failedTests": 1,
+      "passedTests": 1,
+      "skippedTests": 0,
+      "testPlanConfiguration": {
+        "configurationId": "1",
+        "configurationName": "Test Scheme Action"
+      }
+    }
+  ],
+  "environmentDescription": "MessyNoteAcceptanceUI · Built with macOS 27.0.1",
+  "expectedFailures": 0,
+  "failedTests": 1,
+  "finishTime": 1792662972.257,
+  "passedTests": 1,
+  "result": "Failed",
+  "runtimeWarnings": [],
+  "skippedTests": 0,
+  "startTime": 1792662455.591,
+  "statistics": [],
+  "testFailures": [
+    {
+      "failureText": "failed: caught error: \"Error Domain=MessyNoteCaseCUI Code=1 \"03 pending draft未在180.0秒內完成；runtime錯誤或模型不可用均不視為通過。請檢視截圖與AX附件。\" UserInfo={NSLocalizedDescription=03 pending draft未在180.0秒內完成；runtime錯誤或模型不可用均不視為通過。請檢視截圖與AX附件。}\"",
+      "targetName": "MessyNoteUITests",
+      "testIdentifier": 1,
+      "testIdentifierString": "CaseCUITests/testCaseCNaturalLanguageCompletion()",
+      "testIdentifierURL": "test://com.apple.xcode/MessyNote/MessyNoteUITests/CaseCUITests/testCaseCNaturalLanguageCompletion",
+      "testName": "testCaseCNaturalLanguageCompletion()"
+    }
+  ],
+  "title": "Test - MessyNoteAcceptanceUI",
+  "topInsights": [],
+  "totalTestCount": 2
+}

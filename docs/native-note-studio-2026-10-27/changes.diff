@@ -1,0 +1,1096 @@
+--- /private/tmp/fmdemo-native-studio-baseline/MessyNote/Feature/Planner/PlannerView.swift	2026-10-22 15:13:54
++++ /Users/yitingsung/Developer/FMDemo/MessyNote/Feature/Planner/PlannerView.swift	2026-10-27 15:50:38
+@@ -2,79 +2,51 @@
+ 
+ struct PlannerView: View {
+     @Environment(\.scenePhase) private var scenePhase
++    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
++    @Environment(\.accessibilityReduceMotion) private var reduceMotion
++    @Environment(\.colorScheme) private var colorScheme
+     @State private var model = PlannerViewModel()
+     @State private var pendingClock = Date.now
++    @State private var showSettings = false
++    @State private var isEditing = false
++    @State private var isNoteExpanded = false
++    @State private var showActivity = false
++
+     var body: some View {
+         NavigationStack {
+-            Form {
+-                Text("Turn messy thoughts into plans.").font(.subheadline).foregroundStyle(.secondary)
+-                Section("系統模型") {
+-                    switch model.availability {
+-                    case .available: Label("裝置端模型可使用", systemImage: "checkmark.circle")
+-                    case .unavailable(let message): Label(message, systemImage: "exclamationmark.circle")
+-                    }
+-                    Button("重新檢查") { model.availability = .current() }
+-                }
+-                #if DEBUG
+-                Section("Demo Mode") {
+-                    Toggle("Demo Fixture Mode", isOn: $model.fixtureMode).disabled(model.saver.isSaving)
+-                    Text(model.isFixture ? "真實模型推論＋示範聯絡人與行事曆查詢。儲存仍會寫入系統行事曆。" : "Real Mode · 查詢系統聯絡人與行事曆")
+-                        .font(.caption).foregroundStyle(.secondary)
+-                }
+-                #endif
+-                Section("隨手筆記 / Follow-up") {
+-                    Button("填入範例筆記", action: model.fillExample)
+-                    TextField("今天想做什麼？", text: $model.input, axis: .vertical).lineLimit(3...8).accessibilityLabel("隨手筆記或修改指令")
+-                    Button("✨ Make it happen", action: model.generate).disabled(model.availability != .available || model.input.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || model.saver.isSaving)
+-                    if model.isLoading { ProgressView("正在生成或查詢工具"); Button("取消", action: model.cancel) }
+-                    Button("重置對話", action: model.reset).disabled(model.saver.isSaving)
+-                }
+-                if let partial = model.partial, model.isLoading {
+-                    Section("Event · 真實 partial generation") {
+-                        if let title = partial.title { Text(title).font(.headline) }
+-                        if let hour = partial.hour, let minute = partial.minute { Text("時間：\(hour):\(minute.formatted(.number.precision(.integerLength(2))))") }
+-                        if let location = partial.location { Text(location) }
+-                        if let attendee = partial.attendeeQuery { Text(attendee) }
+-                        if let notes = partial.notes { Text(notes) }
+-                    }
+-                }
+-                if let clock = model.clockPartial, model.isLoading {
+-                    Section("Time · 真實補充抽取") {
+-                        if let hour = clock.hour { Text("小時：\(hour)") }
+-                        if let minute = clock.minute { Text("分鐘：\(minute)") }
+-                    }
+-                }
+-                if let event = model.event {
+-                    EventEditorView(event: model.editorBinding(for: event)).disabled(model.isLoading || model.saver.isSaving || model.saver.saved)
+-                    contactSection
+-                    calendarSection
+-                    Section {
+-                        Button("加入行事曆", systemImage: "calendar.badge.plus", action: model.prepareSave).disabled(!model.canSave)
+-                        if let success = model.success { Label(success, systemImage: "checkmark.circle.fill").foregroundStyle(.green) }
+-                    }
+-                } else if let draft = model.draft, !model.isLoading {
+-                    Section("Event · 尚待時間確認") {
+-                        Text(draft.title).font(.headline)
+-                        if let day = model.pendingDay {
+-                            Text("固定草稿日期：\(day.formatted(date: .complete, time: .omitted))")
+-                            Text("請先在上方用自然語言補充確切時間；也可手動選擇並確認作為備用。選擇器顯示值不是模型抽取結果。")
+-                                .font(.caption).foregroundStyle(.secondary)
+-                            DatePicker("使用者選擇的時間", selection: $pendingClock, displayedComponents: .hourAndMinute)
+-                            Button("使用此時間並查詢") { model.completePendingTime(pendingClock) }
+-                                .disabled(model.availability != .available || model.saver.isSaving)
+-                        } else {
+-                            Text("請在上方補充確切日期或時間後再次生成。")
++            GeometryReader { geometry in
++                ScrollView {
++                    VStack(alignment: .leading, spacing: 24) {
++                        introduction
++                        let wide = geometry.size.width >= 840 && !dynamicTypeSize.isAccessibilitySize
++                        let layout = wide ? AnyLayout(HStackLayout(alignment: .top, spacing: 24)) : AnyLayout(VStackLayout(alignment: .leading, spacing: 24))
++                        layout {
++                            noteCard(wide: wide).frame(maxWidth: .infinity)
++                            resultColumn.frame(maxWidth: .infinity)
+                         }
++                        activityCard
+                     }
++                    .padding(20)
++                    .frame(maxWidth: 1180)
++                    .frame(maxWidth: .infinity)
+                 }
+-                Section("AI Activity") {
+-                    ForEach(model.ledger.activity) { item in Text(item.message).font(.caption) }
+-                    if model.ledger.activity.isEmpty { Text("尚未執行推論或工具查詢").foregroundStyle(.secondary) }
+-                }
+-                if let error = model.error { Section("需要注意") { Text(error).foregroundStyle(.red) } }
++                .background(Color(.systemGroupedBackground))
++                .scrollDismissesKeyboard(.interactively)
+             }
+             .navigationTitle("MessyNote")
+-            .scrollDismissesKeyboard(.interactively)
++            .navigationBarTitleDisplayMode(.inline)
++            .tint(StudioStyle.accent(for: colorScheme))
++            .toolbar {
++                ToolbarItem(placement: .topBarTrailing) {
++                    Button("設定", systemImage: "ellipsis.circle") { showSettings = true }
++                        .popover(isPresented: $showSettings) { settings }
++                }
++            }
++            .safeAreaInset(edge: .bottom) {
++                if model.isLoading { loadingActions }
++                else if model.event != nil { saveActions }
++            }
++            .onChange(of: model.event != nil) { if model.event != nil { isNoteExpanded = false } }
+             .onChange(of: scenePhase) { if scenePhase == .active { model.availability = .current() } }
+             .onDisappear { if model.isLoading { model.cancel() } }
+             .sheet(item: $model.presentedReview) { review in
+@@ -83,36 +55,257 @@
+             }
+         }
+     }
+-    private var contactSection: some View {
+-        Section("參與者確認") {
+-            if let error = model.ledger.contactError { Text(error).foregroundStyle(.orange) }
+-            if let selected = model.selectedContact { Label(selected.displayName, systemImage: "person.crop.circle.badge.checkmark") }
++
++    private var introduction: some View {
++        VStack(alignment: .leading, spacing: 12) {
++            Text("把想法，排進生活").font(.largeTitle.weight(.bold))
++            Text("記下時間、地點和同行的人，讓筆記慢慢成為一個計畫。")
++                .foregroundStyle(.secondary)
++            switch model.availability {
++            case .available:
++                Label("裝置端模型可使用", systemImage: "sparkles").font(.subheadline).foregroundStyle(.secondary)
++            case .unavailable(let message):
++                Label(message, systemImage: "exclamationmark.circle").font(.subheadline)
++            }
++            #if DEBUG
++            if model.isFixture {
++                VStack(alignment: .leading, spacing: 6) {
++                    Label { Text("示範資料模式") } icon: { Image(systemName: "testtube.2").foregroundStyle(.orange) }.font(.subheadline.weight(.semibold))
++                    Text("真實模型推論＋示範聯絡人與行事曆查詢。儲存仍會寫入系統行事曆。")
++                        .font(.caption)
++                }
++                .foregroundStyle(.primary)
++            } else {
++                Text("使用系統資料").font(.caption).foregroundStyle(.secondary)
++            }
++            #endif
++        }
++    }
++
++    private func noteCard(wide: Bool) -> some View {
++        Group {
++            if model.event != nil && !wide {
++                DisclosureGroup(isExpanded: $isNoteExpanded) {
++                    noteContent.padding(.top, 20)
++                } label: {
++                    Label("筆記與修改指令", systemImage: "square.and.pencil")
++                        .font(.headline).frame(minHeight: 44)
++                }
++            } else {
++                VStack(alignment: .leading, spacing: 20) {
++                    if model.event != nil {
++                        Label("筆記與修改指令", systemImage: "square.and.pencil")
++                            .font(.title2.weight(.semibold))
++                    }
++                    noteContent
++                }
++            }
++        }
++        .studioCard()
++    }
++
++    private var noteContent: some View {
++        VStack(alignment: .leading, spacing: 20) {
++            if model.event == nil {
++                Label(model.draft == nil ? "隨手筆記" : "補充筆記", systemImage: "square.and.pencil")
++                    .font(.title2.weight(.semibold))
++            }
++            TextField("今天想做什麼？", text: $model.input, axis: .vertical)
++                .lineLimit(5...10)
++                .accessibilityLabel("隨手筆記或修改指令")
++            Text(model.draft == nil ? "日期、時間或提醒方式，都可以用平常說話的方式寫下。" : "想調整活動？在這裡補充一句話，再整理一次。")
++                .font(.subheadline).foregroundStyle(.secondary)
++            Button("填入範例筆記", systemImage: "text.badge.plus", action: model.fillExample)
++                .frame(minHeight: 44)
++                .disabled(model.isLoading || model.saver.isSaving || model.saver.saved)
++            StudioPrimaryButton(title: "整理成活動", symbol: "sparkles", action: model.generate)
++                .disabled(model.availability != .available || model.input.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || model.saver.isSaving)
++        }
++    }
++
++    private var loadingActions: some View {
++        VStack(spacing: 8) {
++            ProgressView("正在整理筆記與查詢資料")
++            Button("取消", systemImage: "stop.circle", action: model.cancel)
++                .frame(maxWidth: .infinity, minHeight: 44)
++        }
++        .padding(.horizontal, 20).padding(.vertical, 12)
++        .frame(maxWidth: 680).frame(maxWidth: .infinity)
++        .background(.bar)
++    }
++
++    private var resultColumn: some View {
++        VStack(alignment: .leading, spacing: 24) {
++            if model.isLoading, let partial = model.partial {
++                VStack(alignment: .leading, spacing: 16) {
++                    Text("正在整理活動").font(.caption).foregroundStyle(.secondary)
++                    Text("活動逐漸成形").font(.title2.weight(.semibold))
++                    if let title = partial.title { Text(title).font(.headline) }
++                    if let hour = partial.hour, let minute = partial.minute { Label("時間：\(hour):\(minute.formatted(.number.precision(.integerLength(2))))", systemImage: "clock") }
++                    if let location = partial.location { Label(location, systemImage: "mappin.and.ellipse") }
++                    if let attendee = partial.attendeeQuery { Label(attendee, systemImage: "person") }
++                    if let notes = partial.notes { Text(notes).foregroundStyle(.secondary) }
++                    Text("這是模型目前產生的內容，完成後仍可修改。")
++                        .font(.caption).foregroundStyle(.secondary)
++                }
++                .studioCard()
++                .transition(.opacity)
++            }
++            if model.isLoading, let clock = model.clockPartial {
++                VStack(alignment: .leading, spacing: 12) {
++                    Text("正在補充時間").font(.headline)
++                    if let hour = clock.hour { Text("小時：\(hour)") }
++                    if let minute = clock.minute { Text("分鐘：\(minute)") }
++                }.studioCard()
++            }
++            if let event = model.event {
++                VStack(alignment: .leading, spacing: 20) {
++                    Text("活動預覽").font(.caption).foregroundStyle(.secondary)
++                    EventPreviewView(event: event, participant: model.selectedContact?.displayName)
++                    DisclosureGroup(isExpanded: $isEditing) {
++                        EventEditorView(event: model.editorBinding(for: event)).padding(.top, 16)
++                    } label: {
++                        Label("編輯", systemImage: "slider.horizontal.3").font(.headline).frame(minHeight: 44)
++                    }
++                    .accessibilityIdentifier("eventEditorDisclosure")
++                    .disabled(model.isLoading || model.saver.isSaving || model.saver.saved)
++                }.studioCard()
++                contactCard
++                calendarCard
++            } else if let draft = model.draft, !model.isLoading {
++                VStack(alignment: .leading, spacing: 16) {
++                    Text("尚待時間確認").font(.caption).foregroundStyle(.secondary)
++                    Label("再補一個時間就好", systemImage: "clock.badge.questionmark").font(.title2.weight(.semibold))
++                    Text(draft.title).font(.headline)
++                    if let day = model.pendingDay {
++                        Text("固定草稿日期：\(day.formatted(date: .complete, time: .omitted))")
++                        Text("請先在筆記裡補充確切時間；也可手動選擇並確認作為備用。選擇器顯示值不是模型抽取結果。")
++                            .font(.subheadline).foregroundStyle(.secondary)
++                        DatePicker("使用者選擇的時間", selection: $pendingClock, displayedComponents: .hourAndMinute)
++                        Button("使用此時間並查詢") { model.completePendingTime(pendingClock) }
++                            .frame(minHeight: 44)
++                            .disabled(model.availability != .available || model.saver.isSaving)
++                    } else {
++                        Text("請在筆記裡補充確切日期或時間，再整理一次。")
++                    }
++                }.studioCard()
++            } else if !model.isLoading {
++                VStack(alignment: .leading, spacing: 16) {
++                    Image(systemName: "calendar.badge.clock").font(.largeTitle).foregroundStyle(StudioStyle.accent(for: colorScheme))
++                        .accessibilityHidden(true)
++                    Text("為下一件事，留個位置").font(.title2.weight(.semibold))
++                    Text("整理後的活動會出現在這裡。你可以先看內容、調整細節，最後再決定是否加入行事曆。")
++                        .foregroundStyle(.secondary)
++                }.studioCard()
++            }
++            if let error = model.error {
++                VStack(alignment: .leading, spacing: 12) {
++                    Label { Text("需要注意") } icon: { Image(systemName: "exclamationmark.circle").foregroundStyle(.red) }.font(.headline)
++                    Text("這次操作未完成。請查看原因，調整筆記或稍後再試。")
++                    DisclosureGroup("原始診斷") { Text(error).font(.subheadline).textSelection(.enabled).padding(.top, 8) }
++                }.studioCard()
++            }
++        }
++        .animation(reduceMotion ? nil : .easeInOut(duration: 0.18), value: model.isLoading)
++    }
++
++    private var contactCard: some View {
++        VStack(alignment: .leading, spacing: 16) {
++            Label("參與者確認", systemImage: "person.crop.circle").font(.headline)
++            if let error = model.ledger.contactError {
++                Label { Text(error) } icon: { Image(systemName: "exclamationmark.triangle").foregroundStyle(.orange) }
++            }
++            if let selected = model.selectedContact { Label("已選擇：\(selected.displayName)", systemImage: "checkmark.circle") }
+             if let candidates = model.ledger.candidates {
+                 if candidates.isEmpty { Text("找不到可存取的聯絡人（可能受限於部分存取權）。") }
+                 ForEach(candidates) { candidate in
+                     Button(candidate.displayName) { model.selectedContact = candidate; model.proceedUnresolved = false }
++                        .buttonStyle(.bordered).frame(minHeight: 44)
+                 }
+-            } else { Text("尚未取得此草稿的聯絡人查詢結果。") }
++            } else { Text("尚未取得此草稿的聯絡人查詢結果。").foregroundStyle(.secondary) }
+             if model.event?.attendeeQuery.isEmpty == false {
+                 Toggle("保留原姓名，繼續但不指定聯絡人", isOn: $model.proceedUnresolved)
+                     .onChange(of: model.proceedUnresolved) { if model.proceedUnresolved { model.selectedContact = nil } }
+             }
+-            Text("僅保存參與者姓名到事件筆記，不發送邀請。").font(.caption).foregroundStyle(.secondary)
+-        }.disabled(model.isLoading || model.saver.isSaving || model.saver.saved)
++            Text("僅保存參與者姓名到事件筆記，不發送邀請。")
++                .font(.caption).foregroundStyle(.secondary)
++        }
++        .studioCard()
++        .disabled(model.isLoading || model.saver.isSaving || model.saver.saved)
+     }
+-    private var calendarSection: some View {
+-        Section("行事曆查詢") {
+-            if let error = model.ledger.calendarError { Text(error).foregroundStyle(.orange) }
++
++    private var calendarCard: some View {
++        VStack(alignment: .leading, spacing: 16) {
++            Label("行事曆查詢", systemImage: "calendar").font(.headline)
++            if let error = model.ledger.calendarError {
++                Label { Text(error) } icon: { Image(systemName: "exclamationmark.triangle").foregroundStyle(.orange) }
++            }
+             if let conflicts = model.ledger.conflicts {
+                 ForEach(conflicts) { conflict in
+                     Text("⚠ \(conflict.title) · \(conflict.start.formatted(date: .omitted, time: .shortened))–\(conflict.end.formatted(date: .omitted, time: .shortened))")
+                 }
+                 if conflicts.isEmpty { Label("此時段沒有衝突（查詢當下）", systemImage: "checkmark.circle") }
+-            } else { Text("未有有效查詢證據；衝突狀態未知。") }
++            } else { Text("未有有效查詢證據；衝突狀態未知。").foregroundStyle(.secondary) }
+             if let slot = model.ledger.nextSlot {
+-                Text("Swift 校驗可用時段：\(slot.formatted(date: .abbreviated, time: .shortened))")
+-                Button("接受建議時間", action: model.acceptSlot).disabled(model.isLoading || model.saver.isSaving || model.saver.saved)
++                Text("建議時段：\(slot.formatted(date: .abbreviated, time: .shortened))")
++                Button("接受建議時間", action: model.acceptSlot)
++                    .frame(minHeight: 44)
++                    .disabled(model.isLoading || model.saver.isSaving || model.saver.saved)
+             }
++        }.studioCard()
++    }
++
++    private var activityCard: some View {
++        DisclosureGroup(isExpanded: $showActivity) {
++            VStack(alignment: .leading, spacing: 12) {
++                ForEach(model.ledger.activity) { item in Text(item.message).font(.caption).textSelection(.enabled) }
++                if model.ledger.activity.isEmpty { Text("尚未執行推論或工具查詢").foregroundStyle(.secondary) }
++            }.padding(.top, 16)
++        } label: {
++            Label("AI 處理紀錄", systemImage: "text.alignleft").font(.headline).frame(minHeight: 44)
+         }
++        .accessibilityIdentifier("activityDisclosure")
++        .studioCard()
+     }
++
++    private var saveActions: some View {
++        VStack(alignment: .leading, spacing: 8) {
++            if let success = model.success {
++                Label { Text(success) } icon: { Image(systemName: "checkmark.circle.fill").foregroundStyle(.green) }.font(.headline)
++            } else {
++                StudioPrimaryButton(title: "檢查並加入", symbol: "calendar.badge.plus", action: model.prepareSave)
++                    .disabled(!model.canSave)
++                Text("先確認內容，下一步才會寫入行事曆。")
++                    .font(.caption).foregroundStyle(.secondary)
++            }
++        }
++        .padding(.horizontal, 20).padding(.vertical, 12)
++        .frame(maxWidth: 680).frame(maxWidth: .infinity)
++        .background(.bar)
++    }
++
++    private var settings: some View {
++        NavigationStack {
++            Form {
++                Section("工作室") {
++                    Button("重新檢查", systemImage: "arrow.clockwise") { model.availability = .current() }
++                    Button("重置對話", systemImage: "arrow.counterclockwise") {
++                        model.reset(); isEditing = false; showActivity = false; showSettings = false
++                    }.disabled(model.saver.isSaving)
++                }
++                #if DEBUG
++                Section("Demo Mode") {
++                    Toggle("Demo Fixture Mode", isOn: $model.fixtureMode).disabled(model.saver.isSaving)
++                    Text("只替代聯絡人與行事曆查詢。最後確認仍會寫入系統行事曆。")
++                        .font(.subheadline).foregroundStyle(.secondary)
++                }
++                #endif
++            }
++            .navigationTitle("工作室設定")
++            .navigationBarTitleDisplayMode(.inline)
++            .toolbar { ToolbarItem(placement: .confirmationAction) { Button("完成") { showSettings = false } } }
++        }
++        .presentationDetents([.medium, .large])
++        .frame(idealWidth: 380, idealHeight: 400)
++    }
+ }
+--- /private/tmp/fmdemo-native-studio-baseline/MessyNote/Feature/Planner/EventEditorView.swift	2026-10-21 16:49:46
++++ /Users/yitingsung/Developer/FMDemo/MessyNote/Feature/Planner/EventEditorView.swift	2026-10-27 15:49:11
+@@ -2,24 +2,144 @@
+ 
+ struct EventEditorView: View {
+     @Binding var event: ReviewedEvent
++
+     var body: some View {
+-        Section("Event · 請確認與修改") {
+-            TextField("標題", text: $event.title)
++        VStack(alignment: .leading, spacing: 20) {
++            VStack(alignment: .leading, spacing: 8) {
++                Text("標題").font(.subheadline).foregroundStyle(.secondary)
++                TextField("標題", text: $event.title)
++                    .textFieldStyle(.roundedBorder)
++            }
+             DatePicker("開始", selection: $event.start)
+                 .environment(\.timeZone, TimeZone(identifier: event.timeZoneIdentifier) ?? .current)
+             Text("時區：\(event.timeZoneIdentifier)").font(.caption).foregroundStyle(.secondary)
+             Stepper("持續 \(event.durationMinutes) 分鐘", value: $event.durationMinutes, in: 1...480, step: 1)
+-            TextField("地點", text: $event.location)
+-            TextField("參與者姓名", text: $event.attendeeQuery)
+-            TextField("筆記", text: $event.notes, axis: .vertical)
++            VStack(alignment: .leading, spacing: 8) {
++                Text("地點").font(.subheadline).foregroundStyle(.secondary)
++                TextField("地點", text: $event.location).textFieldStyle(.roundedBorder)
++            }
++            VStack(alignment: .leading, spacing: 8) {
++                Text("參與者姓名").font(.subheadline).foregroundStyle(.secondary)
++                TextField("參與者姓名", text: $event.attendeeQuery).textFieldStyle(.roundedBorder)
++            }
++            VStack(alignment: .leading, spacing: 8) {
++                Text("筆記").font(.subheadline).foregroundStyle(.secondary)
++                TextField("筆記", text: $event.notes, axis: .vertical)
++                    .lineLimit(2...6).textFieldStyle(.roundedBorder)
++                    .accessibilityLabel("活動筆記")
++            }
+             Picker("提醒", selection: $event.reminderMinutesBefore) {
+                 Text("不提醒").tag(nil as Int?)
+                 Text("當下").tag(0 as Int?)
+                 Text("15 分鐘前").tag(15 as Int?)
+                 Text("兩小時前").tag(120 as Int?)
+                 Text("前一天").tag(1440 as Int?)
+-                if let minutes = event.reminderMinutesBefore, ![0,15,120,1440].contains(minutes) { Text("\(minutes) 分鐘前").tag(minutes as Int?) }
++                if let minutes = event.reminderMinutesBefore, ![0,15,120,1440].contains(minutes) {
++                    Text("\(minutes) 分鐘前").tag(minutes as Int?)
++                }
+             }
+         }
+     }
+ }
++
++// Shared presentation lives in an existing project file so the generated project stays unchanged.
++struct EventPreviewView: View {
++    @Environment(\.locale) private var locale
++    @Environment(\.calendar) private var calendar
++    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
++    @Environment(\.colorScheme) private var colorScheme
++    let event: ReviewedEvent
++    var participant: String? = nil
++
++    private var timeZone: TimeZone { TimeZone(identifier: event.timeZoneIdentifier) ?? calendar.timeZone }
++    private var dateStyle: Date.FormatStyle {
++        Date.FormatStyle(date: .complete, time: .omitted, locale: locale, calendar: calendar, timeZone: timeZone)
++    }
++    private var timeStyle: Date.FormatStyle {
++        Date.FormatStyle(date: .omitted, time: .shortened, locale: locale, calendar: calendar, timeZone: timeZone)
++    }
++
++    var body: some View {
++        VStack(alignment: .leading, spacing: 20) {
++            let layout = dynamicTypeSize.isAccessibilitySize ? AnyLayout(VStackLayout(alignment: .leading, spacing: 16)) : AnyLayout(HStackLayout(alignment: .top, spacing: 16))
++            layout {
++                VStack(spacing: 2) {
++                    Text(event.start.formatted(Date.FormatStyle(date: .omitted, time: .omitted, locale: locale, calendar: calendar, timeZone: timeZone).month(.abbreviated)))
++                        .font(.subheadline.weight(.semibold))
++                    Text(event.start.formatted(Date.FormatStyle(date: .omitted, time: .omitted, locale: locale, calendar: calendar, timeZone: timeZone).day()))
++                        .font(.largeTitle.weight(.bold))
++                }
++                .padding(14)
++                .foregroundStyle(StudioStyle.accent(for: colorScheme))
++                .background(StudioStyle.accent(for: colorScheme).opacity(0.1), in: .rect(cornerRadius: 18))
++                .accessibilityHidden(true)
++                VStack(alignment: .leading, spacing: 8) {
++                    Text(event.title).font(.title2.weight(.bold)).fixedSize(horizontal: false, vertical: true)
++                    Text(event.start.formatted(dateStyle)).foregroundStyle(.secondary)
++                    Text("\(event.start.formatted(timeStyle))–\(event.end.formatted(timeStyle)) · \(event.durationMinutes) 分鐘")
++                    Text(event.timeZoneIdentifier).font(.caption).foregroundStyle(.secondary)
++                }
++                .frame(maxWidth: .infinity, alignment: .leading)
++            }
++            Divider()
++            Label(event.location.isEmpty ? "尚未指定地點" : event.location, systemImage: "mappin.and.ellipse")
++            Label(participant ?? (event.attendeeQuery.isEmpty ? "沒有指定參與者" : event.attendeeQuery), systemImage: "person")
++            Label(StudioStyle.reminder(event.reminderMinutesBefore), systemImage: "bell")
++            if !event.notes.isEmpty {
++                Text(event.notes).foregroundStyle(.secondary).fixedSize(horizontal: false, vertical: true)
++            }
++        }
++        .accessibilityElement(children: .contain)
++    }
++}
++
++enum StudioStyle {
++    static func accent(for scheme: ColorScheme) -> Color {
++        scheme == .dark ? Color(red: 154/255, green: 182/255, blue: 1) : Color(red: 49/255, green: 91/255, blue: 199/255)
++    }
++
++    static func reminder(_ minutes: Int?) -> String {
++        switch minutes {
++        case nil: "不提醒"
++        case 0: "活動開始時提醒"
++        case 15: "15 分鐘前提醒"
++        case 120: "兩小時前提醒"
++        case 1440: "前一天提醒"
++        case .some(let value): "\(value) 分鐘前提醒"
++        }
++    }
++}
++
++struct StudioPrimaryButton: View {
++    @Environment(\.colorScheme) private var colorScheme
++    @Environment(\.isEnabled) private var isEnabled
++    let title: LocalizedStringKey
++    let symbol: String
++    let action: () -> Void
++
++    var body: some View {
++        Button(action: action) {
++            Label(title, systemImage: symbol)
++                .font(.headline)
++                .frame(maxWidth: .infinity, minHeight: 44)
++                .padding(.vertical, 6)
++        }
++        .buttonStyle(.borderedProminent)
++        .buttonBorderShape(.roundedRectangle(radius: 16))
++        .tint(StudioStyle.accent(for: colorScheme))
++        .foregroundStyle(isEnabled ? (colorScheme == .dark ? Color(red: 18/255, green: 19/255, blue: 22/255) : Color.white) : Color.secondary)
++    }
++}
++
++struct StudioCard: ViewModifier {
++    func body(content: Content) -> some View {
++        content
++            .padding(20)
++            .frame(maxWidth: .infinity, alignment: .leading)
++            .background(Color(.secondarySystemGroupedBackground), in: .rect(cornerRadius: 24))
++    }
++}
++
++extension View {
++    func studioCard() -> some View { modifier(StudioCard()) }
++}
+--- /private/tmp/fmdemo-native-studio-baseline/MessyNote/Feature/Planner/SaveReviewView.swift	2026-10-21 17:05:17
++++ /Users/yitingsung/Developer/FMDemo/MessyNote/Feature/Planner/SaveReviewView.swift	2026-10-27 15:30:10
+@@ -7,27 +7,66 @@
+     let error: String?
+     let confirm: () -> Void
+     let cancel: () -> Void
++
+     var body: some View {
+         NavigationStack {
+-            Form {
+-                Section("最後確認") {
+-                    Text(review.event.title).font(.headline)
+-                    Text(review.event.start.formatted(date: .complete, time: .shortened))
+-                    Text("\(review.event.durationMinutes) 分鐘；\(review.event.timeZoneIdentifier)")
+-                    Text(review.event.location)
+-                    Text(review.contact?.displayName ?? review.event.attendeeQuery)
+-                    Text(review.event.notes)
+-                    Text(review.event.reminderMinutesBefore.map { "\($0) 分鐘前提醒" } ?? "不提醒")
++            ScrollView {
++                VStack(alignment: .leading, spacing: 24) {
++                    VStack(alignment: .leading, spacing: 8) {
++                        Text("最後確認").font(.title2.weight(.bold))
++                        Text("確認活動內容，準備好再加入行事曆。")
++                            .foregroundStyle(.secondary)
++                    }
++                    EventPreviewView(event: review.event, participant: review.contact?.displayName)
++                        .studioCard()
++                    VStack(alignment: .leading, spacing: 16) {
++                        Label("參與者只會保留在事件筆記，不會發送邀請。", systemImage: "person.text.rectangle")
++                        Label("衝突查詢是當下快照，行事曆內容可能已改變。", systemImage: "clock.arrow.circlepath")
++                        if isFixture {
++                            Label {
++                                Text("將示範草稿寫入系統行事曆。示範資料只替代查詢；以下確認會真的建立事件。")
++                            } icon: {
++                                Image(systemName: "exclamationmark.triangle").foregroundStyle(.orange)
++                            }
++                            .foregroundStyle(.primary)
++                        } else {
++                            Text("確認後將寫入系統預設行事曆。")
++                        }
++                    }
++                    .font(.subheadline)
++                    .foregroundStyle(.secondary)
++                    if let error {
++                        VStack(alignment: .leading, spacing: 12) {
++                            Label { Text("尚未儲存成功") } icon: { Image(systemName: "exclamationmark.circle").foregroundStyle(.red) }.font(.headline)
++                            Text(error)
++                        }
++                        .foregroundStyle(.primary)
++                        .studioCard()
++                    }
+                 }
+-                Section {
+-                    if let error { Text(error).foregroundStyle(.red) }
+-                    Text(isFixture ? "將示範草稿寫入系統行事曆。示範資料只替代查詢；以下確認會真的建立事件。" : "確認後將寫入系統預設行事曆。參與者只保留在筆記，不會發送邀請。")
+-                    Text("衝突查詢是當下快照，行事曆內容可能已改變。")
+-                    Button("確認加入行事曆", systemImage: "calendar.badge.plus", action: confirm).disabled(isSaving)
++                .padding(20)
++                .frame(maxWidth: 680)
++                .frame(maxWidth: .infinity)
++            }
++            .background(Color(.systemGroupedBackground))
++            .navigationTitle("加入行事曆")
++            .navigationBarTitleDisplayMode(.inline)
++            .safeAreaInset(edge: .bottom) {
++                VStack(spacing: 8) {
+                     if isSaving { ProgressView("正在儲存") }
+-                    Button("取消", role: .cancel, action: cancel).disabled(isSaving)
++                    StudioPrimaryButton(title: "確認加入行事曆", symbol: "calendar.badge.plus", action: confirm)
++                        .disabled(isSaving)
++                    Button("取消", role: .cancel, action: cancel)
++                        .frame(maxWidth: .infinity, minHeight: 44)
++                        .disabled(isSaving)
+                 }
+-            }.navigationTitle("加入行事曆")
+-        }.interactiveDismissDisabled(isSaving)
++                .padding(.horizontal, 20)
++                .padding(.vertical, 12)
++                .frame(maxWidth: 680)
++                .frame(maxWidth: .infinity)
++                .background(.bar)
++            }
++        }
++        .interactiveDismissDisabled(isSaving)
+     }
+ }
+--- /private/tmp/fmdemo-native-studio-baseline/MessyNoteUITests/ScenarioABUITests.swift	2026-10-22 17:04:20
++++ /Users/yitingsung/Developer/FMDemo/MessyNoteUITests/ScenarioABUITests.swift	2026-10-27 16:02:42
+@@ -2,13 +2,58 @@
+ 
+ final class ScenarioABUITests: XCTestCase {
+     @MainActor
++    func testNativeStudioEditReviewCancellation() throws {
++        let app = try launchFixture()
++        let primary = app.buttons["整理成活動"]
++        XCTAssertTrue(primary.waitForExistence(timeout: 5), "筆記工作室必須提供明確的主要整理動作。")
++        try generate("明天下午四點跟Amy開會半小時，兩小時前提醒我", app: app, stage: "Studio01 generate")
++        try waitFor(app.staticTexts["活動預覽"], app: app, stage: "Studio02 preview")
++        XCTAssertTrue(app.buttons["筆記與修改指令"].exists)
++        XCTAssertFalse(app.textFields["隨手筆記或修改指令"].exists || app.textViews["隨手筆記或修改指令"].exists, "產生活動後先收合筆記，讓活動內容成為焦點。")
++        let title = app.textFields["標題"]
++        XCTAssertFalse(title.exists, "預覽先顯示內容；編輯欄位由使用者展開。")
++        let edit = app.buttons["編輯"]
++        top(app)
++        reveal(edit, app: app)
++        edit.tap()
++        reveal(title, app: app)
++        XCTAssertTrue(title.exists)
++        // A descendant can report hittable while still below the pinned next action.
++        // Bring the entire field into the scroll viewport before asking for focus.
++        for _ in 0..<8 {
++            if title.frame.minY >= 120, title.frame.maxY <= app.frame.maxY - 180 { break }
++            scrollDown(app)
++        }
++        XCTAssertLessThanOrEqual(title.frame.maxY, app.frame.maxY - 180)
++        title.tap()
++        XCTAssertTrue(app.keyboards.firstMatch.waitForExistence(timeout: 5), "標題欄必須真的取得鍵盤焦點。")
++        title.typeText("（已確認）")
++        let editedTitle = try XCTUnwrap(title.value as? String)
++        app.swipeUp()
++        let unknown = app.staticTexts["未有有效查詢證據；衝突狀態未知。"]
++        reveal(unknown, app: app)
++        XCTAssertTrue(unknown.exists, "手動編輯後舊查詢證據必須失效。")
++        let next = app.buttons["檢查並加入"]
++        reveal(next, app: app)
++        XCTAssertTrue(next.isEnabled)
++        next.tap()
++        try waitFor(app.staticTexts["最後確認"], app: app, stage: "Studio03 review")
++        XCTAssertTrue(app.staticTexts[editedTitle].exists, "最後確認必須使用編輯後快照。")
++        XCTAssertTrue(app.buttons["確認加入行事曆"].exists)
++        checkpoint("Studio review before cancel; never write calendar", app: app)
++        app.buttons["取消"].tap()
++        XCTAssertFalse(app.staticTexts["最後確認"].waitForExistence(timeout: 1))
++        XCTAssertFalse(app.staticTexts["已加入系統行事曆"].exists)
++    }
++
++    @MainActor
+     func testScenarioA() throws {
+         let app = try launchFixture()
+         let calendar = Calendar(identifier: .gregorian)
+         let tomorrow = try XCTUnwrap(calendar.date(byAdding: .day, value: 1, to: .now))
+         let start = try XCTUnwrap(calendar.date(bySettingHour: 16, minute: 0, second: 0, of: tomorrow))
+         try generate("明天下午四點跟Amy開會半小時，兩小時前提醒我", app: app, stage: "A01 Chinese input")
+-        try waitFor(app.staticTexts["Event · 請確認與修改"], app: app, stage: "A02 event")
++        try waitFor(app.staticTexts["活動預覽"], app: app, stage: "A02 event")
+         try verifyTools(attendee: "Amy", start: start, app: app, stage: "A03 tools")
+         try verifyNoConflicts(app: app, stage: "A04 no conflicts")
+         try verifyEvent(start: start, duration: 30, attendee: "Amy", reminder: "兩小時前", app: app, stage: "A05 event fields")
+@@ -31,7 +76,7 @@
+         let start = try XCTUnwrap(calendar.date(bySettingHour: 15, minute: 0, second: 0, of: wednesday))
+         let alternative = try XCTUnwrap(calendar.date(bySettingHour: 16, minute: 30, second: 0, of: wednesday))
+         try generate("下週三下午三點跟小明在信義區喝咖啡一小時，記得帶合約，前一天提醒我", app: app, stage: "B01 Chinese input")
+-        try waitFor(app.staticTexts["Event · 請確認與修改"], app: app, stage: "B02 event")
++        try waitFor(app.staticTexts["活動預覽"], app: app, stage: "B02 event")
+         try verifyTools(attendee: "小明", start: start, app: app, stage: "B03 initial tools")
+         try verifyEvent(start: start, duration: 60, attendee: "小明", reminder: "前一天", app: app, stage: "B04 initial fields", checkCoffeeFields: true)
+         top(app)
+@@ -43,10 +88,10 @@
+         let conflict = app.staticTexts.matching(NSPredicate(format: "label CONTAINS %@", "⚠ Team Meeting")).firstMatch
+         reveal(conflict, app: app)
+         try waitFor(conflict, app: app, stage: "B06 conflict")
+-        let slot = app.staticTexts["Swift 校驗可用時段：\(alternative.formatted(date: .abbreviated, time: .shortened))"]
++        let slot = app.staticTexts["建議時段：\(alternative.formatted(date: .abbreviated, time: .shortened))"]
+         reveal(slot, app: app)
+         XCTAssertTrue(slot.exists, "必須由Swift產生16:30空檔。")
+-        let save = app.buttons["加入行事曆"]
++        let save = app.buttons["檢查並加入"]
+         reveal(save, app: app)
+         XCTAssertFalse(save.isEnabled, "多候選尚未由使用者選擇時不得儲存。")
+         checkpoint("B07 Swift slot and unresolved ambiguity", app: app)
+@@ -79,24 +124,27 @@
+             guard let self else { return }
+             if self.testRun?.hasSucceeded == false { self.checkpoint("Failure final UI state", app: app) }
+         }
+-        let fixture = app.switches["Demo Fixture Mode"]
++        app.buttons["設定"].tap()
++        let fixture = app.switches["Demo Fixture Mode"].firstMatch
+         try waitFor(fixture, app: app, stage: "Fixture available", timeout: 15)
+-        let innerSwitch = fixture.switches.firstMatch
+         for attempt in 1...2 {
+             if fixture.value as? String == "1" { break }
+             XCTAssertEqual(fixture.value as? String, "0", "未知fixture狀態不可盲目反切。")
+             let tappable = XCTNSPredicateExpectation(
+-                predicate: NSPredicate(format: "exists == true AND hittable == true"), object: innerSwitch)
+-            XCTAssertEqual(XCTWaiter.wait(for: [tappable], timeout: 5), .completed, "必須定位可操作的內層switch。")
+-            innerSwitch.tap()
++                predicate: NSPredicate(format: "exists == true AND hittable == true"), object: fixture)
++            XCTAssertEqual(XCTWaiter.wait(for: [tappable], timeout: 5), .completed, "必須定位可操作的具名switch。")
++            let track = fixture.switches.firstMatch
++            XCTAssertTrue(track.exists, "必須定位具名switch內的真實track。")
++            track.coordinate(withNormalizedOffset: CGVector(dx: 0.35, dy: 0.5)).tap()
+             let enabled = XCTNSPredicateExpectation(predicate: NSPredicate(format: "value == %@", "1"), object: fixture)
+             _ = XCTWaiter.wait(for: [enabled], timeout: 5)
+-            checkpoint("Fixture inner switch attempt \(attempt)", app: app)
++            checkpoint("Fixture labeled switch attempt \(attempt)", app: app)
+         }
+-        XCTAssertEqual(fixture.value as? String, "1", "兩次內層switch操作後仍未啟用fixture；停止於UI setup，尚未執行模型。")
++        XCTAssertEqual(fixture.value as? String, "1", "兩次具名switch操作後仍未啟用fixture；停止於UI setup，尚未執行模型。")
++        app.buttons["完成"].tap()
+         let demo = app.staticTexts["真實模型推論＋示範聯絡人與行事曆查詢。儲存仍會寫入系統行事曆。"]
+         try waitFor(demo, app: app, stage: "Demo Mode binding confirmed", timeout: 5)
+-        XCTAssertFalse(app.staticTexts["Real Mode · 查詢系統聯絡人與行事曆"].exists)
++        XCTAssertFalse(app.staticTexts["使用系統資料"].exists)
+         checkpoint("Fixture ON", app: app)
+         return app
+     }
+@@ -104,13 +152,18 @@
+     @MainActor
+     private func generate(_ text: String, app: XCUIApplication, stage: String) throws {
+         top(app)
++        if app.buttons["筆記與修改指令"].exists && !app.textFields["隨手筆記或修改指令"].exists && !app.textViews["隨手筆記或修改指令"].exists {
++            let note = app.buttons["筆記與修改指令"]
++            reveal(note, app: app)
++            note.tap()
++        }
+         let label = "隨手筆記或修改指令"
+         let input = app.textViews[label].exists ? app.textViews[label] : app.textFields[label]
+         reveal(input, app: app)
+         XCTAssertTrue(input.exists)
+         try replaceText(in: input, with: text, app: app)
+         checkpoint(stage, app: app)
+-        let generate = app.buttons["✨ Make it happen"]
++        let generate = app.buttons["整理成活動"]
+         reveal(generate, app: app)
+         XCTAssertTrue(generate.isEnabled, "模型不可用不得skip或當作通過。")
+         let cancel = app.buttons["取消"]
+@@ -123,7 +176,7 @@
+         guard startResult == .completed else {
+             throw NSError(domain: "MessyNoteAcceptanceUI", code: 6, userInfo: [NSLocalizedDescriptionKey: "未觀察到此次提交開始（取消按鈕未出現）；未重複點擊，不據此判定模型錯誤。"])
+         }
+-        let partial = app.staticTexts["Event · 真實 partial generation"]
++        let partial = app.staticTexts["正在整理活動"]
+         let partialAppeared = XCTNSPredicateExpectation(predicate: NSPredicate(format: "exists == true"), object: partial)
+         if XCTWaiter.wait(for: [partialAppeared], timeout: 3) == .completed {
+             checkpoint(stage + " observed real partial section", app: app)
+@@ -206,11 +259,16 @@
+     @MainActor
+     private func verifyEvent(start: Date, duration: Int, attendee: String, reminder: String, app: XCUIApplication, stage: String, checkCoffeeFields: Bool = false) throws {
+         top(app)
++        if !app.textFields["標題"].exists {
++            let edit = app.buttons["編輯"]
++            reveal(edit, app: app)
++            edit.tap()
++        }
+         let picker = app.datePickers.firstMatch
+         reveal(picker, app: app)
+         XCTAssertTrue(picker.exists)
+         let description = normalized(picker.debugDescription)
+-        XCTAssertTrue(description.contains(normalized(start.formatted(date: .abbreviated, time: .omitted))), picker.debugDescription)
++        XCTAssertTrue(containsExpectedDate(description, expected: start), picker.debugDescription)
+         XCTAssertTrue(description.contains(normalized(start.formatted(date: .omitted, time: .shortened))), picker.debugDescription)
+         let durationControl = app.steppers["持續 \(duration) 分鐘"]
+         reveal(durationControl, app: app)
+@@ -220,7 +278,7 @@
+         XCTAssertEqual(name.value as? String, attendee)
+         if checkCoffeeFields {
+             XCTAssertEqual(app.textFields["地點"].value as? String, "信義區")
+-            let notes = app.textFields.matching(NSPredicate(format: "label == %@ AND value CONTAINS %@", "", "合約")).firstMatch
++            let notes = app.textFields["活動筆記"]
+             reveal(notes, app: app)
+             XCTAssertTrue((notes.value as? String)?.contains("合約") == true)
+         }
+@@ -233,6 +291,11 @@
+ 
+     @MainActor
+     private func verifyTools(attendee: String, start: Date, app: XCUIApplication, stage: String) throws {
++        if !app.staticTexts.matching(NSPredicate(format: "label BEGINSWITH %@", "→ ")).firstMatch.exists {
++            let log = app.buttons["AI 處理紀錄"]
++            reveal(log, app: app)
++            log.tap()
++        }
+         let deadline = Date().addingTimeInterval(180)
+         var scrolls = 0
+         // Form rows are virtualized and can move while generation is still adding content.
+@@ -240,8 +303,8 @@
+         @MainActor func locate(_ element: XCUIElement, towardTop: Bool, name: String) throws {
+             while Date() < deadline, scrolls < 32 {
+                 let visibleTop = app.frame.minY + 120
+-                // The input assistant sits above the keyboard frame; keep drags inside the Form.
+-                let visibleBottom = app.keyboards.firstMatch.exists ? app.keyboards.firstMatch.frame.minY - 80 : app.frame.maxY - 40
++                // Keep drags above both the keyboard assistant and the pinned bottom action bar.
++                let visibleBottom = app.keyboards.firstMatch.exists ? app.keyboards.firstMatch.frame.minY - 80 : app.frame.maxY - 160
+                 if element.exists {
+                     let frame = element.frame
+                     if frame.height > 0, frame.maxY > visibleTop, frame.minY < visibleBottom {
+@@ -288,13 +351,13 @@
+ 
+     @MainActor
+     private func openReviewAndCancel(contact: String, reminder: Int, app: XCUIApplication, stage: String) throws {
+-        let save = app.buttons["加入行事曆"]
++        let save = app.buttons["檢查並加入"]
+         reveal(save, app: app)
+         XCTAssertTrue(save.isEnabled)
+         save.tap()
+         try waitFor(app.staticTexts["最後確認"], app: app, stage: stage + " opened", timeout: 10)
+         XCTAssertTrue(app.staticTexts[contact].exists)
+-        let reminderLabels = ["\(reminder) 分鐘前提醒", "\(reminder.formatted(.number)) 分鐘前提醒"]
++        let reminderLabels = [reminder == 120 ? "兩小時前提醒" : "前一天提醒"]
+         XCTAssertTrue(app.staticTexts.matching(NSPredicate(format: "label IN %@", reminderLabels)).firstMatch.exists)
+         let cancel = app.buttons["取消"]
+         reveal(cancel, app: app)
+@@ -319,7 +382,20 @@
+             .press(forDuration: 0.05, thenDragTo: app.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.25)))
+     }
+     @MainActor private func reveal(_ element: XCUIElement, app: XCUIApplication) {
+-        for _ in 0..<8 { if element.exists && element.isHittable { return }; scrollDown(app) }
++        for _ in 0..<16 {
++            if element.exists {
++                if element.isHittable && ["檢查並加入", "取消", "確認加入行事曆"].contains(element.label) { return }
++                let frame = element.frame
++                let bottom = app.keyboards.firstMatch.exists ? app.keyboards.firstMatch.frame.minY - 80 : app.frame.maxY - 160
++                if frame.height > 0, frame.minY >= 120, frame.maxY <= bottom { return }
++                if frame.minY < 120 {
++                    app.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.35))
++                        .press(forDuration: 0.05, thenDragTo: app.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.65)))
++                    continue
++                }
++            }
++            scrollDown(app)
++        }
+     }
+     @MainActor private func waitFor(_ element: XCUIElement, app: XCUIApplication, stage: String, timeout: TimeInterval = 180) throws {
+         let expectation = XCTNSPredicateExpectation(predicate: NSPredicate(format: "exists == true"), object: element)
+@@ -342,4 +418,18 @@
+     private func normalized(_ text: String) -> String {
+         text.lowercased().filter { !$0.isWhitespace }
+     }
++    private func containsExpectedDate(_ description: String, expected: Date) -> Bool {
++        if description.contains(normalized(expected.formatted(date: .abbreviated, time: .omitted))) { return true }
++        // UIDatePicker can honor the user's numeric short-date preference even when
++        // Foundation's abbreviated formatter uses month names. Verify the same day.
++        let parts = Calendar(identifier: .gregorian).dateComponents([.year, .month, .day], from: expected)
++        guard let year = parts.year, let month = parts.month, let day = parts.day else { return false }
++        let numericDates = ["\(year)/\(month)/\(day)", String(format: "%04d/%02d/%02d", year, month, day)]
++        return numericDates.contains { value in
++            let pattern = "(?<![0-9])" + NSRegularExpression.escapedPattern(for: value) + "(?![0-9])"
++            return description.range(of: pattern, options: .regularExpression) != nil
++        }
++    }
++
++
+ }
+--- /private/tmp/fmdemo-native-studio-baseline/MessyNoteUITests/ScenarioDUITests.swift	2026-10-22 15:17:37
++++ /Users/yitingsung/Developer/FMDemo/MessyNoteUITests/ScenarioDUITests.swift	2026-10-27 15:50:38
+@@ -7,6 +7,7 @@
+         let app = XCUIApplication()
+         let springboard = XCUIApplication(bundleIdentifier: "com.apple.springboard")
+         app.launch()
++        app.buttons["設定"].tap()
+         let fixture = app.switches["Demo Fixture Mode"]
+         try waitFor(fixture, app: app, stage: "D01 launch Real Mode", timeout: 15)
+         if fixture.value as? String == "1" {
+@@ -14,14 +15,15 @@
+         }
+         let off = XCTNSPredicateExpectation(predicate: NSPredicate(format: "value == %@", "0"), object: fixture)
+         XCTAssertEqual(XCTWaiter.wait(for: [off], timeout: 5), .completed)
+-        XCTAssertTrue(app.staticTexts["Real Mode · 查詢系統聯絡人與行事曆"].exists)
++        app.buttons["完成"].tap()
++        XCTAssertTrue(app.staticTexts["使用系統資料"].exists)
+ 
+         let calendar = Calendar(identifier: .gregorian)
+         let tomorrow = try XCTUnwrap(calendar.date(byAdding: .day, value: 1, to: .now))
+         let start = try XCTUnwrap(calendar.date(bySettingHour: 16, minute: 0, second: 0, of: tomorrow))
+         try submit("明天 16:00 開會，持續 30 分鐘。", app: app, stage: "D03 initial explicit time")
+         try waitForGenerationState(app: app, springboard: springboard, stage: "D03c initial generation state")
+-        let pending = app.staticTexts["Event · 尚待時間確認"]
++        let pending = app.staticTexts["尚待時間確認"]
+         if pending.exists {
+             let fixedDate = app.staticTexts["固定草稿日期：" + tomorrow.formatted(date: .complete, time: .omitted)]
+             reveal(fixedDate, app: app)
+@@ -73,18 +75,24 @@
+             app.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.35))
+                 .press(forDuration: 0.05, thenDragTo: app.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.65)))
+         }
+-        let event = app.staticTexts["Event · 請確認與修改"]
++        let event = app.staticTexts["活動預覽"]
+         reveal(event, app: app)
+         XCTAssertTrue(event.exists, "拒絕權限後必須保留完整草稿。")
++        let edit = app.buttons["編輯"]
++        reveal(edit, app: app)
++        edit.tap()
+         let picker = app.datePickers.firstMatch
+         reveal(picker, app: app)
+         let description = picker.debugDescription.lowercased().filter { !$0.isWhitespace }
+-        XCTAssertTrue(description.contains(start.formatted(date: .abbreviated, time: .omitted).lowercased().filter { !$0.isWhitespace }), picker.debugDescription)
++        XCTAssertTrue(containsExpectedDate(description, expected: start), picker.debugDescription)
+         XCTAssertTrue(description.contains(start.formatted(date: .omitted, time: .shortened).lowercased().filter { !$0.isWhitespace }), picker.debugDescription)
+         let duration = app.steppers["持續 30 分鐘"]
+         reveal(duration, app: app)
+         XCTAssertTrue(duration.exists)
+         checkpoint("D07 preserved tomorrow 16:00 thirty-minute draft", app: app)
++        let log = app.buttons["AI 處理紀錄"]
++        reveal(log, app: app)
++        log.tap()
+         let activity = app.staticTexts["⚠ 行事曆無法查詢；衝突狀態未知"]
+         reveal(activity, app: app)
+         XCTAssertTrue(activity.exists)
+@@ -98,6 +106,11 @@
+             app.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.35))
+                 .press(forDuration: 0.05, thenDragTo: app.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.65)))
+         }
++        if app.buttons["筆記與修改指令"].exists && !app.textFields["隨手筆記或修改指令"].exists && !app.textViews["隨手筆記或修改指令"].exists {
++            let note = app.buttons["筆記與修改指令"]
++            reveal(note, app: app)
++            note.tap()
++        }
+         let label = "隨手筆記或修改指令"
+         let input = app.textViews[label].exists ? app.textViews[label] : app.textFields[label]
+         reveal(input, app: app)
+@@ -112,7 +125,7 @@
+         input.typeText(note)
+         XCTAssertEqual(input.value as? String, note)
+         checkpoint(stage + " input", app: app)
+-        let generate = app.buttons["✨ Make it happen"]
++        let generate = app.buttons["整理成活動"]
+         reveal(generate, app: app)
+         XCTAssertTrue(generate.isEnabled, "模型不可用必須失敗，不能skip。")
+         generate.tap()
+@@ -123,7 +136,7 @@
+         XCUIApplication(bundleIdentifier: "com.apple.springboard").alerts.firstMatch.exists
+     }
+     @MainActor private func waitForGenerationState(app: XCUIApplication, springboard: XCUIApplication, stage: String) throws {
+-        let states = [app.staticTexts["Event · 請確認與修改"], app.staticTexts["Event · 尚待時間確認"],
++        let states = [app.staticTexts["活動預覽"], app.staticTexts["尚待時間確認"],
+                       app.staticTexts["需要注意"], app.alerts.firstMatch, springboard.alerts.firstMatch]
+         let expectation = XCTNSPredicateExpectation(
+             predicate: NSPredicate(format: "SUBQUERY(SELF, $state, $state.exists == true).@count > 0"), object: states)
+@@ -158,4 +171,20 @@
+         hierarchy.lifetime = .keepAlways
+         add(hierarchy)
+     }
++    private func normalized(_ text: String) -> String { text.lowercased().filter { !$0.isWhitespace } }
++
++    private func containsExpectedDate(_ description: String, expected: Date) -> Bool {
++        if description.contains(normalized(expected.formatted(date: .abbreviated, time: .omitted))) { return true }
++        // UIDatePicker can honor the user's numeric short-date preference even when
++        // Foundation's abbreviated formatter uses month names. Verify the same day.
++        let parts = Calendar(identifier: .gregorian).dateComponents([.year, .month, .day], from: expected)
++        guard let year = parts.year, let month = parts.month, let day = parts.day else { return false }
++        let numericDates = ["\(year)/\(month)/\(day)", String(format: "%04d/%02d/%02d", year, month, day)]
++        return numericDates.contains { value in
++            let pattern = "(?<![0-9])" + NSRegularExpression.escapedPattern(for: value) + "(?![0-9])"
++            return description.range(of: pattern, options: .regularExpression) != nil
++        }
++    }
++
++
+ }
+--- /private/tmp/fmdemo-native-studio-baseline/MessyNoteUITests/CaseCUITests.swift	2026-10-22 17:56:53
++++ /Users/yitingsung/Developer/FMDemo/MessyNoteUITests/CaseCUITests.swift	2026-10-27 16:15:42
+@@ -13,33 +13,41 @@
+         }
+         checkpoint("01 launched", app: app)
+ 
+-        let fixture = app.switches["Demo Fixture Mode"]
++        app.buttons["設定"].tap()
++        let fixture = app.switches["Demo Fixture Mode"].firstMatch
+         try waitFor(fixture, stage: "Fixture switch", app: app, timeout: 15)
+-        let innerSwitch = fixture.switches.firstMatch
+         for attempt in 1...2 {
+             if fixture.value as? String == "1" { break }
+             XCTAssertEqual(fixture.value as? String, "0", "未知fixture狀態不可盲目反切。")
+             let tappable = XCTNSPredicateExpectation(
+-                predicate: NSPredicate(format: "exists == true AND hittable == true"), object: innerSwitch)
+-            XCTAssertEqual(XCTWaiter.wait(for: [tappable], timeout: 5), .completed, "必須定位可操作的內層switch。")
+-            innerSwitch.tap()
++                predicate: NSPredicate(format: "exists == true AND hittable == true"), object: fixture)
++            XCTAssertEqual(XCTWaiter.wait(for: [tappable], timeout: 5), .completed, "必須定位可操作的具名switch。")
++            let track = fixture.switches.firstMatch
++            XCTAssertTrue(track.exists, "必須定位具名switch內的真實track。")
++            track.coordinate(withNormalizedOffset: CGVector(dx: 0.35, dy: 0.5)).tap()
+             let enabled = XCTNSPredicateExpectation(predicate: NSPredicate(format: "value == %@", "1"), object: fixture)
+             _ = XCTWaiter.wait(for: [enabled], timeout: 5)
+-            checkpoint("Fixture inner switch attempt \(attempt)", app: app)
++            checkpoint("Fixture labeled switch attempt \(attempt)", app: app)
+         }
+-        XCTAssertEqual(fixture.value as? String, "1", "兩次內層switch操作後仍未啟用fixture；停止於UI setup，尚未執行模型。")
++        XCTAssertEqual(fixture.value as? String, "1", "兩次具名switch操作後仍未啟用fixture；停止於UI setup，尚未執行模型。")
+ 
++        app.buttons["完成"].tap()
++        if app.buttons["筆記與修改指令"].exists && !app.textFields["隨手筆記或修改指令"].exists && !app.textViews["隨手筆記或修改指令"].exists {
++            let note = app.buttons["筆記與修改指令"]
++            reveal(note, app: app)
++            note.tap()
++        }
+         let label = "隨手筆記或修改指令"
+         let input = app.textViews[label].exists ? app.textViews[label] : app.textFields[label]
+         try replaceText(in: input, with: "下週五晚上跟一個不存在於 Contacts 的人吃飯", app: app)
+         checkpoint("02 initial Chinese input and fixture ON", app: app)
+-        let generate = app.buttons["✨ Make it happen"]
++        let generate = app.buttons["整理成活動"]
+         reveal(generate, app: app)
+         XCTAssertTrue(generate.isEnabled, "模型不可用時必須失敗，不能skip或當作通過。")
+         generate.tap()
+         scroll(app, towardTop: false)
+ 
+-        let pending = app.staticTexts["Event · 尚待時間確認"]
++        let pending = app.staticTexts["尚待時間確認"]
+         try waitFor(pending, stage: "03 pending draft", app: app)
+         var calendar = Calendar(identifier: .gregorian)
+         calendar.timeZone = .current
+@@ -62,14 +70,20 @@
+         reveal(generate, app: app)
+         generate.tap()
+         scroll(app, towardTop: false)
+-        let editor = app.staticTexts["Event · 請確認與修改"]
++        let editor = app.staticTexts["活動預覽"]
+         try waitFor(editor, stage: "06 completed event", app: app)
+         XCTAssertFalse(pending.exists, "自然語言補充後不能仍是pending草稿。")
++        let edit = app.buttons["編輯"]
++        let editReady = XCTNSPredicateExpectation(
++            predicate: NSPredicate(format: "exists == true AND enabled == true"), object: edit)
++        XCTAssertEqual(XCTWaiter.wait(for: [editReady], timeout: 180), .completed, "模型與工具查詢完成、編輯啟用後才能操作。")
++        reveal(edit, app: app)
++        edit.tap()
+         let start = app.datePickers.firstMatch
+         reveal(start, app: app)
+         XCTAssertTrue(start.exists, "必須從實際DatePicker讀取完成日期與時間。")
+         let pickerDescription = normalized(start.debugDescription)
+-        XCTAssertTrue(pickerDescription.contains(normalized(friday.formatted(date: .abbreviated, time: .omitted))), "完成日期必須是原pending的下一週五。\n\(start.debugDescription)")
++        XCTAssertTrue(containsExpectedDate(pickerDescription, expected: friday), "完成日期必須是原pending的下一週五。\n\(start.debugDescription)")
+         let atSeven = try XCTUnwrap(calendar.date(bySettingHour: 19, minute: 0, second: 0, of: friday))
+         XCTAssertTrue(pickerDescription.contains(normalized(atSeven.formatted(date: .omitted, time: .shortened))) || pickerDescription.contains("19:00"), "完成時間必須是19:00。\n\(start.debugDescription)")
+         let duration = app.steppers["持續 60 分鐘"]
+@@ -86,6 +100,9 @@
+         let noConflicts = app.staticTexts["此時段沒有衝突（查詢當下）"]
+         reveal(noConflicts, app: app)
+         try waitFor(noConflicts, stage: "09 empty Calendar result", app: app)
++        let log = app.buttons["AI 處理紀錄"]
++        reveal(log, app: app)
++        log.tap()
+         let contactCall = app.staticTexts["→ FindContactTool(阿不存在)"]
+         reveal(contactCall, app: app)
+         XCTAssertTrue(contactCall.exists, "必須有真實Contacts工具activity。")
+@@ -162,4 +179,18 @@
+     private func normalized(_ string: String) -> String {
+         string.lowercased().filter { !$0.isWhitespace }
+     }
++    private func containsExpectedDate(_ description: String, expected: Date) -> Bool {
++        if description.contains(normalized(expected.formatted(date: .abbreviated, time: .omitted))) { return true }
++        // UIDatePicker can honor the user's numeric short-date preference even when
++        // Foundation's abbreviated formatter uses month names. Verify the same day.
++        let parts = Calendar(identifier: .gregorian).dateComponents([.year, .month, .day], from: expected)
++        guard let year = parts.year, let month = parts.month, let day = parts.day else { return false }
++        let numericDates = ["\(year)/\(month)/\(day)", String(format: "%04d/%02d/%02d", year, month, day)]
++        return numericDates.contains { value in
++            let pattern = "(?<![0-9])" + NSRegularExpression.escapedPattern(for: value) + "(?![0-9])"
++            return description.range(of: pattern, options: .regularExpression) != nil
++        }
++    }
++
++
+ }
+

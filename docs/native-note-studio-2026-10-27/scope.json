@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "workspaceRoot": "/Users/yitingsung/Developer/FMDemo",
+  "baselineProductionManifest": "/private/tmp/fmdemo-native-studio-baseline/source-hashes.json",
+  "finalManifest": "/private/tmp/fmdemo-studio-final-hashes.json",
+  "production": {
+    "fileCount": 35,
+    "changedFromBaseline": [
+      "MessyNote/Feature/Planner/EventEditorView.swift",
+      "MessyNote/Feature/Planner/PlannerView.swift",
+      "MessyNote/Feature/Planner/SaveReviewView.swift"
+    ],
+    "unchangedFromBaselineCount": 32,
+    "matchesFinalManifest": true,
+    "finalManifestMismatches": []
+  },
+  "tests": {
+    "comparisonBase": "final manifest before switch-track hitpoint remediation",
+    "expectedChangedFromFinalManifest": [
+      "MessyNoteUITests/ScenarioABUITests.swift",
+      "MessyNoteUITests/CaseCUITests.swift"
+    ],
+    "actualChangedFromFinalManifest": [
+      "MessyNoteUITests/CaseCUITests.swift",
+      "MessyNoteUITests/ScenarioABUITests.swift"
+    ],
+    "expectedRemediationSetMatches": true,
+    "scenarioDMatchesFinalManifest": true,
+    "caseC": {
+      "expectedHash": "7defd4f180039a4340a68afeac29747de1a297aa862f8df3227ccc0d716b33ac",
+      "matchesExpectedHash": true,
+      "beforePath": "/private/tmp/fmdemo-evidence2-CaseCUITests.swift.before",
+      "diffAdditions": 3,
+      "diffDeletions": 0,
+      "onlyExpectedEditorEnabledWait": true
+    }
+  },
+  "unexpectedChanges": []
+}
+

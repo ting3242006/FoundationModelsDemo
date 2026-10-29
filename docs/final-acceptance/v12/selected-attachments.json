@@ -1,0 +1,254 @@
+[
+  {
+    "file": "b-input-before.txt",
+    "sourceExport": "73D50495-2AB8-42FF-AACC-CB943A059C70.txt",
+    "stage": "Before clear raw input attributes_0_1AE30239-4511-4AF3-8C37-512C3892946D.txt",
+    "sourceResult": "/private/tmp/messynote-clock-grounding-v12-validation/bc-final.xcresult"
+  },
+  {
+    "file": "b-input-cleared.txt",
+    "sourceExport": "AE6D483D-CCA9-4D18-BFC9-6E6D8EC1CAF3.txt",
+    "stage": "After clear wait raw input attributes_0_BC258863-06C4-413F-9123-612C347D070E.txt",
+    "sourceResult": "/private/tmp/messynote-clock-grounding-v12-validation/bc-final.xcresult"
+  },
+  {
+    "file": "b-input-replaced.txt",
+    "sourceExport": "56C2B8CB-6D25-42B7-81FC-D0E09F258945.txt",
+    "stage": "After replacement text raw input attributes_0_DD1D42A0-004D-46F9-B334-3FAD71F0D9D9.txt",
+    "sourceResult": "/private/tmp/messynote-clock-grounding-v12-validation/bc-final.xcresult"
+  },
+  {
+    "file": "b-initial-fields.txt",
+    "sourceExport": "91407B92-5654-4F93-BACD-B243FC5F2BBE.txt",
+    "stage": "B04 initial fields accessibility hierarchy_0_C37B242F-01A2-4A39-B9A6-8F518A4BF1CA.txt",
+    "sourceResult": "/private/tmp/messynote-clock-grounding-v12-validation/bc-final.xcresult"
+  },
+  {
+    "file": "b-initial-tools.txt",
+    "sourceExport": "95D35876-6D57-4515-BD6E-962693DAF881.txt",
+    "stage": "B03 initial tools both calls located accessibility hierarchy_0_E4591D85-07A4-4FF3-8386-0D44FFE83D8E.txt",
+    "sourceResult": "/private/tmp/messynote-clock-grounding-v12-validation/bc-final.xcresult"
+  },
+  {
+    "file": "b-initial-tools.png",
+    "sourceExport": "BAB6BE0E-2277-45EF-8298-629D9E06C8EB.png",
+    "stage": "B03 initial tools both calls located screenshot_0_1A9706FC-39C0-4E6D-8188-FA850223536F.png",
+    "sourceResult": "/private/tmp/messynote-clock-grounding-v12-validation/bc-final.xcresult"
+  },
+  {
+    "file": "b-two-candidates.txt",
+    "sourceExport": "C774F827-C041-41EC-BDFE-A2AC18ACB835.txt",
+    "stage": "B05 two candidates accessibility hierarchy_0_6E262BB3-8531-45C9-B1E7-3057C0FBD1FD.txt",
+    "sourceResult": "/private/tmp/messynote-clock-grounding-v12-validation/bc-final.xcresult"
+  },
+  {
+    "file": "b-two-candidates.png",
+    "sourceExport": "C16FD9A2-C9AC-4812-B63E-FA899453C55E.png",
+    "stage": "B05 two candidates screenshot_0_2DA56CF7-A606-4F46-989F-411F1D50102B.png",
+    "sourceResult": "/private/tmp/messynote-clock-grounding-v12-validation/bc-final.xcresult"
+  },
+  {
+    "file": "b-followup-tools.txt",
+    "sourceExport": "DC2FDBDB-02BF-4A53-BA62-EDAE48D1A23C.txt",
+    "stage": "B09 follow-up tools both calls located accessibility hierarchy_0_3A6A4FC8-DD87-4A07-A40D-0FBEDBCACC73.txt",
+    "sourceResult": "/private/tmp/messynote-clock-grounding-v12-validation/bc-final.xcresult"
+  },
+  {
+    "file": "b-followup-tools.png",
+    "sourceExport": "2C4B1B7F-A2E1-4C67-81D8-7340CE73FFE9.png",
+    "stage": "B09 follow-up tools both calls located screenshot_0_69C4DB5F-0964-4440-B905-93C57838FE76.png",
+    "sourceResult": "/private/tmp/messynote-clock-grounding-v12-validation/bc-final.xcresult"
+  },
+  {
+    "file": "b-preserved-fields.txt",
+    "sourceExport": "79EDC855-FC55-46E6-9878-775F006F6C2B.txt",
+    "stage": "B11 preserved fields accessibility hierarchy_0_62BC65DB-728C-43E7-9D1F-D88426910174.txt",
+    "sourceResult": "/private/tmp/messynote-clock-grounding-v12-validation/bc-final.xcresult"
+  },
+  {
+    "file": "b-preserved-fields.png",
+    "sourceExport": "17F1DD6A-BB3C-4861-8A9D-EC595C2853A9.png",
+    "stage": "B11 preserved fields screenshot_0_8B28CD8E-3B75-47C5-8D87-0E8892DD45C9.png",
+    "sourceResult": "/private/tmp/messynote-clock-grounding-v12-validation/bc-final.xcresult"
+  },
+  {
+    "file": "b-review.txt",
+    "sourceExport": "40278ABB-03A6-454B-A227-896111CB1B2F.txt",
+    "stage": "B13 review and cancel before cancel; never confirm save accessibility hierarchy_0_4D5BBFD1-BE26-4E87-AEB4-4F511178989F.txt",
+    "sourceResult": "/private/tmp/messynote-clock-grounding-v12-validation/bc-final.xcresult"
+  },
+  {
+    "file": "b-review.png",
+    "sourceExport": "C0F30D78-5796-416B-A1E0-CE9CE4A5EBE5.png",
+    "stage": "B13 review and cancel before cancel; never confirm save screenshot_0_B028277C-7989-4071-A70B-3A00A489F5AE.png",
+    "sourceResult": "/private/tmp/messynote-clock-grounding-v12-validation/bc-final.xcresult"
+  },
+  {
+    "file": "b-canceled.txt",
+    "sourceExport": "AAA7F21C-7018-419F-ADCA-490F81314E34.txt",
+    "stage": "B13 review and cancel dismissed accessibility hierarchy_0_EC3A3B93-57E0-4466-872A-9D90D2E9E593.txt",
+    "sourceResult": "/private/tmp/messynote-clock-grounding-v12-validation/bc-final.xcresult"
+  },
+  {
+    "file": "b-canceled.png",
+    "sourceExport": "29EE60DA-6FC7-4C35-BCE0-87348678F063.png",
+    "stage": "B13 review and cancel dismissed screenshot_0_6201C431-BC3C-4768-85A1-93B6E9D463AF.png",
+    "sourceResult": "/private/tmp/messynote-clock-grounding-v12-validation/bc-final.xcresult"
+  },
+  {
+    "file": "c-fixed-date.txt",
+    "sourceExport": "4D701374-AA48-4244-B0E7-F3C52E3866A3.txt",
+    "stage": "04 fixed Friday captured accessibility hierarchy_0_108F5931-A0D3-4941-89AF-062AD9C44168.txt",
+    "sourceResult": "/private/tmp/messynote-clock-grounding-v12-validation/bc-final.xcresult"
+  },
+  {
+    "file": "c-fixed-date.png",
+    "sourceExport": "5E4CB1A8-B8C8-4627-8AEE-034EA5819E11.png",
+    "stage": "04 fixed Friday captured screenshot_0_07184182-6173-4420-B128-C4781190E5CF.png",
+    "sourceResult": "/private/tmp/messynote-clock-grounding-v12-validation/bc-final.xcresult"
+  },
+  {
+    "file": "c-followup-input.txt",
+    "sourceExport": "FD0B78AD-AAC8-4ADC-BDBD-B1F0EC5CA348.txt",
+    "stage": "05 follow-up Chinese input accessibility hierarchy_0_4845065D-DECB-44E8-BEC0-4BA313059612.txt",
+    "sourceResult": "/private/tmp/messynote-clock-grounding-v12-validation/bc-final.xcresult"
+  },
+  {
+    "file": "c-followup-input.png",
+    "sourceExport": "9ADB15B5-E94B-4AFD-B4F5-839785B90C4E.png",
+    "stage": "05 follow-up Chinese input screenshot_0_DA32EF7A-45CD-4E9A-92A5-385306A32F51.png",
+    "sourceResult": "/private/tmp/messynote-clock-grounding-v12-validation/bc-final.xcresult"
+  },
+  {
+    "file": "c-final-fields.txt",
+    "sourceExport": "8AFFD5CE-EE00-4E34-B015-DCC0A0329CF3.txt",
+    "stage": "07 event date time duration and attendee accessibility hierarchy_0_43E9427A-6D7F-4D03-A16E-41ABC04A23E8.txt",
+    "sourceResult": "/private/tmp/messynote-clock-grounding-v12-validation/bc-final.xcresult"
+  },
+  {
+    "file": "c-final-fields.png",
+    "sourceExport": "F8E3A554-4EAA-485A-A615-4B65D13BA4E1.png",
+    "stage": "07 event date time duration and attendee screenshot_0_38F812D0-126C-4C5F-B7E3-33352A67E033.png",
+    "sourceResult": "/private/tmp/messynote-clock-grounding-v12-validation/bc-final.xcresult"
+  },
+  {
+    "file": "c-tools.txt",
+    "sourceExport": "2F593774-80D3-499F-8C5C-BF9FEAE65B64.txt",
+    "stage": "10 true tool activity; no calendar save accessibility hierarchy_0_A3428D53-3199-4B0A-A356-A9DFDF69555C.txt",
+    "sourceResult": "/private/tmp/messynote-clock-grounding-v12-validation/bc-final.xcresult"
+  },
+  {
+    "file": "c-tools.png",
+    "sourceExport": "30BA2678-D26B-4774-AD31-C5007452F35D.png",
+    "stage": "10 true tool activity; no calendar save screenshot_0_D07C59E2-5835-4245-8E80-E8D6EBFD53E4.png",
+    "sourceResult": "/private/tmp/messynote-clock-grounding-v12-validation/bc-final.xcresult"
+  },
+  {
+    "file": "a-fields.txt",
+    "sourceExport": "72C420D6-7D58-4EF7-9DD8-A40858CA9F78.txt",
+    "stage": "A05 event fields accessibility hierarchy_0_47FC791D-79BE-410F-A073-865524CE484C.txt",
+    "sourceResult": "/private/tmp/messynote-clock-grounding-v12-validation/ad-final.xcresult"
+  },
+  {
+    "file": "a-fields.png",
+    "sourceExport": "44C021FC-4880-4550-B312-A9469A7393F1.png",
+    "stage": "A05 event fields screenshot_0_7F126919-AC1F-4BAC-BFA9-79EF4B39F36F.png",
+    "sourceResult": "/private/tmp/messynote-clock-grounding-v12-validation/ad-final.xcresult"
+  },
+  {
+    "file": "a-amy.txt",
+    "sourceExport": "2E4E4157-025A-4ABC-B609-196417FE2791.txt",
+    "stage": "A06 selected Amy Chen accessibility hierarchy_0_E647D4D1-E2FA-4033-A81F-A63FE729D458.txt",
+    "sourceResult": "/private/tmp/messynote-clock-grounding-v12-validation/ad-final.xcresult"
+  },
+  {
+    "file": "a-amy.png",
+    "sourceExport": "E87BF206-CB45-49FF-99A3-631B98A41A26.png",
+    "stage": "A06 selected Amy Chen screenshot_0_C5516674-2A0B-474A-BA53-77735FE42C02.png",
+    "sourceResult": "/private/tmp/messynote-clock-grounding-v12-validation/ad-final.xcresult"
+  },
+  {
+    "file": "a-review.txt",
+    "sourceExport": "3B0A1890-2B8A-4D96-B0D8-CE7B6490F445.txt",
+    "stage": "A07 review and cancel before cancel; never confirm save accessibility hierarchy_0_DFC6880C-0C3B-4F59-8A60-639A12EEA576.txt",
+    "sourceResult": "/private/tmp/messynote-clock-grounding-v12-validation/ad-final.xcresult"
+  },
+  {
+    "file": "a-review.png",
+    "sourceExport": "D73F0C9E-7B4F-4D49-8B4B-7CAAB3B705A5.png",
+    "stage": "A07 review and cancel before cancel; never confirm save screenshot_0_403C5F58-180C-4B24-8773-2FC51B9996C5.png",
+    "sourceResult": "/private/tmp/messynote-clock-grounding-v12-validation/ad-final.xcresult"
+  },
+  {
+    "file": "a-canceled.txt",
+    "sourceExport": "F373E6E3-2555-4BC1-9781-8F684D83B753.txt",
+    "stage": "A07 review and cancel dismissed accessibility hierarchy_0_CDC64372-2A07-44A3-9BCC-2087B3FB72CD.txt",
+    "sourceResult": "/private/tmp/messynote-clock-grounding-v12-validation/ad-final.xcresult"
+  },
+  {
+    "file": "a-canceled.png",
+    "sourceExport": "C5DCFA1A-0A92-4C24-AC2D-EC3CA2009D87.png",
+    "stage": "A07 review and cancel dismissed screenshot_0_6725AF8B-C708-4649-AAB9-AE15622BD677.png",
+    "sourceResult": "/private/tmp/messynote-clock-grounding-v12-validation/ad-final.xcresult"
+  },
+  {
+    "file": "d-system-prompt.txt",
+    "sourceExport": "B1F21BE8-9D26-4AC7-A9D9-EBF2C16F549A.txt",
+    "stage": "D04 SpringBoard permission state 1 accessibility hierarchy_0_FB773C58-C020-40E3-9A3C-649BAF478387.txt",
+    "sourceResult": "/private/tmp/messynote-clock-grounding-v12-validation/ad-final.xcresult"
+  },
+  {
+    "file": "d-system-prompt.png",
+    "sourceExport": "3DF62173-6032-48F6-A4B0-1C21F4D82262.png",
+    "stage": "D04 SpringBoard permission state 1 screenshot_0_56C9F9B9-E198-46D8-897A-0253A84E4432.png",
+    "sourceResult": "/private/tmp/messynote-clock-grounding-v12-validation/ad-final.xcresult"
+  },
+  {
+    "file": "d-denied.txt",
+    "sourceExport": "411C3080-0EC6-4BF8-9B93-3F941BD1FEEA.txt",
+    "stage": "D05 calendar denial explanation accessibility hierarchy_0_1D470127-03CA-46C8-A209-9346D8DDDCC1.txt",
+    "sourceResult": "/private/tmp/messynote-clock-grounding-v12-validation/ad-final.xcresult"
+  },
+  {
+    "file": "d-denied.png",
+    "sourceExport": "0D69C6DF-ACBF-4AB3-86A3-7DB4BE82F061.png",
+    "stage": "D05 calendar denial explanation screenshot_0_5FA3EEB5-24B6-4D4D-BB84-38C0001FF0ED.png",
+    "sourceResult": "/private/tmp/messynote-clock-grounding-v12-validation/ad-final.xcresult"
+  },
+  {
+    "file": "d-unknown.txt",
+    "sourceExport": "4B2BDFB4-6B58-42C2-B0A1-44FC4EC8F94B.txt",
+    "stage": "D06 Calendar remains unknown accessibility hierarchy_0_4EA68484-9B66-4553-BEC5-63B83756B968.txt",
+    "sourceResult": "/private/tmp/messynote-clock-grounding-v12-validation/ad-final.xcresult"
+  },
+  {
+    "file": "d-unknown.png",
+    "sourceExport": "F627E86E-59DA-4C5A-9002-82E09756191F.png",
+    "stage": "D06 Calendar remains unknown screenshot_0_528C357E-936B-4E90-9A6C-61BE9793798C.png",
+    "sourceResult": "/private/tmp/messynote-clock-grounding-v12-validation/ad-final.xcresult"
+  },
+  {
+    "file": "d-draft.txt",
+    "sourceExport": "7F4EC111-B031-401F-81D6-DF6E35AA9782.txt",
+    "stage": "D07 preserved tomorrow 1600 thirty-minute draft accessibility hierarchy_0_A4C571EF-F850-430A-BA8A-B8EB1BC21D2F.txt",
+    "sourceResult": "/private/tmp/messynote-clock-grounding-v12-validation/ad-final.xcresult"
+  },
+  {
+    "file": "d-draft.png",
+    "sourceExport": "740CC0A1-E496-4C79-B36E-64A43E71D995.png",
+    "stage": "D07 preserved tomorrow 1600 thirty-minute draft screenshot_0_0684D898-13E6-4438-9CFF-EECF505E7776.png",
+    "sourceResult": "/private/tmp/messynote-clock-grounding-v12-validation/ad-final.xcresult"
+  },
+  {
+    "file": "d-tools.txt",
+    "sourceExport": "F0281238-8F6A-426D-946D-61A9BF07ED30.txt",
+    "stage": "D08 real Calendar tool denied; no save accessibility hierarchy_0_545CFEBD-7D22-4C37-A3FA-C85BFE467D81.txt",
+    "sourceResult": "/private/tmp/messynote-clock-grounding-v12-validation/ad-final.xcresult"
+  },
+  {
+    "file": "d-tools.png",
+    "sourceExport": "9CDE3CF7-43C4-48C5-94C3-09E48A97B4BD.png",
+    "stage": "D08 real Calendar tool denied; no save screenshot_0_2C8FCD57-B1D2-4A92-BC25-9A250ECDF85F.png",
+    "sourceResult": "/private/tmp/messynote-clock-grounding-v12-validation/ad-final.xcresult"
+  }
+]

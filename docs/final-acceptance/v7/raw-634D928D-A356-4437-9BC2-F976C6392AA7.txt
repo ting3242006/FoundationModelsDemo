@@ -1,0 +1,4 @@
+exists=true
+rawType=__NSCFString
+rawValue=Optional(下週三下午三點跟小明在信義區喝咖啡一小時，記得帶合約，前一天提醒我)
+placeholder=Optional("")

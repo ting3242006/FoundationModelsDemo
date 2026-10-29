@@ -1,0 +1,20 @@
+<section id="ios27" data-transition="fade" style="background:#f8f2ea;color:#2b1a14;font-family:'Noto Sans TC', Arial, sans-serif;padding:176px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<p style="position:absolute;left:128px;top:72px;width:160px;font-size:28px;letter-spacing:6px;color:#c4512f">●●●</p>
+<p style="position:absolute;left:1312px;top:72px;width:480px;text-align:right;font-family:'Montserrat', 'Noto Sans TC', Arial, sans-serif;font-size:24px;font-weight:800;color:#c4512f">▲ iOS TECH SHARING</p>
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:700;letter-spacing:3px;color:#8a2e1c">⑥ iOS 27 新增</p>
+<h2 style="font-family:'Montserrat', 'Noto Sans TC', Arial, sans-serif;font-size:72px;font-weight:800;line-height:1.1;color:#c4512f">用 Profile 精準控制工具呼叫次數</h2>
+</div>
+<div style="display:flex;gap:56px;flex:1">
+<div style="width:1000px;display:flex;flex-direction:column;justify-content:center;background:#2b1a14;border-radius:4px;padding:32px 44px">
+<p style="font-family:'JetBrains Mono', 'Noto Sans TC', 'Courier New', monospace;font-size:22px;line-height:1.5;color:#f8f2ea">extension SessionPropertyValues {<br>&#160;&#160;&#160;&#160;<span style="color:#e9785a">@SessionPropertyEntry</span> var toolCalls: Int = 0<br>}<br>struct SingleToolReviewProfile&lt;T: Tool&gt;:<br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;LanguageModelSession.<span style="color:#f2a65a">DynamicProfile</span> {<br>&#160;&#160;&#160;&#160;<span style="color:#e9785a">@SessionProperty</span>(\.toolCalls) var toolCalls<br>&#160;&#160;&#160;&#160;let tool: T<br>&#160;&#160;&#160;&#160;var body: some LanguageModelSession.DynamicProfile {<br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Profile { tool }<br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;.<span style="color:#f2a65a">toolCallingMode</span>(toolCalls &lt; 1 ? .required : .disallowed)<br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;.<span style="color:#f2a65a">onToolCall</span> { toolCalls += 1 }<br>&#160;&#160;&#160;&#160;}<br>}</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;justify-content:center;border-top:1px solid #c4512f">
+<p style="font-size:27px;line-height:1.5;color:#2b1a14;border-bottom:1px solid #e3cdbb;padding:18px 0">第一次<span style="color:#8a2e1c">必須</span>呼叫工具，之後<span style="color:#8a2e1c">禁止</span>再呼叫</p>
+<p style="font-size:27px;line-height:1.5;color:#2b1a14;border-bottom:1px solid #e3cdbb;padding:18px 0">避免 required 模式無限重複呼叫</p>
+<p style="font-size:27px;line-height:1.5;color:#2b1a14;border-bottom:1px solid #e3cdbb;padding:18px 0">建立方式：<br><span style="font-family:'JetBrains Mono', 'Courier New', monospace;color:#8a2e1c">LanguageModelSession(profile:)</span></p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#6b5446">MessyNote/AI/SingleToolReviewProfile.swift · 需要 iOS 27 SDK</p>
+<aside>這頁是 iOS 27 才有的 API，iOS 26 上不能用。DynamicProfile 把 session 的設定寫成一個宣告式的 body，像 SwiftUI。SessionProperty 是 session 內的狀態，這裡拿來計數：第一次一定要呼叫工具（required），呼叫過一次之後就禁止（disallowed）。Apple 官方範例第二階段是 allowed，MessyNote 改成 disallowed，避免模型一直重複查。</aside>
+</section>

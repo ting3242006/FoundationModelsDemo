@@ -1,0 +1,52 @@
+{
+  "devicesAndConfigurations" : [
+    {
+      "device" : {
+        "architecture" : "arm64",
+        "deviceId" : "280085F1-11D0-4221-B90F-59FD4226E464",
+        "deviceName" : "MessyNote Case C QA",
+        "modelName" : "iPhone 18 Pro",
+        "osBuildNumber" : "24A434",
+        "osVersion" : "27.0",
+        "platform" : "iOS Simulator"
+      },
+      "expectedFailures" : 0,
+      "failedTests" : 1,
+      "passedTests" : 0,
+      "skippedTests" : 0,
+      "testPlanConfiguration" : {
+        "configurationId" : "1",
+        "configurationName" : "Test Scheme Action"
+      }
+    }
+  ],
+  "environmentDescription" : "MessyNoteAcceptanceUI · Built with macOS 27.0.1",
+  "expectedFailures" : 0,
+  "failedTests" : 1,
+  "finishTime" : 1793089081.62,
+  "passedTests" : 0,
+  "result" : "Failed",
+  "runtimeWarnings" : [
+
+  ],
+  "skippedTests" : 0,
+  "startTime" : 1793088964.864,
+  "statistics" : [
+
+  ],
+  "testFailures" : [
+    {
+      "failureText" : "Failed to get matching snapshot: No matches found for Elements matching predicate '\"→ FindContactTool(阿不存在)\" IN identifiers' from input {(\n    StaticText, label: 'MessyNote',\n    StaticText, label: '先確認內容，下一步才會寫入行事曆。',\n    StaticText, label: '檢查並加入', Disabled,\n    StaticText, label: '把想法，排進生活',\n    StaticText, label: '記下時間、地點和同行的人，讓筆記慢慢成為一個計畫。',\n    StaticText, label: '裝置端模型可使用',\n    StaticText, label: '示範資料模式',\n    StaticText, label: '真實模型推論＋示範聯絡人與行事曆查詢。儲存仍會寫入系統行事曆。',\n    StaticText, label: '活動預覽',\n    StaticText, identifier: 'eventEditorDisclosure', label: '標題',\n    StaticText, label: '開始',\n    StaticText, identifier: 'eventEditorDisclosure', label: '時區：Asia/Taipei',\n    StaticText, identifier: 'eventEditorDisclosure', label: '地點',\n    StaticText, identifier: 'eventEditorDisclosure', label: '參與者姓名',\n    StaticText, identifier: 'eventEditorDisclosure', label: '筆記',\n    StaticText, label: '參與者確認',\n    StaticText, label: '找不到可存取的聯絡人（可能受限於部分存取權）。',\n    StaticText, label: '僅保存參與者姓名到事件筆記，不發送邀請。',\n    StaticText, label: '行事曆查詢',\n    StaticText, label: '此時段沒有衝突（查詢當下）',\n    StaticText, label: '筆記與修改指令',\n    StaticText, label: '跟一個不存在於 Contacts 的人吃飯',\n    StaticText, label: 'Nov',\n    StaticText, label: '6',\n    StaticText, label: 'Friday, November 6, 2026',\n    StaticText, label: '7:00 PM–8:00 PM · 60 分鐘',\n    StaticText, label: 'Asia/Taipei',\n    StaticText, label: '尚未指定地點',\n    StaticText, label: '阿不存在',\n    StaticText, label: '不提醒',\n    StaticText, label: '編輯',\n    StaticText, label: '不提醒',\n    StaticText, label: '保留原姓名，繼續但不指定聯絡人',\n    StaticText, label: 'AI 處理紀錄'\n)}\nPossibly caused by runtime issues:\nAutomation type mismatch: computed StaticText from legacy attributes vs DisclosureTriangle from modern attribute. Input attributes and values: {\n    \"XC_kAXXCAttributeAutomationType\" = 13;\n    \"XC_kAXXCAttributeElementBaseType\" = NSObject;\n    \"XC_kAXXCAttributeElementType\" = \"SwiftUI.AccessibilityNode\";\n    \"XC_kAXXCAttributeTraits\" = 8589934656;\n}\nAutomation type mismatch: computed Other from legacy attributes vs StaticText from modern attribute. Input attributes and values: {\n    \"XC_kAXXCAttributeAutomationType\" = 48;\n    \"XC_kAXXCAttributeElementBaseType\" = UILabel;\n    \"XC_kAXXCAttributeElementType\" = UILabel;\n    \"XC_kAXXCAttributeTraits\" = 8590000128;\n}\nSee test report attachments for more detail.",
+      "targetName" : "MessyNoteUITests",
+      "testIdentifier" : 1,
+      "testIdentifierString" : "CaseCUITests/testCaseCNaturalLanguageCompletion()",
+      "testIdentifierURL" : "test://com.apple.xcode/MessyNote/MessyNoteUITests/CaseCUITests/testCaseCNaturalLanguageCompletion",
+      "testName" : "testCaseCNaturalLanguageCompletion()"
+    }
+  ],
+  "title" : "Test - MessyNoteAcceptanceUI",
+  "topInsights" : [
+
+  ],
+  "totalTestCount" : 1
+}

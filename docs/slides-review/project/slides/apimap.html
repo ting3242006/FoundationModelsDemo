@@ -1,0 +1,38 @@
+<section id="apimap" data-transition="fade" style="background:#f8f2ea;color:#2b1a14;font-family:'Noto Sans TC', Arial, sans-serif;padding:176px 128px 128px;display:flex;flex-direction:column;gap:48px">
+<p style="position:absolute;left:128px;top:72px;width:160px;font-size:28px;letter-spacing:6px;color:#c4512f">●●●</p>
+<p style="position:absolute;left:1312px;top:72px;width:480px;text-align:right;font-family:'Montserrat', 'Noto Sans TC', Arial, sans-serif;font-size:24px;font-weight:800;color:#c4512f">▲ iOS TECH SHARING</p>
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:700;letter-spacing:3px;color:#8a2e1c">PART 2 · 核心 API</p>
+<h2 style="font-family:'Montserrat', 'Noto Sans TC', Arial, sans-serif;font-size:72px;font-weight:800;line-height:1.1;color:#c4512f">整個 framework 只有四個角色</h2>
+</div>
+<div style="display:flex;flex-direction:row;align-items:center;gap:20px;flex:1">
+<div style="width:380px;display:flex;flex-direction:column;gap:12px;background:#fffaf4;border:1px solid #e3cdbb;border-radius:4px;padding:36px">
+<p style="font-family:'Montserrat', Arial, sans-serif;font-size:36px;font-weight:800;color:#c4512f">01</p>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;color:#8a2e1c">SystemLanguageModel</p>
+<p style="font-size:28px;line-height:1.4;color:#6b5446">模型本人，能不能用？</p>
+</div>
+<x-connector style="width:64px;color:#c4512f;border-width:3px"></x-connector>
+<div style="width:440px;display:flex;flex-direction:column;gap:12px;background:#c4512f;border-radius:4px;padding:36px">
+<p style="font-family:'Montserrat', Arial, sans-serif;font-size:36px;font-weight:800;color:#fff8f0">02</p>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;color:#fff8f0">LanguageModelSession</p>
+<p style="font-size:28px;line-height:1.4;color:#fff8f0">一段對話：instructions · 歷史 · Tools</p>
+</div>
+<x-connector style="width:64px;color:#c4512f;border-width:3px"></x-connector>
+<div style="flex:1;display:flex;flex-direction:column;border-top:1px solid #c4512f">
+<div style="display:flex;flex-direction:column;gap:6px;border-bottom:1px solid #e3cdbb;padding:18px 0">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;color:#8a2e1c">respond(to:)</p>
+<p style="font-size:26px;color:#6b5446">→ 一段文字</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:6px;border-bottom:1px solid #e3cdbb;padding:18px 0">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;color:#8a2e1c">respond(to:generating:)</p>
+<p style="font-size:26px;font-weight:700;color:#c4512f">→ 你的 Swift 型別 ★</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:6px;border-bottom:1px solid #e3cdbb;padding:18px 0">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;color:#8a2e1c">streamResponse(to:generating:)</p>
+<p style="font-size:26px;color:#6b5446">→ 逐步成形的快照</p>
+</div>
+</div>
+</div>
+<p style="font-size:28px;line-height:1.4;color:#6b5446"><span style="font-family:'Montserrat', Arial, sans-serif;font-weight:800;color:#c4512f">03 · 04</span>　回應形式與 <span style="color:#8a2e1c">Tool</span>：Tool 掛在 session 上，模型需要時自己呼叫你的程式。</p>
+<aside>先給全貌：SystemLanguageModel 是模型本人，用來查可不可用；LanguageModelSession 是一段對話，帶 instructions、記住歷史、可以掛 tools；回應有三種形式，其中「直接回傳 Swift 型別」是最重要的一種，等一下專門講。</aside>
+</section>

@@ -1,0 +1,28 @@
+SCOPE: macOS real on-device model; fixture reads only; no calendar writer instantiated
+AVAILABILITY: available
+BEGIN B
+PARTIAL 1: title=跟小明
+PARTIAL 20: title=跟小明喝咖啡
+PARTIAL 40: title=跟小明喝咖啡
+SNAPSHOTS 45
+RAW_DRAFT initial(MessyNoteHarness.EventDraft(title: "跟小明喝咖啡", date: MessyNoteHarness.DateIntent(kind: "nextWeek", dayOffset: 0, weekday: 3, year: 2026, month: 11, day: 7), hour: Optional(15), minute: 0, durationMinutes: 60, attendeeQuery: Optional("小明"), location: Optional("信義區"), notes: Optional("記得帶合約"), reminderMinutesBefore: Optional(1440)))
+DRAFT title=跟小明喝咖啡; start=2026-10-28T07:00:00Z; duration=60; location=信義區; attendee=小明; notes=記得帶合約; reminder=1440; timezone=Asia/Taipei
+CONTACTS Optional(["王小明"])
+CONFLICTS Optional(["Team Meeting"])
+SLOT 2026-10-28T08:30:00Z
+ERRORS none / none
+ACTIVITY [MessyNoteHarness.ActivityEvent(id: EE4A5FA4-927B-488D-8D39-DD774F53AF5D, message: "→ FindContactTool(小明)"), MessyNoteHarness.ActivityEvent(id: 29CEADE9-DECD-433E-AA97-72DD56B59EAB, message: "✓ 找到 1 位候選人；多位時由使用者選擇"), MessyNoteHarness.ActivityEvent(id: 49632431-6A8E-401C-9FBA-9532C6865178, message: "→ CheckCalendarTool(3:00 PM)"), MessyNoteHarness.ActivityEvent(id: 82E64BC0-41C1-4463-B7AA-4BCF8CA1AF9C, message: "⚠ 找到 1 個衝突")]
+END B
+BEGIN FOLLOWUP
+PARTIAL 1: title=<pending>
+PARTIAL 20: title=跟小明喝咖啡
+PARTIAL 40: title=跟小明喝咖啡
+SNAPSHOTS 48
+RAW_DRAFT revision(MessyNoteHarness.EventRevision(changes: [MessyNoteHarness.EventField.time], values: MessyNoteHarness.EventDraft(title: "跟小明喝咖啡", date: MessyNoteHarness.DateIntent(kind: "nextWeek", dayOffset: 0, weekday: 3, year: 2026, month: 11, day: 7), hour: Optional(16), minute: 30, durationMinutes: 60, attendeeQuery: Optional("小明"), location: Optional("信義區"), notes: Optional("記得帶合約"), reminderMinutesBefore: Optional(1440))))
+DRAFT title=跟小明喝咖啡; start=2026-10-28T08:30:00Z; duration=60; location=信義區; attendee=小明; notes=記得帶合約; reminder=1440; timezone=Asia/Taipei
+CONTACTS Optional(["王小明"])
+CONFLICTS Optional([])
+SLOT none
+ERRORS none / none
+ACTIVITY [MessyNoteHarness.ActivityEvent(id: EE4A5FA4-927B-488D-8D39-DD774F53AF5D, message: "→ FindContactTool(小明)"), MessyNoteHarness.ActivityEvent(id: 29CEADE9-DECD-433E-AA97-72DD56B59EAB, message: "✓ 找到 1 位候選人；多位時由使用者選擇"), MessyNoteHarness.ActivityEvent(id: 49632431-6A8E-401C-9FBA-9532C6865178, message: "→ CheckCalendarTool(3:00 PM)"), MessyNoteHarness.ActivityEvent(id: 82E64BC0-41C1-4463-B7AA-4BCF8CA1AF9C, message: "⚠ 找到 1 個衝突"), MessyNoteHarness.ActivityEvent(id: C2CE103D-7939-4AEC-AC4F-0FFFA7352A99, message: "→ FindContactTool(小明)"), MessyNoteHarness.ActivityEvent(id: A0ABC44A-7A6A-40BF-88F6-836C00B1B5CE, message: "✓ 找到 1 位候選人；多位時由使用者選擇"), MessyNoteHarness.ActivityEvent(id: 2F8F3D86-3AB5-4220-B7FB-493AACEAB331, message: "→ CheckCalendarTool(4:30 PM)"), MessyNoteHarness.ActivityEvent(id: A223DCBC-A6A4-449E-8219-01CCA36AA3A0, message: "✓ 此時段沒有衝突（查詢當下）")]
+END FOLLOWUP

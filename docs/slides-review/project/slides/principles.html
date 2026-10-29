@@ -1,0 +1,16 @@
+<section id="principles" data-transition="fade" style="background:#f8f2ea;color:#2b1a14;font-family:'Noto Sans TC', Arial, sans-serif;padding:176px 128px 128px;display:flex;flex-direction:row;gap:96px">
+<p style="position:absolute;left:128px;top:72px;width:160px;font-size:28px;letter-spacing:6px;color:#c4512f">●●●</p>
+<p style="position:absolute;left:1312px;top:72px;width:480px;text-align:right;font-family:'Montserrat', 'Noto Sans TC', Arial, sans-serif;font-size:24px;font-weight:800;color:#c4512f">▲ iOS TECH SHARING</p>
+<div style="width:520px;display:flex;flex-direction:column;justify-content:center;gap:28px">
+<p style="font-size:24px;font-weight:700;letter-spacing:3px;color:#8a2e1c">設計原則</p>
+<h2 style="font-family:'Montserrat', 'Noto Sans TC', Arial, sans-serif;font-size:80px;font-weight:800;line-height:1.15;color:#c4512f">讓小模型<br>變可靠的<br>五條規則</h2>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;justify-content:center;border-top:1px solid #c4512f">
+<div style="display:flex;gap:36px;align-items:baseline;border-bottom:1px solid #e3cdbb;padding:22px 0"><p style="width:80px;font-family:'Montserrat', Arial, sans-serif;font-size:44px;font-weight:800;color:#c4512f">01</p><p style="flex:1;font-size:30px;line-height:1.45;color:#2b1a14">模型只負責理解，<span style="color:#6b5446">計算與驗證交給 Swift</span></p></div>
+<div style="display:flex;gap:36px;align-items:baseline;border-bottom:1px solid #e3cdbb;padding:22px 0"><p style="width:80px;font-family:'Montserrat', Arial, sans-serif;font-size:44px;font-weight:800;color:#c4512f">02</p><p style="flex:1;font-size:30px;line-height:1.45;color:#2b1a14">抽取和工具分開，<span style="color:#6b5446">每個工具各開一個 fresh session</span></p></div>
+<div style="display:flex;gap:36px;align-items:baseline;border-bottom:1px solid #e3cdbb;padding:22px 0"><p style="width:80px;font-family:'Montserrat', Arial, sans-serif;font-size:44px;font-weight:800;color:#c4512f">03</p><p style="flex:1;font-size:30px;line-height:1.45;color:#2b1a14">多位聯絡人時不讓模型選，<span style="color:#6b5446">由使用者挑</span></p></div>
+<div style="display:flex;gap:36px;align-items:baseline;border-bottom:1px solid #e3cdbb;padding:22px 0"><p style="width:80px;font-family:'Montserrat', Arial, sans-serif;font-size:44px;font-weight:800;color:#c4512f">04</p><p style="flex:1;font-size:30px;line-height:1.45;color:#2b1a14">寫入前一定要人工確認，<span style="color:#6b5446">重複點擊也只寫一次</span></p></div>
+<div style="display:flex;gap:36px;align-items:baseline;border-bottom:1px solid #e3cdbb;padding:22px 0"><p style="width:80px;font-family:'Montserrat', Arial, sans-serif;font-size:44px;font-weight:800;color:#c4512f">05</p><p style="flex:1;font-size:30px;line-height:1.45;color:#2b1a14">查不到就誠實說「未知」，<span style="color:#6b5446">不宣稱沒有衝突</span></p></div>
+</div>
+<aside>這五條可以直接套到我們自己的功能上。核心就是：不要相信小模型的判斷，把它限縮在「理解自然語言」這件事上，其他全部用確定性的程式碼和人來把關。第五條特別重要：權限被拒或工具沒被呼叫時，UI 顯示「衝突狀態未知」，而不是假裝沒有衝突。</aside>
+</section>

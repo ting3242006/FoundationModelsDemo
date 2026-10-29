@@ -1,0 +1,4 @@
+exists=true
+rawType=__NSCFString
+rawValue=Optional(今天想做什麼？)
+placeholder=Optional("今天想做什麼？")

@@ -1,0 +1,741 @@
+Command line invocation:
+    /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project /Users/yitingsung/Developer/FMDemo/MessyNote.xcodeproj -scheme MessyNoteAcceptanceUI -destination "platform=iOS Simulator,id=280085F1-11D0-4221-B90F-59FD4226E464" -derivedDataPath /private/tmp/fmdemo-studio-dd -parallel-testing-enabled NO -collect-test-diagnostics never "-only-testing:MessyNoteUITests/CaseCUITests" -resultBundlePath /private/tmp/fmdemo-studio-evidence-2.xcresult test
+
+Writing result bundle at path:
+	/private/tmp/fmdemo-studio-evidence-2.xcresult
+
+ComputePackagePrebuildTargetDependencyGraph
+
+Prepare packages
+
+CreateBuildRequest
+
+SendProjectDescription
+
+CreateBuildOperation
+
+ComputeTargetDependencyGraph
+note: Building targets in dependency order
+note: Target dependency graph (2 targets)
+    Target 'MessyNoteUITests' in project 'MessyNote'
+        ➜ Explicit dependency on target 'MessyNote' in project 'MessyNote'
+    Target 'MessyNote' in project 'MessyNote' (no dependencies)
+
+GatherProvisioningInputs
+
+CreateBuildDescription
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -v -E -dM -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator27.1.sdk -x c -c /dev/null
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc --version
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld -version_details
+
+Build description signature: 5332138ebe471be233a22aa8cbaa7da6
+Build description path: /tmp/fmdemo-studio-dd/Build/Intermediates.noindex/XCBuildData/5332138ebe471be233a22aa8cbaa7da6.xcbuilddata
+ClangStatCache /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang-stat-cache /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator27.1.sdk /tmp/fmdemo-studio-dd/SDKStatCaches.noindex/iphonesimulator27.1-24A94232-35d3147121984ba087c28d913653d626.sdkstatcache
+    cd /Users/yitingsung/Developer/FMDemo/MessyNote.xcodeproj
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang-stat-cache /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator27.1.sdk -o /tmp/fmdemo-studio-dd/SDKStatCaches.noindex/iphonesimulator27.1-24A94232-35d3147121984ba087c28d913653d626.sdkstatcache
+
+ProcessInfoPlistFile /tmp/fmdemo-studio-dd/Build/Products/Debug-iphonesimulator/MessyNote.app/Info.plist /tmp/fmdemo-studio-dd/Build/Intermediates.noindex/MessyNote.build/Debug-iphonesimulator/MessyNote.build/empty-MessyNote.plist (in target 'MessyNote' from project 'MessyNote')
+    cd /Users/yitingsung/Developer/FMDemo
+    builtin-infoPlistUtility /tmp/fmdemo-studio-dd/Build/Intermediates.noindex/MessyNote.build/Debug-iphonesimulator/MessyNote.build/empty-MessyNote.plist -producttype com.apple.product-type.application -genpkginfo /tmp/fmdemo-studio-dd/Build/Products/Debug-iphonesimulator/MessyNote.app/PkgInfo -expandbuildsettings -format binary -platform iphonesimulator -o /tmp/fmdemo-studio-dd/Build/Products/Debug-iphonesimulator/MessyNote.app/Info.plist
+
+SwiftDriver MessyNoteUITests normal arm64 com.apple.xcode.tools.swift.compiler (in target 'MessyNoteUITests' from project 'MessyNote')
+    cd /Users/yitingsung/Developer/FMDemo
+    builtin-SwiftDriver -- /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc -module-name MessyNoteUITests -Onone @/tmp/fmdemo-studio-dd/Build/Intermediates.noindex/MessyNote.build/Debug-iphonesimulator/MessyNoteUITests.build/Objects-normal/arm64/MessyNoteUITests.SwiftFileList -DDEBUG -module-alias Testing\=_Testing_Unavailable -plugin-path /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing -enable-experimental-feature DebugDescriptionMacro -sdk /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator27.1.sdk -target arm64-apple-ios27.0-simulator -g -module-cache-path /tmp/fmdemo-studio-dd/ModuleCache.noindex -Xfrontend -serialize-debugging-options -enable-testing -index-store-path /tmp/fmdemo-studio-dd/Index.noindex/DataStore -Xcc -D_LIBCPP_HARDENING_MODE\=_LIBCPP_HARDENING_MODE_DEBUG -swift-version 6 -I /tmp/fmdemo-studio-dd/Build/Products/Debug-iphonesimulator -Isystem /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/lib -F /tmp/fmdemo-studio-dd/Build/Products/Debug-iphonesimulator -F /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks -F /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator27.1.sdk/Developer/Library/Frameworks -c -j11 -enable-batch-mode -incremental -Xcc -ivfsstatcache -Xcc /tmp/fmdemo-studio-dd/SDKStatCaches.noindex/iphonesimulator27.1-24A94232-35d3147121984ba087c28d913653d626.sdkstatcache -output-file-map /tmp/fmdemo-studio-dd/Build/Intermediates.noindex/MessyNote.build/Debug-iphonesimulator/MessyNoteUITests.build/Objects-normal/arm64/MessyNoteUITests-OutputFileMap.json -save-temps -no-color-diagnostics -explicit-module-build -module-cache-path /tmp/fmdemo-studio-dd/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules -clang-scanner-module-cache-path /tmp/fmdemo-studio-dd/ModuleCache.noindex -sdk-module-cache-path /tmp/fmdemo-studio-dd/SDKExplicitPrecompiledModules -emit-dependencies -emit-module -emit-module-path /tmp/fmdemo-studio-dd/Build/Intermediates.noindex/MessyNote.build/Debug-iphonesimulator/MessyNoteUITests.build/Objects-normal/arm64/MessyNoteUITests.swiftmodule -serialize-diagnostics -dependency-scan-serialize-diagnostics-path /tmp/fmdemo-studio-dd/Build/Intermediates.noindex/MessyNote.build/Debug-iphonesimulator/MessyNoteUITests.build/Objects-normal/arm64/MessyNoteUITests-dependency-scan.dia -validate-clang-modules-once -clang-build-session-file /tmp/fmdemo-studio-dd/ModuleCache.noindex/Session.modulevalidation -Xcc -fmodules-prune-interval\=86400 -Xcc -fmodules-prune-after\=345600 -emit-const-values -const-gather-protocols-list /tmp/fmdemo-studio-dd/Build/Intermediates.noindex/MessyNote.build/Debug-iphonesimulator/MessyNoteUITests.build/Objects-normal/arm64/MessyNoteUITests_const_extract_protocols.json -Xcc -iquote -Xcc /tmp/fmdemo-studio-dd/Build/Intermediates.noindex/MessyNote.build/Debug-iphonesimulator/MessyNoteUITests.build/MessyNoteUITests-generated-files.hmap -Xcc -I/tmp/fmdemo-studio-dd/Build/Intermediates.noindex/MessyNote.build/Debug-iphonesimulator/MessyNoteUITests.build/MessyNoteUITests-own-target-headers.hmap -Xcc -I/tmp/fmdemo-studio-dd/Build/Intermediates.noindex/MessyNote.build/Debug-iphonesimulator/MessyNoteUITests.build/MessyNoteUITests-all-target-headers.hmap -Xcc -iquote -Xcc /tmp/fmdemo-studio-dd/Build/Intermediates.noindex/MessyNote.build/Debug-iphonesimulator/MessyNoteUITests.build/MessyNoteUITests-project-headers.hmap -Xcc -I/tmp/fmdemo-studio-dd/Build/Products/Debug-iphonesimulator/include -Xcc -I/tmp/fmdemo-studio-dd/Build/Intermediates.noindex/MessyNote.build/Debug-iphonesimulator/MessyNoteUITests.build/DerivedSources-normal/arm64 -Xcc -I/tmp/fmdemo-studio-dd/Build/Intermediates.noindex/MessyNote.build/Debug-iphonesimulator/MessyNoteUITests.build/DerivedSources/arm64 -Xcc -I/tmp/fmdemo-studio-dd/Build/Intermediates.noindex/MessyNote.build/Debug-iphonesimulator/MessyNoteUITests.build/DerivedSources -Xcc -DDEBUG\=1 -emit-objc-header -emit-objc-header-path /tmp/fmdemo-studio-dd/Build/Intermediates.noindex/MessyNote.build/Debug-iphonesimulator/MessyNoteUITests.build/Objects-normal/arm64/MessyNoteUITests-Swift.h -working-directory /Users/yitingsung/Developer/FMDemo -experimental-emit-module-separately -disable-cmo
+
+ProcessInfoPlistFile /tmp/fmdemo-studio-dd/Build/Products/Debug-iphonesimulator/MessyNoteUITests-Runner.app/PlugIns/MessyNoteUITests.xctest/Info.plist /tmp/fmdemo-studio-dd/Build/Intermediates.noindex/MessyNote.build/Debug-iphonesimulator/MessyNoteUITests.build/empty-MessyNoteUITests.plist (in target 'MessyNoteUITests' from project 'MessyNote')
+    cd /Users/yitingsung/Developer/FMDemo
+    builtin-infoPlistUtility /tmp/fmdemo-studio-dd/Build/Intermediates.noindex/MessyNote.build/Debug-iphonesimulator/MessyNoteUITests.build/empty-MessyNoteUITests.plist -producttype com.apple.product-type.bundle.ui-testing -expandbuildsettings -format binary -platform iphonesimulator -additionalcontentfile /tmp/fmdemo-studio-dd/Build/Intermediates.noindex/MessyNote.build/Debug-iphonesimulator/MessyNoteUITests.build/ProductTypeInfoPlistAdditions.plist -o /tmp/fmdemo-studio-dd/Build/Products/Debug-iphonesimulator/MessyNoteUITests-Runner.app/PlugIns/MessyNoteUITests.xctest/Info.plist
+
+SwiftEmitModule normal arm64 Emitting\ module\ for\ MessyNoteUITests (in target 'MessyNoteUITests' from project 'MessyNote')
+
+SwiftCompile normal arm64 (in target 'MessyNoteUITests' from project 'MessyNote')
+    cd /Users/yitingsung/Developer/FMDemo
+    
+
+SwiftCompile normal arm64 Compiling\ CaseCUITests.swift /Users/yitingsung/Developer/FMDemo/MessyNoteUITests/CaseCUITests.swift (in target 'MessyNoteUITests' from project 'MessyNote')
+
+SwiftCompile normal arm64 /Users/yitingsung/Developer/FMDemo/MessyNoteUITests/CaseCUITests.swift (in target 'MessyNoteUITests' from project 'MessyNote')
+    cd /Users/yitingsung/Developer/FMDemo
+    builtin-SwiftPerFileCompile CaseCUITests.swift
+
+SwiftDriverJobDiscovery normal arm64 Emitting module for MessyNoteUITests (in target 'MessyNoteUITests' from project 'MessyNote')
+
+SwiftDriver\ Compilation\ Requirements MessyNoteUITests normal arm64 com.apple.xcode.tools.swift.compiler (in target 'MessyNoteUITests' from project 'MessyNote')
+    cd /Users/yitingsung/Developer/FMDemo
+    builtin-Swift-Compilation-Requirements -- /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc -module-name MessyNoteUITests -Onone @/tmp/fmdemo-studio-dd/Build/Intermediates.noindex/MessyNote.build/Debug-iphonesimulator/MessyNoteUITests.build/Objects-normal/arm64/MessyNoteUITests.SwiftFileList -DDEBUG -module-alias Testing\=_Testing_Unavailable -plugin-path /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing -enable-experimental-feature DebugDescriptionMacro -sdk /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator27.1.sdk -target arm64-apple-ios27.0-simulator -g -module-cache-path /tmp/fmdemo-studio-dd/ModuleCache.noindex -Xfrontend -serialize-debugging-options -enable-testing -index-store-path /tmp/fmdemo-studio-dd/Index.noindex/DataStore -Xcc -D_LIBCPP_HARDENING_MODE\=_LIBCPP_HARDENING_MODE_DEBUG -swift-version 6 -I /tmp/fmdemo-studio-dd/Build/Products/Debug-iphonesimulator -Isystem /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/lib -F /tmp/fmdemo-studio-dd/Build/Products/Debug-iphonesimulator -F /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks -F /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator27.1.sdk/Developer/Library/Frameworks -c -j11 -enable-batch-mode -incremental -Xcc -ivfsstatcache -Xcc /tmp/fmdemo-studio-dd/SDKStatCaches.noindex/iphonesimulator27.1-24A94232-35d3147121984ba087c28d913653d626.sdkstatcache -output-file-map /tmp/fmdemo-studio-dd/Build/Intermediates.noindex/MessyNote.build/Debug-iphonesimulator/MessyNoteUITests.build/Objects-normal/arm64/MessyNoteUITests-OutputFileMap.json -save-temps -no-color-diagnostics -explicit-module-build -module-cache-path /tmp/fmdemo-studio-dd/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules -clang-scanner-module-cache-path /tmp/fmdemo-studio-dd/ModuleCache.noindex -sdk-module-cache-path /tmp/fmdemo-studio-dd/SDKExplicitPrecompiledModules -emit-dependencies -emit-module -emit-module-path /tmp/fmdemo-studio-dd/Build/Intermediates.noindex/MessyNote.build/Debug-iphonesimulator/MessyNoteUITests.build/Objects-normal/arm64/MessyNoteUITests.swiftmodule -serialize-diagnostics -dependency-scan-serialize-diagnostics-path /tmp/fmdemo-studio-dd/Build/Intermediates.noindex/MessyNote.build/Debug-iphonesimulator/MessyNoteUITests.build/Objects-normal/arm64/MessyNoteUITests-dependency-scan.dia -validate-clang-modules-once -clang-build-session-file /tmp/fmdemo-studio-dd/ModuleCache.noindex/Session.modulevalidation -Xcc -fmodules-prune-interval\=86400 -Xcc -fmodules-prune-after\=345600 -emit-const-values -const-gather-protocols-list /tmp/fmdemo-studio-dd/Build/Intermediates.noindex/MessyNote.build/Debug-iphonesimulator/MessyNoteUITests.build/Objects-normal/arm64/MessyNoteUITests_const_extract_protocols.json -Xcc -iquote -Xcc /tmp/fmdemo-studio-dd/Build/Intermediates.noindex/MessyNote.build/Debug-iphonesimulator/MessyNoteUITests.build/MessyNoteUITests-generated-files.hmap -Xcc -I/tmp/fmdemo-studio-dd/Build/Intermediates.noindex/MessyNote.build/Debug-iphonesimulator/MessyNoteUITests.build/MessyNoteUITests-own-target-headers.hmap -Xcc -I/tmp/fmdemo-studio-dd/Build/Intermediates.noindex/MessyNote.build/Debug-iphonesimulator/MessyNoteUITests.build/MessyNoteUITests-all-target-headers.hmap -Xcc -iquote -Xcc /tmp/fmdemo-studio-dd/Build/Intermediates.noindex/MessyNote.build/Debug-iphonesimulator/MessyNoteUITests.build/MessyNoteUITests-project-headers.hmap -Xcc -I/tmp/fmdemo-studio-dd/Build/Products/Debug-iphonesimulator/include -Xcc -I/tmp/fmdemo-studio-dd/Build/Intermediates.noindex/MessyNote.build/Debug-iphonesimulator/MessyNoteUITests.build/DerivedSources-normal/arm64 -Xcc -I/tmp/fmdemo-studio-dd/Build/Intermediates.noindex/MessyNote.build/Debug-iphonesimulator/MessyNoteUITests.build/DerivedSources/arm64 -Xcc -I/tmp/fmdemo-studio-dd/Build/Intermediates.noindex/MessyNote.build/Debug-iphonesimulator/MessyNoteUITests.build/DerivedSources -Xcc -DDEBUG\=1 -emit-objc-header -emit-objc-header-path /tmp/fmdemo-studio-dd/Build/Intermediates.noindex/MessyNote.build/Debug-iphonesimulator/MessyNoteUITests.build/Objects-normal/arm64/MessyNoteUITests-Swift.h -working-directory /Users/yitingsung/Developer/FMDemo -experimental-emit-module-separately -disable-cmo
+
+Copy /tmp/fmdemo-studio-dd/Build/Products/Debug-iphonesimulator/MessyNoteUITests.swiftmodule/Project/arm64-apple-ios-simulator.swiftsourceinfo /tmp/fmdemo-studio-dd/Build/Intermediates.noindex/MessyNote.build/Debug-iphonesimulator/MessyNoteUITests.build/Objects-normal/arm64/MessyNoteUITests.swiftsourceinfo (in target 'MessyNoteUITests' from project 'MessyNote')
+    cd /Users/yitingsung/Developer/FMDemo
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks -rename /tmp/fmdemo-studio-dd/Build/Intermediates.noindex/MessyNote.build/Debug-iphonesimulator/MessyNoteUITests.build/Objects-normal/arm64/MessyNoteUITests.swiftsourceinfo /tmp/fmdemo-studio-dd/Build/Products/Debug-iphonesimulator/MessyNoteUITests.swiftmodule/Project/arm64-apple-ios-simulator.swiftsourceinfo
+
+Copy /tmp/fmdemo-studio-dd/Build/Products/Debug-iphonesimulator/MessyNoteUITests.swiftmodule/arm64-apple-ios-simulator.abi.json /tmp/fmdemo-studio-dd/Build/Intermediates.noindex/MessyNote.build/Debug-iphonesimulator/MessyNoteUITests.build/Objects-normal/arm64/MessyNoteUITests.abi.json (in target 'MessyNoteUITests' from project 'MessyNote')
+    cd /Users/yitingsung/Developer/FMDemo
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks -rename /tmp/fmdemo-studio-dd/Build/Intermediates.noindex/MessyNote.build/Debug-iphonesimulator/MessyNoteUITests.build/Objects-normal/arm64/MessyNoteUITests.abi.json /tmp/fmdemo-studio-dd/Build/Products/Debug-iphonesimulator/MessyNoteUITests.swiftmodule/arm64-apple-ios-simulator.abi.json
+
+SwiftDriverJobDiscovery normal arm64 Compiling CaseCUITests.swift (in target 'MessyNoteUITests' from project 'MessyNote')
+
+SwiftDriver\ Compilation MessyNoteUITests normal arm64 com.apple.xcode.tools.swift.compiler (in target 'MessyNoteUITests' from project 'MessyNote')
+    cd /Users/yitingsung/Developer/FMDemo
+    builtin-Swift-Compilation -- /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc -module-name MessyNoteUITests -Onone @/tmp/fmdemo-studio-dd/Build/Intermediates.noindex/MessyNote.build/Debug-iphonesimulator/MessyNoteUITests.build/Objects-normal/arm64/MessyNoteUITests.SwiftFileList -DDEBUG -module-alias Testing\=_Testing_Unavailable -plugin-path /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing -enable-experimental-feature DebugDescriptionMacro -sdk /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator27.1.sdk -target arm64-apple-ios27.0-simulator -g -module-cache-path /tmp/fmdemo-studio-dd/ModuleCache.noindex -Xfrontend -serialize-debugging-options -enable-testing -index-store-path /tmp/fmdemo-studio-dd/Index.noindex/DataStore -Xcc -D_LIBCPP_HARDENING_MODE\=_LIBCPP_HARDENING_MODE_DEBUG -swift-version 6 -I /tmp/fmdemo-studio-dd/Build/Products/Debug-iphonesimulator -Isystem /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/lib -F /tmp/fmdemo-studio-dd/Build/Products/Debug-iphonesimulator -F /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks -F /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator27.1.sdk/Developer/Library/Frameworks -c -j11 -enable-batch-mode -incremental -Xcc -ivfsstatcache -Xcc /tmp/fmdemo-studio-dd/SDKStatCaches.noindex/iphonesimulator27.1-24A94232-35d3147121984ba087c28d913653d626.sdkstatcache -output-file-map /tmp/fmdemo-studio-dd/Build/Intermediates.noindex/MessyNote.build/Debug-iphonesimulator/MessyNoteUITests.build/Objects-normal/arm64/MessyNoteUITests-OutputFileMap.json -save-temps -no-color-diagnostics -explicit-module-build -module-cache-path /tmp/fmdemo-studio-dd/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules -clang-scanner-module-cache-path /tmp/fmdemo-studio-dd/ModuleCache.noindex -sdk-module-cache-path /tmp/fmdemo-studio-dd/SDKExplicitPrecompiledModules -emit-dependencies -emit-module -emit-module-path /tmp/fmdemo-studio-dd/Build/Intermediates.noindex/MessyNote.build/Debug-iphonesimulator/MessyNoteUITests.build/Objects-normal/arm64/MessyNoteUITests.swiftmodule -serialize-diagnostics -dependency-scan-serialize-diagnostics-path /tmp/fmdemo-studio-dd/Build/Intermediates.noindex/MessyNote.build/Debug-iphonesimulator/MessyNoteUITests.build/Objects-normal/arm64/MessyNoteUITests-dependency-scan.dia -validate-clang-modules-once -clang-build-session-file /tmp/fmdemo-studio-dd/ModuleCache.noindex/Session.modulevalidation -Xcc -fmodules-prune-interval\=86400 -Xcc -fmodules-prune-after\=345600 -emit-const-values -const-gather-protocols-list /tmp/fmdemo-studio-dd/Build/Intermediates.noindex/MessyNote.build/Debug-iphonesimulator/MessyNoteUITests.build/Objects-normal/arm64/MessyNoteUITests_const_extract_protocols.json -Xcc -iquote -Xcc /tmp/fmdemo-studio-dd/Build/Intermediates.noindex/MessyNote.build/Debug-iphonesimulator/MessyNoteUITests.build/MessyNoteUITests-generated-files.hmap -Xcc -I/tmp/fmdemo-studio-dd/Build/Intermediates.noindex/MessyNote.build/Debug-iphonesimulator/MessyNoteUITests.build/MessyNoteUITests-own-target-headers.hmap -Xcc -I/tmp/fmdemo-studio-dd/Build/Intermediates.noindex/MessyNote.build/Debug-iphonesimulator/MessyNoteUITests.build/MessyNoteUITests-all-target-headers.hmap -Xcc -iquote -Xcc /tmp/fmdemo-studio-dd/Build/Intermediates.noindex/MessyNote.build/Debug-iphonesimulator/MessyNoteUITests.build/MessyNoteUITests-project-headers.hmap -Xcc -I/tmp/fmdemo-studio-dd/Build/Products/Debug-iphonesimulator/include -Xcc -I/tmp/fmdemo-studio-dd/Build/Intermediates.noindex/MessyNote.build/Debug-iphonesimulator/MessyNoteUITests.build/DerivedSources-normal/arm64 -Xcc -I/tmp/fmdemo-studio-dd/Build/Intermediates.noindex/MessyNote.build/Debug-iphonesimulator/MessyNoteUITests.build/DerivedSources/arm64 -Xcc -I/tmp/fmdemo-studio-dd/Build/Intermediates.noindex/MessyNote.build/Debug-iphonesimulator/MessyNoteUITests.build/DerivedSources -Xcc -DDEBUG\=1 -emit-objc-header -emit-objc-header-path /tmp/fmdemo-studio-dd/Build/Intermediates.noindex/MessyNote.build/Debug-iphonesimulator/MessyNoteUITests.build/Objects-normal/arm64/MessyNoteUITests-Swift.h -working-directory /Users/yitingsung/Developer/FMDemo -experimental-emit-module-separately -disable-cmo
+
+Ld /tmp/fmdemo-studio-dd/Build/Products/Debug-iphonesimulator/MessyNoteUITests-Runner.app/PlugIns/MessyNoteUITests.xctest/MessyNoteUITests normal (in target 'MessyNoteUITests' from project 'MessyNote')
+    cd /Users/yitingsung/Developer/FMDemo
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -Xlinker -reproducible -target arm64-apple-ios27.0-simulator -bundle -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator27.1.sdk -O0 -Xlinker -no_warn_duplicate_libraries -L/tmp/fmdemo-studio-dd/Build/Intermediates.noindex/EagerLinkingTBDs/Debug-iphonesimulator -L/tmp/fmdemo-studio-dd/Build/Products/Debug-iphonesimulator -L/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/lib -F/tmp/fmdemo-studio-dd/Build/Intermediates.noindex/EagerLinkingTBDs/Debug-iphonesimulator -F/tmp/fmdemo-studio-dd/Build/Products/Debug-iphonesimulator -iframework /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks -iframework /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator27.1.sdk/Developer/Library/Frameworks -filelist /tmp/fmdemo-studio-dd/Build/Intermediates.noindex/MessyNote.build/Debug-iphonesimulator/MessyNoteUITests.build/Objects-normal/arm64/MessyNoteUITests.LinkFileList -Xlinker -rpath -Xlinker @loader_path/Frameworks -Xlinker -rpath -Xlinker @executable_path/Frameworks -Xlinker -dead_strip -Xlinker -object_path_lto -Xlinker /tmp/fmdemo-studio-dd/Build/Intermediates.noindex/MessyNote.build/Debug-iphonesimulator/MessyNoteUITests.build/Objects-normal/arm64/MessyNoteUITests_lto.o -rdynamic -Xlinker -no_deduplicate -Xlinker -objc_abi_version -Xlinker 2 -Xlinker -dependency_info -Xlinker /tmp/fmdemo-studio-dd/Build/Intermediates.noindex/MessyNote.build/Debug-iphonesimulator/MessyNoteUITests.build/Objects-normal/arm64/MessyNoteUITests_dependency_info.dat -fobjc-link-runtime -L/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator -L/usr/lib/swift -Xlinker -add_ast_path -Xlinker /tmp/fmdemo-studio-dd/Build/Intermediates.noindex/MessyNote.build/Debug-iphonesimulator/MessyNoteUITests.build/Objects-normal/arm64/MessyNoteUITests.swiftmodule -Xlinker -needed_framework -Xlinker XCTest -framework XCTest -Xlinker -needed-lXCTestSwiftSupport -lXCTestSwiftSupport -o /tmp/fmdemo-studio-dd/Build/Products/Debug-iphonesimulator/MessyNoteUITests-Runner.app/PlugIns/MessyNoteUITests.xctest/MessyNoteUITests
+
+CopySwiftLibs /tmp/fmdemo-studio-dd/Build/Products/Debug-iphonesimulator/MessyNoteUITests-Runner.app/PlugIns/MessyNoteUITests.xctest (in target 'MessyNoteUITests' from project 'MessyNote')
+    cd /Users/yitingsung/Developer/FMDemo
+    builtin-swiftStdLibTool --copy --verbose --scan-executable /tmp/fmdemo-studio-dd/Build/Products/Debug-iphonesimulator/MessyNoteUITests-Runner.app/PlugIns/MessyNoteUITests.xctest/MessyNoteUITests --scan-folder /tmp/fmdemo-studio-dd/Build/Products/Debug-iphonesimulator/MessyNoteUITests-Runner.app/PlugIns/MessyNoteUITests.xctest/Frameworks --scan-folder /tmp/fmdemo-studio-dd/Build/Products/Debug-iphonesimulator/MessyNoteUITests-Runner.app/PlugIns/MessyNoteUITests.xctest/PlugIns --scan-folder /tmp/fmdemo-studio-dd/Build/Products/Debug-iphonesimulator/MessyNoteUITests-Runner.app/PlugIns/MessyNoteUITests.xctest/SystemExtensions --scan-folder /tmp/fmdemo-studio-dd/Build/Products/Debug-iphonesimulator/MessyNoteUITests-Runner.app/PlugIns/MessyNoteUITests.xctest/Extensions --platform iphonesimulator --toolchain /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain --destination /tmp/fmdemo-studio-dd/Build/Products/Debug-iphonesimulator/MessyNoteUITests-Runner.app/PlugIns/MessyNoteUITests.xctest/Frameworks --strip-bitcode --scan-executable /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/lib/libXCTestSwiftSupport.dylib --strip-bitcode-tool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/bitcode_strip --emit-dependency-info /tmp/fmdemo-studio-dd/Build/Intermediates.noindex/MessyNote.build/Debug-iphonesimulator/MessyNoteUITests.build/SwiftStdLibToolInputDependencies.dep --filter-for-swift-os
+Ignoring --strip-bitcode because --sign was not passed
+
+ExtractAppIntentsMetadata (in target 'MessyNoteUITests' from project 'MessyNote')
+    cd /Users/yitingsung/Developer/FMDemo
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/appintentsmetadataprocessor --toolchain-dir /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain --module-name MessyNoteUITests --sdk-root /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator27.1.sdk --xcode-version 27A9275 --platform-family iOS --deployment-target 27.0 --bundle-identifier com.demo.MessyNoteUITests --output /tmp/fmdemo-studio-dd/Build/Products/Debug-iphonesimulator/MessyNoteUITests-Runner.app/PlugIns/MessyNoteUITests.xctest --target-triple arm64-apple-ios27.0-simulator --binary-file /tmp/fmdemo-studio-dd/Build/Products/Debug-iphonesimulator/MessyNoteUITests-Runner.app/PlugIns/MessyNoteUITests.xctest/MessyNoteUITests --dependency-file /tmp/fmdemo-studio-dd/Build/Intermediates.noindex/MessyNote.build/Debug-iphonesimulator/MessyNoteUITests.build/Objects-normal/arm64/MessyNoteUITests_dependency_info.dat --stringsdata-file /tmp/fmdemo-studio-dd/Build/Intermediates.noindex/MessyNote.build/Debug-iphonesimulator/MessyNoteUITests.build/Objects-normal/arm64/ExtractedAppShortcutsMetadata.stringsdata --source-file-list /tmp/fmdemo-studio-dd/Build/Intermediates.noindex/MessyNote.build/Debug-iphonesimulator/MessyNoteUITests.build/Objects-normal/arm64/MessyNoteUITests.SwiftFileList --metadata-file-list /tmp/fmdemo-studio-dd/Build/Intermediates.noindex/MessyNote.build/Debug-iphonesimulator/MessyNoteUITests.build/MessyNoteUITests.DependencyMetadataFileList --static-metadata-file-list /tmp/fmdemo-studio-dd/Build/Intermediates.noindex/MessyNote.build/Debug-iphonesimulator/MessyNoteUITests.build/MessyNoteUITests.DependencyStaticMetadataFileList --swift-const-vals-list /tmp/fmdemo-studio-dd/Build/Intermediates.noindex/MessyNote.build/Debug-iphonesimulator/MessyNoteUITests.build/Objects-normal/arm64/MessyNoteUITests.SwiftConstValuesFileList --compile-time-extraction --deployment-aware-processing --no-app-shortcuts-localization
+2026-10-27 16:16:07.358 appintentsmetadataprocessor[70982:11944913] Starting appintentsmetadataprocessor export
+2026-10-27 16:16:07.362 appintentsmetadataprocessor[70982:11944913] warning: Metadata extraction skipped, no AppIntents.framework dependency found
+
+PruneExplicitPrecompiledModules /tmp/fmdemo-studio-dd/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules
+
+PruneExplicitPrecompiledModules /tmp/fmdemo-studio-dd/Build/Intermediates.noindex/ExplicitPrecompiledModules
+
+PruneExplicitPrecompiledModules /tmp/fmdemo-studio-dd/SDKExplicitPrecompiledModules
+
+2026-10-27 16:16:07.529 xcodebuild[70898:11944222] [MT] IDESchemeActionSDKRecord: operatingSystemBuild = <DVTBuildVersion 24A94232>, error = invalidDigitCount(94232).
+2026-10-27 16:16:13.003511+0800 MessyNoteUITests-Runner[70987:11945206] [Default] Running tests...
+    t =      nans Interface orientation changed to Portrait
+Test Suite 'Selected tests' started at 2026-10-27 16:16:17.667.
+Test Suite 'MessyNoteUITests.xctest' started at 2026-10-27 16:16:17.670.
+Test Suite 'CaseCUITests' started at 2026-10-27 16:16:17.670.
+Test Case '-[MessyNoteUITests.CaseCUITests testCaseCNaturalLanguageCompletion]' started.
+    t =     0.01s Start Test at 2026-10-27 16:16:17.677
+    t =     0.13s Set Up
+    t =     0.13s Open com.demo.MessyNote
+    t =     0.13s     Launch com.demo.MessyNote
+2026-10-27 16:16:18.090 xcodebuild[70898:11944222] [MT] IDELaunchParametersSnapshot: debugger version lookup failed for path '<nil>': noURL
+2026-10-27 16:16:18.090 xcodebuild[70898:11944222] [MT] IDELaunchParametersSnapshot: no debugger version
+2026-10-27 16:16:18.158 xcodebuild[70898:11944222] [MT] IDESchemeActionSDKRecord: operatingSystemBuild = <DVTBuildVersion 24A94232>, error = invalidDigitCount(94232).
+objc[70987]: Class UIAccessibilityLoaderWebShared is implemented in both /private/var/run/com.apple.security.cryptexd/mnt/com.apple.iPhoneOS.SimulatorRuntime-v24.1.434.0.sSuNwl/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 27.0.simruntime/Contents/Resources/RuntimeRoot/System/Library/AccessibilityBundles/WebKit.axbundle/WebKit (0x102f48398) and /private/var/run/com.apple.security.cryptexd/mnt/com.apple.iPhoneOS.SimulatorRuntime-v24.1.434.0.sSuNwl/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 27.0.simruntime/Contents/Resources/RuntimeRoot/System/Library/AccessibilityBundles/WebCore.axbundle/WebCore (0x106028310). This may cause spurious casting failures and mysterious crashes. One of the duplicates must be removed or renamed.
+    t =     1.55s         Setting up automation session
+    t =     4.18s         Wait for com.demo.MessyNote to idle
+    t =     7.25s Find the Target Application 'com.demo.MessyNote'
+    t =     7.53s Added attachment named '01 launched screenshot'
+    t =     7.53s Requesting snapshot of accessibility hierarchy for app with pid 71020
+    t =     7.64s Requesting snapshot of accessibility hierarchy for app with pid 71020
+    t =     7.67s Added attachment named '01 launched accessibility hierarchy'
+    t =     7.68s Tap "設定" Button
+    t =     7.68s     Wait for com.demo.MessyNote to idle
+    t =     7.68s     Find the "設定" Button
+    t =     7.72s     Check for interrupting elements affecting "設定" Button
+    t =     7.79s     Synthesize event
+    t =     8.16s     Wait for com.demo.MessyNote to idle
+    t =    10.41s Checking `Expect predicate `exists == 1` for object "Demo Fixture Mode" Switch`
+    t =    10.41s     Checking existence of `"Demo Fixture Mode" Switch`
+    t =    10.53s Find the Target Application 'com.demo.MessyNote'
+    t =    10.65s Added attachment named 'Fixture switch screenshot'
+    t =    10.65s Requesting snapshot of accessibility hierarchy for app with pid 71020
+    t =    10.84s Requesting snapshot of accessibility hierarchy for app with pid 71020
+    t =    10.88s Added attachment named 'Fixture switch accessibility hierarchy'
+    t =    10.88s Find the "Demo Fixture Mode" Switch
+    t =    10.94s Find the "Demo Fixture Mode" Switch
+    t =    12.03s Checking `Expect predicate `exists == 1 AND hittable == 1` for object "Demo Fixture Mode" Switch`
+    t =    12.03s     Checking existence of `"Demo Fixture Mode" Switch`
+    t =    12.11s     Find the "Demo Fixture Mode" Switch
+    t =    12.19s Checking existence of `Switch (First Match)`
+    t =    12.25s Tap Switch (First Match)[0.35, 0.50]
+    t =    12.25s     Wait for com.demo.MessyNote to idle
+    t =    12.25s     Find the Switch (First Match)
+    t =    12.32s     Check for interrupting elements affecting "0" Switch
+    t =    12.35s     Synthesize event
+    t =    12.36s         Find the "0" Switch
+    t =    12.42s         Find the "0" Switch
+    t =    12.49s         Find the "0" Switch
+    t =    12.83s     Wait for com.demo.MessyNote to idle
+    t =    15.17s Checking `Expect predicate `value == "1"` for object "Demo Fixture Mode" Switch`
+    t =    15.17s     Find the "Demo Fixture Mode" Switch
+    t =    15.28s Find the Target Application 'com.demo.MessyNote'
+    t =    15.40s Added attachment named 'Fixture labeled switch attempt 1 screenshot'
+    t =    15.40s Requesting snapshot of accessibility hierarchy for app with pid 71020
+    t =    15.58s Requesting snapshot of accessibility hierarchy for app with pid 71020
+    t =    15.63s Added attachment named 'Fixture labeled switch attempt 1 accessibility hierarchy'
+    t =    15.63s Find the "Demo Fixture Mode" Switch
+    t =    15.69s Find the "Demo Fixture Mode" Switch
+    t =    15.75s Tap "完成" Button
+    t =    15.75s     Wait for com.demo.MessyNote to idle
+    t =    15.75s     Find the "完成" Button
+    t =    15.80s     Check for interrupting elements affecting "完成" Button
+    t =    15.83s     Synthesize event
+    t =    16.13s     Wait for com.demo.MessyNote to idle
+    t =    17.51s Checking existence of `"筆記與修改指令" Button`
+    t =    17.54s Checking existence of `"隨手筆記或修改指令" TextView`
+    t =    17.56s Checking existence of `"隨手筆記或修改指令" TextField`
+    t =    17.58s Tap "隨手筆記或修改指令" TextField
+    t =    17.58s     Wait for com.demo.MessyNote to idle
+    t =    17.58s     Find the "隨手筆記或修改指令" TextField
+    t =    17.60s     Check for interrupting elements affecting "隨手筆記或修改指令" TextField
+    t =    17.63s     Synthesize event
+    t =    17.93s     Wait for com.demo.MessyNote to idle
+    t =    18.65s Find the "隨手筆記或修改指令" TextField
+    t =    18.71s Press "隨手筆記或修改指令" TextField for 1.2 seconds
+    t =    18.71s     Wait for com.demo.MessyNote to idle
+    t =    19.00s     Find the "隨手筆記或修改指令" TextField
+    t =    19.06s     Check for interrupting elements affecting "隨手筆記或修改指令" TextField
+    t =    19.10s     Synthesize event
+    t =    20.55s     Wait for com.demo.MessyNote to idle
+    t =    21.48s Checking existence of `"Select All" MenuItem`
+    t =    22.64s Checking `Expect predicate `exists == 1` for object "Select All" MenuItem`
+    t =    22.65s     Checking existence of `"Select All" MenuItem`
+    t =    22.71s Find the Target Application 'com.demo.MessyNote'
+    t =    22.87s Added attachment named 'Select All for input replacement screenshot'
+    t =    22.87s Requesting snapshot of accessibility hierarchy for app with pid 71020
+    t =    23.12s Requesting snapshot of accessibility hierarchy for app with pid 71020
+    t =    23.17s Added attachment named 'Select All for input replacement accessibility hierarchy'
+    t =    23.17s Tap "Select All" MenuItem
+    t =    23.17s     Wait for com.demo.MessyNote to idle
+    t =    23.18s     Find the "Select All" MenuItem
+    t =    23.22s     Check for interrupting elements affecting "Select All" MenuItem
+    t =    23.26s     Synthesize event
+    t =    23.56s     Wait for com.demo.MessyNote to idle
+    t =    24.29s Type '' into "隨手筆記或修改指令" TextField
+    t =    24.29s     Wait for com.demo.MessyNote to idle
+    t =    24.30s     Find the "隨手筆記或修改指令" TextField
+    t =    24.36s     Check for interrupting elements affecting "隨手筆記或修改指令" TextField
+    t =    24.40s     Synthesize event
+    t =    24.64s     Wait for com.demo.MessyNote to idle
+    t =    25.06s Type '下週五晚上跟一個不存在於 Conta...' into "隨手筆記或修改指令" TextField
+    t =    25.06s     Wait for com.demo.MessyNote to idle
+    t =    25.07s     Find the "隨手筆記或修改指令" TextField
+    t =    25.12s     Check for interrupting elements affecting "今天想做什麼？" TextField
+    t =    25.15s     Synthesize event
+    t =    25.80s     Wait for com.demo.MessyNote to idle
+    t =    25.81s Find the "今天想做什麼？" TextField
+    t =    25.85s Find the Target Application 'com.demo.MessyNote'
+    t =    25.96s Added attachment named '02 initial Chinese input and fixture ON screenshot'
+    t =    25.97s Requesting snapshot of accessibility hierarchy for app with pid 71020
+    t =    26.13s Requesting snapshot of accessibility hierarchy for app with pid 71020
+    t =    26.18s Added attachment named '02 initial Chinese input and fixture ON accessibility hierarchy'
+    t =    26.18s Checking existence of `"整理成活動" Button`
+    t =    26.21s Find the "整理成活動" Button
+    t =    26.25s Find the "整理成活動" Button
+    t =    26.29s Checking existence of `Keyboard (First Match)`
+    t =    26.30s Find the Keyboard (First Match)
+    t =    26.31s Press Target Application 'com.demo.MessyNote'[0.50, 0.55] for 0.1 seconds, then drag to Target Application 'com.demo.MessyNote'[0.50, 0.35] with velocity of 500.00 pixels per second, and then hold for 0.0 seconds 
+    t =    26.31s     Wait for com.demo.MessyNote to idle
+    t =    26.31s     Find the Target Application 'com.demo.MessyNote'
+    t =    26.34s     Check for interrupting elements affecting "MessyNote" Application
+    t =    26.36s     Synthesize event
+    t =    26.37s         Find the Target Application 'com.demo.MessyNote'
+    t =    26.39s         Find the Target Application 'com.demo.MessyNote'
+    t =    26.41s         Find the Target Application 'com.demo.MessyNote'
+    t =    26.44s         Find the Target Application 'com.demo.MessyNote'
+    t =    26.46s         Find the Target Application 'com.demo.MessyNote'
+    t =    27.12s     Wait for com.demo.MessyNote to idle
+    t =    28.78s Checking existence of `"整理成活動" Button`
+    t =    28.83s Find the "整理成活動" Button
+    t =    28.88s Find the "整理成活動" Button
+    t =    28.91s Tap "整理成活動" Button
+    t =    28.91s     Wait for com.demo.MessyNote to idle
+    t =    28.91s     Find the "整理成活動" Button
+    t =    28.95s     Check for interrupting elements affecting "整理成活動" Button
+    t =    28.98s     Synthesize event
+    t =    29.28s     Wait for com.demo.MessyNote to idle
+    t =    29.32s Press Target Application 'com.demo.MessyNote'[0.50, 0.55] for 0.1 seconds, then drag to Target Application 'com.demo.MessyNote'[0.50, 0.35] with velocity of 500.00 pixels per second, and then hold for 0.0 seconds 
+    t =    29.32s     Wait for com.demo.MessyNote to idle
+    t =    29.33s     Find the Target Application 'com.demo.MessyNote'
+    t =    29.36s     Check for interrupting elements affecting "MessyNote" Application
+    t =    29.39s     Synthesize event
+    t =    29.39s         Find the Target Application 'com.demo.MessyNote'
+    t =    29.41s         Find the Target Application 'com.demo.MessyNote'
+    t =    29.44s         Find the Target Application 'com.demo.MessyNote'
+    t =    29.46s         Find the Target Application 'com.demo.MessyNote'
+    t =    29.49s         Find the Target Application 'com.demo.MessyNote'
+    t =    30.14s     Wait for com.demo.MessyNote to idle
+    t =    31.18s Checking `Expect predicate `exists == 1` for object "尚待時間確認" StaticText`
+    t =    31.18s     Checking existence of `"尚待時間確認" StaticText`
+    t =    31.23s     Capturing element debug description
+    t =    32.17s Checking `Expect predicate `exists == 1` for object "尚待時間確認" StaticText`
+    t =    32.17s     Checking existence of `"尚待時間確認" StaticText`
+    t =    32.21s     Capturing element debug description
+    t =    33.15s Checking `Expect predicate `exists == 1` for object "尚待時間確認" StaticText`
+    t =    33.15s     Checking existence of `"尚待時間確認" StaticText`
+    t =    33.19s     Capturing element debug description
+    t =    34.23s Checking `Expect predicate `exists == 1` for object "尚待時間確認" StaticText`
+    t =    34.23s     Checking existence of `"尚待時間確認" StaticText`
+    t =    34.27s     Capturing element debug description
+    t =    35.20s Checking `Expect predicate `exists == 1` for object "尚待時間確認" StaticText`
+    t =    35.20s     Checking existence of `"尚待時間確認" StaticText`
+    t =    35.24s     Capturing element debug description
+    t =    36.19s Checking `Expect predicate `exists == 1` for object "尚待時間確認" StaticText`
+    t =    36.19s     Checking existence of `"尚待時間確認" StaticText`
+    t =    36.30s     Capturing element debug description
+    t =    37.25s Checking `Expect predicate `exists == 1` for object "尚待時間確認" StaticText`
+    t =    37.25s     Checking existence of `"尚待時間確認" StaticText`
+    t =    37.29s     Capturing element debug description
+    t =    38.21s Checking `Expect predicate `exists == 1` for object "尚待時間確認" StaticText`
+    t =    38.21s     Checking existence of `"尚待時間確認" StaticText`
+    t =    38.25s     Capturing element debug description
+    t =    39.18s Checking `Expect predicate `exists == 1` for object "尚待時間確認" StaticText`
+    t =    39.18s     Checking existence of `"尚待時間確認" StaticText`
+    t =    39.22s     Capturing element debug description
+    t =    40.16s Checking `Expect predicate `exists == 1` for object "尚待時間確認" StaticText`
+    t =    40.16s     Checking existence of `"尚待時間確認" StaticText`
+    t =    40.88s     Capturing element debug description
+    t =    41.18s Checking `Expect predicate `exists == 1` for object "尚待時間確認" StaticText`
+    t =    41.18s     Checking existence of `"尚待時間確認" StaticText`
+    t =    41.32s Find the Target Application 'com.demo.MessyNote'
+    t =    41.55s Added attachment named '03 pending draft screenshot'
+    t =    41.55s Requesting snapshot of accessibility hierarchy for app with pid 71020
+    t =    41.74s Requesting snapshot of accessibility hierarchy for app with pid 71020
+    t =    41.80s Added attachment named '03 pending draft accessibility hierarchy'
+    t =    41.80s Checking existence of `StaticText (First Match)`
+    t =    41.85s Find the StaticText (First Match)
+    t =    41.95s Find the "固定草稿日期：Friday, November 6, 2026" StaticText
+    t =    42.00s Find the "固定草稿日期：Friday, November 6, 2026" StaticText
+    t =    42.05s Added attachment named 'Captured pending date'
+    t =    42.05s Find the Target Application 'com.demo.MessyNote'
+    t =    42.18s Added attachment named '04 fixed Friday captured screenshot'
+    t =    42.18s Requesting snapshot of accessibility hierarchy for app with pid 71020
+    t =    42.35s Requesting snapshot of accessibility hierarchy for app with pid 71020
+    t =    42.41s Added attachment named '04 fixed Friday captured accessibility hierarchy'
+    t =    42.41s Find the "隨手筆記或修改指令" TextField
+    t =    42.53s Checking existence of `"隨手筆記或修改指令" TextField`
+    t =    42.58s Tap "隨手筆記或修改指令" TextField
+    t =    42.58s     Wait for com.demo.MessyNote to idle
+    t =    42.61s     Find the "隨手筆記或修改指令" TextField
+    t =    42.65s     Check for interrupting elements affecting "隨手筆記或修改指令" TextField
+    t =    42.78s     Synthesize event
+    t =    43.14s     Wait for com.demo.MessyNote to idle
+    t =    43.38s Find the "隨手筆記或修改指令" TextField
+    t =    43.60s Press "隨手筆記或修改指令" TextField for 1.2 seconds
+    t =    43.60s     Wait for com.demo.MessyNote to idle
+    t =    43.98s     Find the "隨手筆記或修改指令" TextField
+    t =    44.03s     Check for interrupting elements affecting "隨手筆記或修改指令" TextField
+    t =    44.07s     Synthesize event
+    t =    45.51s     Wait for com.demo.MessyNote to idle
+    t =    46.37s Checking existence of `"Select All" MenuItem`
+    t =    47.48s Checking `Expect predicate `exists == 1` for object "Select All" MenuItem`
+    t =    47.48s     Checking existence of `"Select All" MenuItem`
+    t =    47.55s Find the Target Application 'com.demo.MessyNote'
+    t =    47.69s Added attachment named 'Select All for input replacement screenshot'
+    t =    47.69s Requesting snapshot of accessibility hierarchy for app with pid 71020
+    t =    47.91s Requesting snapshot of accessibility hierarchy for app with pid 71020
+    t =    47.98s Added attachment named 'Select All for input replacement accessibility hierarchy'
+    t =    47.98s Tap "Select All" MenuItem
+    t =    47.98s     Wait for com.demo.MessyNote to idle
+    t =    47.98s     Find the "Select All" MenuItem
+    t =    48.03s     Check for interrupting elements affecting "Select All" MenuItem
+    t =    48.06s     Synthesize event
+    t =    48.37s     Wait for com.demo.MessyNote to idle
+    t =    48.88s Type '' into "隨手筆記或修改指令" TextField
+    t =    48.88s     Wait for com.demo.MessyNote to idle
+    t =    48.88s     Find the "隨手筆記或修改指令" TextField
+    t =    48.94s     Check for interrupting elements affecting "隨手筆記或修改指令" TextField
+    t =    48.99s     Synthesize event
+    t =    49.23s     Wait for com.demo.MessyNote to idle
+    t =    49.62s Type '晚上七點，吃飯一小時，同行者叫阿不存在' into "隨手筆記或修改指令" TextField
+    t =    49.62s     Wait for com.demo.MessyNote to idle
+    t =    49.63s     Find the "隨手筆記或修改指令" TextField
+    t =    49.68s     Check for interrupting elements affecting "今天想做什麼？" TextField
+    t =    49.72s     Synthesize event
+    t =    50.25s     Wait for com.demo.MessyNote to idle
+    t =    50.26s Find the "今天想做什麼？" TextField
+    t =    50.32s Find the Target Application 'com.demo.MessyNote'
+    t =    50.44s Added attachment named '05 follow-up Chinese input screenshot'
+    t =    50.44s Requesting snapshot of accessibility hierarchy for app with pid 71020
+    t =    50.61s Requesting snapshot of accessibility hierarchy for app with pid 71020
+    t =    50.66s Added attachment named '05 follow-up Chinese input accessibility hierarchy'
+    t =    50.66s Checking existence of `"整理成活動" Button`
+    t =    50.69s Find the "整理成活動" Button
+    t =    50.74s Tap "整理成活動" Button
+    t =    50.74s     Wait for com.demo.MessyNote to idle
+    t =    50.74s     Find the "整理成活動" Button
+    t =    50.77s     Check for interrupting elements affecting "整理成活動" Button
+    t =    50.80s     Synthesize event
+    t =    51.10s     Wait for com.demo.MessyNote to idle
+    t =    51.10s Press Target Application 'com.demo.MessyNote'[0.50, 0.55] for 0.1 seconds, then drag to Target Application 'com.demo.MessyNote'[0.50, 0.35] with velocity of 500.00 pixels per second, and then hold for 0.0 seconds 
+    t =    51.10s     Wait for com.demo.MessyNote to idle
+    t =    51.11s     Find the Target Application 'com.demo.MessyNote'
+    t =    51.14s     Check for interrupting elements affecting "MessyNote" Application
+    t =    51.17s     Synthesize event
+    t =    51.17s         Find the Target Application 'com.demo.MessyNote'
+    t =    51.19s         Find the Target Application 'com.demo.MessyNote'
+    t =    51.22s         Find the Target Application 'com.demo.MessyNote'
+    t =    51.25s         Find the Target Application 'com.demo.MessyNote'
+    t =    51.28s         Find the Target Application 'com.demo.MessyNote'
+    t =    51.93s     Wait for com.demo.MessyNote to idle
+    t =    52.98s Checking `Expect predicate `exists == 1` for object "活動預覽" StaticText`
+    t =    52.98s     Checking existence of `"活動預覽" StaticText`
+    t =    53.06s     Capturing element debug description
+    t =    53.97s Checking `Expect predicate `exists == 1` for object "活動預覽" StaticText`
+    t =    53.97s     Checking existence of `"活動預覽" StaticText`
+    t =    54.01s     Capturing element debug description
+    t =    55.04s Checking `Expect predicate `exists == 1` for object "活動預覽" StaticText`
+    t =    55.04s     Checking existence of `"活動預覽" StaticText`
+    t =    55.12s     Capturing element debug description
+    t =    55.95s Checking `Expect predicate `exists == 1` for object "活動預覽" StaticText`
+    t =    56.01s     Checking existence of `"活動預覽" StaticText`
+    t =    56.33s     Capturing element debug description
+    t =    57.03s Checking `Expect predicate `exists == 1` for object "活動預覽" StaticText`
+    t =    57.03s     Checking existence of `"活動預覽" StaticText`
+    t =    57.53s     Capturing element debug description
+    t =    57.95s Checking `Expect predicate `exists == 1` for object "活動預覽" StaticText`
+    t =    58.00s     Checking existence of `"活動預覽" StaticText`
+    t =    58.93s     Capturing element debug description
+    t =    59.03s Checking `Expect predicate `exists == 1` for object "活動預覽" StaticText`
+    t =    59.03s     Checking existence of `"活動預覽" StaticText`
+    t =    59.10s     Capturing element debug description
+    t =    60.02s Checking `Expect predicate `exists == 1` for object "活動預覽" StaticText`
+    t =    60.06s     Checking existence of `"活動預覽" StaticText`
+    t =    60.25s     Capturing element debug description
+    t =    60.97s Checking `Expect predicate `exists == 1` for object "活動預覽" StaticText`
+    t =    60.97s     Checking existence of `"活動預覽" StaticText`
+    t =    62.52s Find the Target Application 'com.demo.MessyNote'
+    t =    62.83s Added attachment named '06 completed event screenshot'
+    t =    62.83s Requesting snapshot of accessibility hierarchy for app with pid 71020
+    t =    62.96s Requesting snapshot of accessibility hierarchy for app with pid 71020
+    t =    63.00s Added attachment named '06 completed event accessibility hierarchy'
+    t =    63.00s Checking existence of `"尚待時間確認" StaticText`
+    t =    64.07s Checking `Expect predicate `exists == 1 AND enabled == 1` for object "編輯" Button`
+    t =    64.08s     Checking existence of `"編輯" Button`
+    t =    64.13s     Find the "編輯" Button
+    t =    64.17s     Capturing element debug description
+    t =    64.23s         Requesting snapshot of accessibility hierarchy for app with pid 71020
+    t =    64.27s         Find: Descendants matching type Button
+    t =    64.27s         Find: Elements matching predicate '"編輯" IN identifiers'
+    t =    64.28s         Requesting snapshot of accessibility hierarchy for app with pid 71020
+    t =    64.32s         Find: Descendants matching type Button
+    t =    64.32s         Requesting snapshot of accessibility hierarchy for app with pid 71020
+    t =    65.09s Checking `Expect predicate `exists == 1 AND enabled == 1` for object "編輯" Button`
+    t =    65.09s     Checking existence of `"eventEditorDisclosure" Button`
+    t =    65.12s     Find the "eventEditorDisclosure" Button
+    t =    65.15s     Capturing element debug description
+    t =    65.22s         Requesting snapshot of accessibility hierarchy for app with pid 71020
+    t =    65.32s         Find: Descendants matching type Button
+    t =    65.32s         Find: Elements matching predicate '"編輯" IN identifiers'
+    t =    65.32s         Requesting snapshot of accessibility hierarchy for app with pid 71020
+    t =    65.36s         Find: Descendants matching type Button
+    t =    65.36s         Requesting snapshot of accessibility hierarchy for app with pid 71020
+    t =    66.13s Checking `Expect predicate `exists == 1 AND enabled == 1` for object "編輯" Button`
+    t =    66.14s     Checking existence of `"eventEditorDisclosure" Button`
+    t =    66.34s     Find the "eventEditorDisclosure" Button
+    t =    66.38s Checking existence of `"eventEditorDisclosure" Button`
+    t =    66.41s Find the "eventEditorDisclosure" Button
+    t =    66.46s Tap "eventEditorDisclosure" Button
+    t =    66.46s     Wait for com.demo.MessyNote to idle
+    t =    66.47s     Find the "eventEditorDisclosure" Button
+    t =    66.49s     Check for interrupting elements affecting "eventEditorDisclosure" Button
+    t =    66.56s     Synthesize event
+    t =    66.91s     Wait for com.demo.MessyNote to idle
+    t =    67.24s Checking existence of `DatePicker (First Match)`
+    t =    67.30s Find the DatePicker (First Match)
+    t =    67.35s Checking existence of `"eventEditorDisclosure" DatePicker`
+    t =    67.37s Requesting snapshot of accessibility hierarchy for app with pid 71020
+    t =    67.52s Requesting snapshot of accessibility hierarchy for app with pid 71020
+    t =    67.65s Requesting snapshot of accessibility hierarchy for app with pid 71020
+    t =    67.70s Find: Descendants matching type DatePicker
+    t =    67.70s Requesting snapshot of accessibility hierarchy for app with pid 71020
+    t =    67.76s Checking existence of `"持續 60 分鐘" Stepper`
+    t =    67.81s Find the "持續 60 分鐘" Stepper
+    t =    67.86s Checking existence of `"eventEditorDisclosure" Stepper`
+    t =    67.89s Checking existence of `"參與者姓名" TextField`
+    t =    67.93s Find the "參與者姓名" TextField
+    t =    67.97s Find the "eventEditorDisclosure" TextField
+    t =    68.00s Find the Target Application 'com.demo.MessyNote'
+    t =    68.13s Added attachment named '07 event date time duration and attendee screenshot'
+    t =    68.13s Requesting snapshot of accessibility hierarchy for app with pid 71020
+    t =    68.26s Requesting snapshot of accessibility hierarchy for app with pid 71020
+    t =    68.30s Added attachment named '07 event date time duration and attendee accessibility hierarchy'
+    t =    68.30s Checking existence of `"找不到可存取的聯絡人（可能受限於部分存取權）。" StaticText`
+    t =    68.33s Find the "找不到可存取的聯絡人（可能受限於部分存取權）。" StaticText
+    t =    68.38s Find the "找不到可存取的聯絡人（可能受限於部分存取權）。" StaticText
+    t =    68.41s Checking existence of `Keyboard (First Match)`
+    t =    68.46s Find the Target Application 'com.demo.MessyNote'
+    t =    68.48s Press Target Application 'com.demo.MessyNote'[0.50, 0.55] for 0.1 seconds, then drag to Target Application 'com.demo.MessyNote'[0.50, 0.35] with velocity of 500.00 pixels per second, and then hold for 0.0 seconds 
+    t =    68.48s     Wait for com.demo.MessyNote to idle
+    t =    68.48s     Find the Target Application 'com.demo.MessyNote'
+    t =    68.51s     Check for interrupting elements affecting "MessyNote" Application
+    t =    68.53s     Synthesize event
+    t =    68.54s         Find the Target Application 'com.demo.MessyNote'
+    t =    68.56s         Find the Target Application 'com.demo.MessyNote'
+    t =    68.59s         Find the Target Application 'com.demo.MessyNote'
+    t =    68.61s         Find the Target Application 'com.demo.MessyNote'
+    t =    68.64s         Find the Target Application 'com.demo.MessyNote'
+    t =    69.29s     Wait for com.demo.MessyNote to idle
+    t =    70.95s Checking existence of `"找不到可存取的聯絡人（可能受限於部分存取權）。" StaticText`
+    t =    71.00s Find the "找不到可存取的聯絡人（可能受限於部分存取權）。" StaticText
+    t =    72.08s Checking `Expect predicate `exists == 1` for object "找不到可存取的聯絡人（可能受限於部分存取權）。" StaticText`
+    t =    72.08s     Checking existence of `"找不到可存取的聯絡人（可能受限於部分存取權）。" StaticText`
+    t =    72.13s Find the Target Application 'com.demo.MessyNote'
+    t =    72.25s Added attachment named '08 empty Contacts result screenshot'
+    t =    72.25s Requesting snapshot of accessibility hierarchy for app with pid 71020
+    t =    72.36s Requesting snapshot of accessibility hierarchy for app with pid 71020
+    t =    72.40s Added attachment named '08 empty Contacts result accessibility hierarchy'
+    t =    72.40s Checking existence of `"此時段沒有衝突（查詢當下）" StaticText`
+    t =    72.43s Find the "此時段沒有衝突（查詢當下）" StaticText
+    t =    72.48s Find the "此時段沒有衝突（查詢當下）" StaticText
+    t =    72.51s Checking existence of `Keyboard (First Match)`
+    t =    72.56s Find the Target Application 'com.demo.MessyNote'
+    t =    72.58s Press Target Application 'com.demo.MessyNote'[0.50, 0.55] for 0.1 seconds, then drag to Target Application 'com.demo.MessyNote'[0.50, 0.35] with velocity of 500.00 pixels per second, and then hold for 0.0 seconds 
+    t =    72.58s     Wait for com.demo.MessyNote to idle
+    t =    72.58s     Find the Target Application 'com.demo.MessyNote'
+    t =    72.61s     Check for interrupting elements affecting "MessyNote" Application
+    t =    72.64s     Synthesize event
+    t =    72.64s         Find the Target Application 'com.demo.MessyNote'
+    t =    72.67s         Find the Target Application 'com.demo.MessyNote'
+    t =    72.69s         Find the Target Application 'com.demo.MessyNote'
+    t =    72.71s         Find the Target Application 'com.demo.MessyNote'
+    t =    72.74s         Find the Target Application 'com.demo.MessyNote'
+    t =    73.40s     Wait for com.demo.MessyNote to idle
+    t =    75.06s Checking existence of `"此時段沒有衝突（查詢當下）" StaticText`
+    t =    75.10s Find the "此時段沒有衝突（查詢當下）" StaticText
+    t =    76.18s Checking `Expect predicate `exists == 1` for object "此時段沒有衝突（查詢當下）" StaticText`
+    t =    76.18s     Checking existence of `"此時段沒有衝突（查詢當下）" StaticText`
+    t =    76.29s Find the Target Application 'com.demo.MessyNote'
+    t =    76.47s Added attachment named '09 empty Calendar result screenshot'
+    t =    76.47s Requesting snapshot of accessibility hierarchy for app with pid 71020
+    t =    76.62s Requesting snapshot of accessibility hierarchy for app with pid 71020
+    t =    76.66s Added attachment named '09 empty Calendar result accessibility hierarchy'
+    t =    76.66s Checking existence of `"AI 處理紀錄" Button`
+    t =    76.70s Find the "AI 處理紀錄" Button
+    t =    76.76s Tap "activityDisclosure" Button
+    t =    76.76s     Wait for com.demo.MessyNote to idle
+    t =    76.76s     Find the "activityDisclosure" Button
+    t =    76.79s     Check for interrupting elements affecting "activityDisclosure" Button
+    t =    76.85s     Synthesize event
+    t =    77.18s     Wait for com.demo.MessyNote to idle
+    t =    77.19s Checking existence of `"→ FindContactTool(阿不存在)" StaticText`
+    t =    77.26s Press Target Application 'com.demo.MessyNote'[0.50, 0.55] for 0.1 seconds, then drag to Target Application 'com.demo.MessyNote'[0.50, 0.35] with velocity of 500.00 pixels per second, and then hold for 0.0 seconds 
+    t =    77.26s     Wait for com.demo.MessyNote to idle
+    t =    77.27s     Find the Target Application 'com.demo.MessyNote'
+    t =    77.31s     Check for interrupting elements affecting "MessyNote" Application
+    t =    77.34s     Synthesize event
+    t =    77.34s         Find the Target Application 'com.demo.MessyNote'
+    t =    77.39s         Find the Target Application 'com.demo.MessyNote'
+    t =    77.46s         Find the Target Application 'com.demo.MessyNote'
+    t =    77.51s         Find the Target Application 'com.demo.MessyNote'
+    t =    77.55s         Find the Target Application 'com.demo.MessyNote'
+    t =    78.21s     Wait for com.demo.MessyNote to idle
+    t =    78.60s Checking existence of `"→ FindContactTool(阿不存在)" StaticText`
+    t =    78.64s Press Target Application 'com.demo.MessyNote'[0.50, 0.55] for 0.1 seconds, then drag to Target Application 'com.demo.MessyNote'[0.50, 0.35] with velocity of 500.00 pixels per second, and then hold for 0.0 seconds 
+    t =    78.64s     Wait for com.demo.MessyNote to idle
+    t =    78.65s     Find the Target Application 'com.demo.MessyNote'
+    t =    78.68s     Check for interrupting elements affecting "MessyNote" Application
+    t =    78.72s     Synthesize event
+    t =    78.72s         Find the Target Application 'com.demo.MessyNote'
+    t =    78.75s         Find the Target Application 'com.demo.MessyNote'
+    t =    78.78s         Find the Target Application 'com.demo.MessyNote'
+    t =    78.80s         Find the Target Application 'com.demo.MessyNote'
+    t =    78.83s         Find the Target Application 'com.demo.MessyNote'
+    t =    79.50s     Wait for com.demo.MessyNote to idle
+    t =    79.91s Checking existence of `"→ FindContactTool(阿不存在)" StaticText`
+    t =    79.96s Press Target Application 'com.demo.MessyNote'[0.50, 0.55] for 0.1 seconds, then drag to Target Application 'com.demo.MessyNote'[0.50, 0.35] with velocity of 500.00 pixels per second, and then hold for 0.0 seconds 
+    t =    79.96s     Wait for com.demo.MessyNote to idle
+    t =    79.96s     Find the Target Application 'com.demo.MessyNote'
+    t =    79.99s     Check for interrupting elements affecting "MessyNote" Application
+    t =    80.02s     Synthesize event
+    t =    80.02s         Find the Target Application 'com.demo.MessyNote'
+    t =    80.05s         Find the Target Application 'com.demo.MessyNote'
+    t =    80.07s         Find the Target Application 'com.demo.MessyNote'
+    t =    80.09s         Find the Target Application 'com.demo.MessyNote'
+    t =    80.12s         Find the Target Application 'com.demo.MessyNote'
+    t =    80.78s     Wait for com.demo.MessyNote to idle
+    t =    81.20s Checking existence of `"→ FindContactTool(阿不存在)" StaticText`
+    t =    81.25s Press Target Application 'com.demo.MessyNote'[0.50, 0.55] for 0.1 seconds, then drag to Target Application 'com.demo.MessyNote'[0.50, 0.35] with velocity of 500.00 pixels per second, and then hold for 0.0 seconds 
+    t =    81.25s     Wait for com.demo.MessyNote to idle
+    t =    81.25s     Find the Target Application 'com.demo.MessyNote'
+    t =    81.28s     Check for interrupting elements affecting "MessyNote" Application
+    t =    81.31s     Synthesize event
+    t =    81.31s         Find the Target Application 'com.demo.MessyNote'
+    t =    81.34s         Find the Target Application 'com.demo.MessyNote'
+    t =    81.36s         Find the Target Application 'com.demo.MessyNote'
+    t =    81.39s         Find the Target Application 'com.demo.MessyNote'
+    t =    81.41s         Find the Target Application 'com.demo.MessyNote'
+    t =    82.07s     Wait for com.demo.MessyNote to idle
+    t =    82.50s Checking existence of `"→ FindContactTool(阿不存在)" StaticText`
+    t =    82.54s Press Target Application 'com.demo.MessyNote'[0.50, 0.55] for 0.1 seconds, then drag to Target Application 'com.demo.MessyNote'[0.50, 0.35] with velocity of 500.00 pixels per second, and then hold for 0.0 seconds 
+    t =    82.54s     Wait for com.demo.MessyNote to idle
+    t =    82.54s     Find the Target Application 'com.demo.MessyNote'
+    t =    82.57s     Check for interrupting elements affecting "MessyNote" Application
+    t =    82.60s     Synthesize event
+    t =    82.60s         Find the Target Application 'com.demo.MessyNote'
+    t =    82.63s         Find the Target Application 'com.demo.MessyNote'
+    t =    82.66s         Find the Target Application 'com.demo.MessyNote'
+    t =    82.68s         Find the Target Application 'com.demo.MessyNote'
+    t =    82.71s         Find the Target Application 'com.demo.MessyNote'
+    t =    83.37s     Wait for com.demo.MessyNote to idle
+    t =    83.80s Checking existence of `"→ FindContactTool(阿不存在)" StaticText`
+    t =    83.85s Press Target Application 'com.demo.MessyNote'[0.50, 0.55] for 0.1 seconds, then drag to Target Application 'com.demo.MessyNote'[0.50, 0.35] with velocity of 500.00 pixels per second, and then hold for 0.0 seconds 
+    t =    83.85s     Wait for com.demo.MessyNote to idle
+    t =    83.85s     Find the Target Application 'com.demo.MessyNote'
+    t =    83.88s     Check for interrupting elements affecting "MessyNote" Application
+    t =    83.91s     Synthesize event
+    t =    83.91s         Find the Target Application 'com.demo.MessyNote'
+    t =    83.94s         Find the Target Application 'com.demo.MessyNote'
+    t =    83.96s         Find the Target Application 'com.demo.MessyNote'
+    t =    83.98s         Find the Target Application 'com.demo.MessyNote'
+    t =    84.01s         Find the Target Application 'com.demo.MessyNote'
+    t =    84.66s     Wait for com.demo.MessyNote to idle
+    t =    85.09s Checking existence of `"→ FindContactTool(阿不存在)" StaticText`
+    t =    85.14s Press Target Application 'com.demo.MessyNote'[0.50, 0.35] for 0.1 seconds, then drag to Target Application 'com.demo.MessyNote'[0.50, 0.55] with velocity of 500.00 pixels per second, and then hold for 0.0 seconds 
+    t =    85.14s     Wait for com.demo.MessyNote to idle
+    t =    85.15s     Find the Target Application 'com.demo.MessyNote'
+    t =    85.19s     Check for interrupting elements affecting "MessyNote" Application
+    t =    85.24s     Synthesize event
+    t =    85.24s         Find the Target Application 'com.demo.MessyNote'
+    t =    85.29s         Find the Target Application 'com.demo.MessyNote'
+    t =    85.32s         Find the Target Application 'com.demo.MessyNote'
+    t =    85.36s         Find the Target Application 'com.demo.MessyNote'
+    t =    85.49s         Find the Target Application 'com.demo.MessyNote'
+    t =    86.16s     Wait for com.demo.MessyNote to idle
+    t =    87.81s Checking existence of `"→ FindContactTool(阿不存在)" StaticText`
+    t =    87.85s Press Target Application 'com.demo.MessyNote'[0.50, 0.35] for 0.1 seconds, then drag to Target Application 'com.demo.MessyNote'[0.50, 0.55] with velocity of 500.00 pixels per second, and then hold for 0.0 seconds 
+    t =    87.85s     Wait for com.demo.MessyNote to idle
+    t =    87.85s     Find the Target Application 'com.demo.MessyNote'
+    t =    87.88s     Check for interrupting elements affecting "MessyNote" Application
+    t =    87.91s     Synthesize event
+    t =    87.91s         Find the Target Application 'com.demo.MessyNote'
+    t =    87.93s         Find the Target Application 'com.demo.MessyNote'
+    t =    87.96s         Find the Target Application 'com.demo.MessyNote'
+    t =    87.98s         Find the Target Application 'com.demo.MessyNote'
+    t =    88.01s         Find the Target Application 'com.demo.MessyNote'
+    t =    88.66s     Wait for com.demo.MessyNote to idle
+    t =    90.31s Checking existence of `"→ FindContactTool(阿不存在)" StaticText`
+    t =    90.35s Press Target Application 'com.demo.MessyNote'[0.50, 0.35] for 0.1 seconds, then drag to Target Application 'com.demo.MessyNote'[0.50, 0.55] with velocity of 500.00 pixels per second, and then hold for 0.0 seconds 
+    t =    90.36s     Wait for com.demo.MessyNote to idle
+    t =    90.36s     Find the Target Application 'com.demo.MessyNote'
+    t =    90.38s     Check for interrupting elements affecting "MessyNote" Application
+    t =    90.41s     Synthesize event
+    t =    90.41s         Find the Target Application 'com.demo.MessyNote'
+    t =    90.44s         Find the Target Application 'com.demo.MessyNote'
+    t =    90.46s         Find the Target Application 'com.demo.MessyNote'
+    t =    90.49s         Find the Target Application 'com.demo.MessyNote'
+    t =    90.51s         Find the Target Application 'com.demo.MessyNote'
+    t =    91.17s     Wait for com.demo.MessyNote to idle
+    t =    92.83s Checking existence of `"→ FindContactTool(阿不存在)" StaticText`
+    t =    92.88s Press Target Application 'com.demo.MessyNote'[0.50, 0.35] for 0.1 seconds, then drag to Target Application 'com.demo.MessyNote'[0.50, 0.55] with velocity of 500.00 pixels per second, and then hold for 0.0 seconds 
+    t =    92.88s     Wait for com.demo.MessyNote to idle
+    t =    92.88s     Find the Target Application 'com.demo.MessyNote'
+    t =    92.90s     Check for interrupting elements affecting "MessyNote" Application
+    t =    92.93s     Synthesize event
+    t =    92.94s         Find the Target Application 'com.demo.MessyNote'
+    t =    92.96s         Find the Target Application 'com.demo.MessyNote'
+    t =    92.99s         Find the Target Application 'com.demo.MessyNote'
+    t =    93.01s         Find the Target Application 'com.demo.MessyNote'
+    t =    93.04s         Find the Target Application 'com.demo.MessyNote'
+    t =    93.70s     Wait for com.demo.MessyNote to idle
+    t =    94.10s Checking existence of `"→ FindContactTool(阿不存在)" StaticText`
+    t =    94.15s Press Target Application 'com.demo.MessyNote'[0.50, 0.35] for 0.1 seconds, then drag to Target Application 'com.demo.MessyNote'[0.50, 0.55] with velocity of 500.00 pixels per second, and then hold for 0.0 seconds 
+    t =    94.15s     Wait for com.demo.MessyNote to idle
+    t =    94.15s     Find the Target Application 'com.demo.MessyNote'
+    t =    94.19s     Check for interrupting elements affecting "MessyNote" Application
+    t =    94.23s     Synthesize event
+    t =    94.23s         Find the Target Application 'com.demo.MessyNote'
+    t =    94.25s         Find the Target Application 'com.demo.MessyNote'
+    t =    94.28s         Find the Target Application 'com.demo.MessyNote'
+    t =    94.30s         Find the Target Application 'com.demo.MessyNote'
+    t =    94.33s         Find the Target Application 'com.demo.MessyNote'
+    t =    94.99s     Wait for com.demo.MessyNote to idle
+    t =    95.41s Checking existence of `"→ FindContactTool(阿不存在)" StaticText`
+    t =    95.46s Press Target Application 'com.demo.MessyNote'[0.50, 0.35] for 0.1 seconds, then drag to Target Application 'com.demo.MessyNote'[0.50, 0.55] with velocity of 500.00 pixels per second, and then hold for 0.0 seconds 
+    t =    95.46s     Wait for com.demo.MessyNote to idle
+    t =    95.46s     Find the Target Application 'com.demo.MessyNote'
+    t =    95.49s     Check for interrupting elements affecting "MessyNote" Application
+    t =    95.52s     Synthesize event
+    t =    95.52s         Find the Target Application 'com.demo.MessyNote'
+    t =    95.54s         Find the Target Application 'com.demo.MessyNote'
+    t =    95.57s         Find the Target Application 'com.demo.MessyNote'
+    t =    95.59s         Find the Target Application 'com.demo.MessyNote'
+    t =    95.62s         Find the Target Application 'com.demo.MessyNote'
+    t =    96.28s     Wait for com.demo.MessyNote to idle
+    t =    96.70s Find the "→ FindContactTool(阿不存在)" StaticText
+    t =    97.79s     Find the "→ FindContactTool(阿不存在)" StaticText (retry 1)
+    t =    98.84s     Find the "→ FindContactTool(阿不存在)" StaticText (retry 2)
+    t =    98.88s     Collecting debug information to assist test failure triage
+    t =    98.88s         Requesting snapshot of accessibility hierarchy for app with pid 71020
+    t =    98.93s     Requesting snapshot of accessibility hierarchy for app with pid 71020
+    t =    98.97s     Find: Descendants matching type StaticText
+    t =    98.97s     Find: Elements matching predicate '"→ FindContactTool(阿不存在)" IN identifiers'
+    t =    98.97s     Requesting snapshot of accessibility hierarchy for app with pid 71020
+/Users/yitingsung/Developer/FMDemo/MessyNoteUITests/CaseCUITests.swift:154: error: -[MessyNoteUITests.CaseCUITests testCaseCNaturalLanguageCompletion] : Failed to get matching snapshot: No matches found for Elements matching predicate '"→ FindContactTool(阿不存在)" IN identifiers' from input {(
+    StaticText, label: 'MessyNote',
+    StaticText, label: '先確認內容，下一步才會寫入行事曆。',
+    StaticText, label: '檢查並加入', Disabled,
+    StaticText, label: '把想法，排進生活',
+    StaticText, label: '記下時間、地點和同行的人，讓筆記慢慢成為一個計畫。',
+    StaticText, label: '裝置端模型可使用',
+    StaticText, label: '示範資料模式',
+    StaticText, label: '真實模型推論＋示範聯絡人與行事曆查詢。儲存仍會寫入系統行事曆。',
+    StaticText, label: '活動預覽',
+    StaticText, identifier: 'eventEditorDisclosure', label: '標題',
+    StaticText, label: '開始',
+    StaticText, identifier: 'eventEditorDisclosure', label: '時區：Asia/Taipei',
+    StaticText, identifier: 'eventEditorDisclosure', label: '地點',
+    StaticText, identifier: 'eventEditorDisclosure', label: '參與者姓名',
+    StaticText, identifier: 'eventEditorDisclosure', label: '筆記',
+    StaticText, label: '參與者確認',
+    StaticText, label: '找不到可存取的聯絡人（可能受限於部分存取權）。',
+    StaticText, label: '僅保存參與者姓名到事件筆記，不發送邀請。',
+    StaticText, label: '行事曆查詢',
+    StaticText, label: '此時段沒有衝突（查詢當下）',
+    StaticText, label: '筆記與修改指令',
+    StaticText, label: '跟一個不存在於 Contacts 的人吃飯',
+    StaticText, label: 'Nov',
+    StaticText, label: '6',
+    StaticText, label: 'Friday, November 6, 2026',
+    StaticText, label: '7:00 PM–8:00 PM · 60 分鐘',
+    StaticText, label: 'Asia/Taipei',
+    StaticText, label: '尚未指定地點',
+    StaticText, label: '阿不存在',
+    StaticText, label: '不提醒',
+    StaticText, label: '編輯',
+    StaticText, label: '不提醒',
+    StaticText, label: '保留原姓名，繼續但不指定聯絡人',
+    StaticText, label: 'AI 處理紀錄'
+)}
+Possibly caused by runtime issues:
+Automation type mismatch: computed StaticText from legacy attributes vs DisclosureTriangle from modern attribute. Input attributes and values: {
+    "XC_kAXXCAttributeAutomationType" = 13;
+    "XC_kAXXCAttributeElementBaseType" = NSObject;
+    "XC_kAXXCAttributeElementType" = "SwiftUI.AccessibilityNode";
+    "XC_kAXXCAttributeTraits" = 8589934656;
+}
+Automation type mismatch: computed Other from legacy attributes vs StaticText from modern attribute. Input attributes and values: {
+    "XC_kAXXCAttributeAutomationType" = 48;
+    "XC_kAXXCAttributeElementBaseType" = UILabel;
+    "XC_kAXXCAttributeElementType" = UILabel;
+    "XC_kAXXCAttributeTraits" = 8590000128;
+}
+See test report attachments for more detail.
+    t =   100.13s Tear Down
+    t =   100.13s         Find the Target Application 'com.demo.MessyNote'
+    t =   100.29s     Added attachment named 'Failure final UI state screenshot'
+    t =   100.29s         Requesting snapshot of accessibility hierarchy for app with pid 71020
+    t =   100.46s         Requesting snapshot of accessibility hierarchy for app with pid 71020
+    t =   100.50s     Added attachment named 'Failure final UI state accessibility hierarchy'
+Test Case '-[MessyNoteUITests.CaseCUITests testCaseCNaturalLanguageCompletion]' failed (101.073 seconds).
+Test Suite 'CaseCUITests' failed at 2026-10-27 16:17:58.752.
+	 Executed 1 test, with 1 failure (0 unexpected) in 101.073 (101.082) seconds
+Test Suite 'MessyNoteUITests.xctest' failed at 2026-10-27 16:17:58.769.
+	 Executed 1 test, with 1 failure (0 unexpected) in 101.073 (101.099) seconds
+Test Suite 'Selected tests' failed at 2026-10-27 16:17:58.804.
+	 Executed 1 test, with 1 failure (0 unexpected) in 101.073 (101.137) seconds
+2026-10-27 16:18:01.318 xcodebuild[70898:11944222] [MT] IDESchemeActionSDKRecord: operatingSystemBuild = <DVTBuildVersion 24A94232>, error = invalidDigitCount(94232).
+2026-10-27 16:18:01.323 xcodebuild[70898:11944222] [MT] IDESchemeActionSDKRecord: operatingSystemBuild = <DVTBuildVersion 24A94232>, error = invalidDigitCount(94232).
+2026-10-27 16:18:01.329 xcodebuild[70898:11944222] [MT] IDESchemeActionSDKRecord: operatingSystemBuild = <DVTBuildVersion 24A94232>, error = invalidDigitCount(94232).
+2026-10-27 16:18:01.347 xcodebuild[70898:11944222] [MT] IDESchemeActionSDKRecord: operatingSystemBuild = <DVTBuildVersion 24A94232>, error = invalidDigitCount(94232).
+2026-10-27 16:18:01.347 xcodebuild[70898:11944222] [MT] IDESchemeActionSDKRecord: operatingSystemBuild = <DVTBuildVersion 24A94232>, error = invalidDigitCount(94232).
+2026-10-27 16:18:01.348 xcodebuild[70898:11944222] [MT] IDESchemeActionSDKRecord: operatingSystemBuild = <DVTBuildVersion 24A94232>, error = invalidDigitCount(94232).
+2026-10-27 16:18:01.616 xcodebuild[70898:11944222] [MT] IDETestOperationsObserverDebug: 114.247 elapsed -- Testing started completed.
+2026-10-27 16:18:01.616 xcodebuild[70898:11944222] [MT] IDETestOperationsObserverDebug: 0.000 sec, +0.000 sec -- start
+2026-10-27 16:18:01.616 xcodebuild[70898:11944222] [MT] IDETestOperationsObserverDebug: 114.247 sec, +114.247 sec -- end
+
+Test session results, code coverage, and logs:
+	/tmp/fmdemo-studio-evidence-2.xcresult
+
+Failing tests:
+	CaseCUITests.testCaseCNaturalLanguageCompletion()
+
+** TEST FAILED **
+
+Testing started

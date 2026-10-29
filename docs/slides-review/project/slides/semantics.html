@@ -1,0 +1,31 @@
+<section id="semantics" data-transition="fade" style="background:#f8f2ea;color:#2b1a14;font-family:'Noto Sans TC', Arial, sans-serif;padding:176px 128px 128px;display:flex;flex-direction:column;gap:48px">
+<p style="position:absolute;left:128px;top:72px;width:160px;font-size:28px;letter-spacing:6px;color:#c4512f">●●●</p>
+<p style="position:absolute;left:1312px;top:72px;width:480px;text-align:right;font-family:'Montserrat', 'Noto Sans TC', Arial, sans-serif;font-size:24px;font-weight:800;color:#c4512f">▲ iOS TECH SHARING</p>
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:700;letter-spacing:3px;color:#8a2e1c">③ 延伸</p>
+<h2 style="font-family:'Montserrat', 'Noto Sans TC', Arial, sans-serif;font-size:72px;font-weight:800;line-height:1.1;color:#c4512f">保證結構，不保證語意</h2>
+</div>
+<div style="display:flex;flex-direction:row;align-items:center;gap:20px">
+<div style="width:400px;display:flex;flex-direction:column;gap:12px;background:#fffaf4;border:1px solid #e3cdbb;border-radius:4px;padding:36px">
+<p style="font-family:'Montserrat', Arial, sans-serif;font-size:36px;font-weight:800;color:#c4512f">01</p>
+<p style="font-size:24px;font-weight:700;color:#6b5446">使用者說</p>
+<p style="font-size:32px;line-height:1.4;color:#2b1a14">「下週三下午三點」</p>
+</div>
+<x-connector style="width:64px;color:#c4512f;border-width:3px"></x-connector>
+<div style="width:500px;display:flex;flex-direction:column;gap:12px;background:#2b1a14;border-radius:4px;padding:36px">
+<p style="font-family:'Montserrat', Arial, sans-serif;font-size:36px;font-weight:800;color:#f2a65a">02</p>
+<p style="font-size:24px;font-weight:700;color:#f2a65a">模型只輸出語意</p>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:26px;line-height:1.5;color:#f8f2ea">kind: "nextWeek"<br>weekday: 3 · hour: 15</p>
+</div>
+<x-connector style="width:64px;color:#c4512f;border-width:3px"></x-connector>
+<div style="flex:1;display:flex;flex-direction:column;gap:12px;background:#c4512f;border-radius:4px;padding:36px">
+<p style="font-family:'Montserrat', Arial, sans-serif;font-size:36px;font-weight:800;color:#fff8f0">03</p>
+<p style="font-size:24px;font-weight:700;color:#fff8f0">Swift 算日期</p>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:26px;line-height:1.5;color:#fff8f0">DateResolver<br>→ 10/28 15:00</p>
+</div>
+</div>
+<div style="border-top:1px solid #c4512f;padding:28px 0 0">
+<p style="font-size:30px;line-height:1.55;color:#6b5446">型別能保證 hour 在 0–23，卻無法保證它真的是使用者說的那個時間。<br><span style="color:#8a2e1c">模型負責理解，計算和驗證交給 Swift，最後交給人確認。</span></p>
+</div>
+<aside>Guided Generation 的盲點：結構一定對，內容不一定對。模型可能把星期幾算錯、把「晚上」猜成 19 點。MessyNote 的做法是讓模型只輸出「語意」——相對幾天、下週星期幾、明確的年月日——真正的日期由 Swift 的 DateResolver 計算，它會拒絕不存在的日期和 DST 不存在的時刻。這是整個 demo 最值得帶走的設計原則。</aside>
+</section>

@@ -1,0 +1,364 @@
+Command line invocation:
+    /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -xctestrun /private/tmp/messynote-case-c-xcuitest/Build/Products/MessyNoteCaseCUI_iphonesimulator27.1-arm64-x86_64.xctestrun -destination "platform=iOS Simulator,id=280085F1-11D0-4221-B90F-59FD4226E464" -collect-test-diagnostics never "-only-testing:MessyNoteUITests/CaseCUITests/testCaseCNaturalLanguageCompletion" -parallel-testing-enabled NO -resultBundlePath /private/tmp/messynote-c-ui-validation/c-ui-second.xcresult test-without-building
+
+Writing result bundle at path:
+	/private/tmp/messynote-c-ui-validation/c-ui-second.xcresult
+
+2026-10-22 14:15:22.760 xcodebuild[50702:4419589] [MT] IDESchemeActionSDKRecord: operatingSystemBuild = <DVTBuildVersion 24A94232>, error = invalidDigitCount(94232).
+2026-10-22 14:15:28.613329+0800 MessyNoteUITests-Runner[50708:4420015] [Default] Running tests...
+    t =      nans Interface orientation changed to Portrait
+Test Suite 'Selected tests' started at 2026-10-22 14:15:33.179.
+Test Suite 'MessyNoteUITests.xctest' started at 2026-10-22 14:15:33.183.
+Test Suite 'CaseCUITests' started at 2026-10-22 14:15:33.183.
+Test Case '-[MessyNoteUITests.CaseCUITests testCaseCNaturalLanguageCompletion]' started.
+    t =     0.01s Start Test at 2026-10-22 14:15:33.190
+    t =     0.09s Set Up
+    t =     0.10s Open com.demo.MessyNote
+    t =     0.10s     Launch com.demo.MessyNote
+2026-10-22 14:15:33.555 xcodebuild[50702:4419589] [MT] IDELaunchParametersSnapshot: debugger version lookup failed for path '<nil>': noURL
+2026-10-22 14:15:33.555 xcodebuild[50702:4419589] [MT] IDELaunchParametersSnapshot: no debugger version
+2026-10-22 14:15:33.563 xcodebuild[50702:4419589] [MT] IDESchemeActionSDKRecord: operatingSystemBuild = <DVTBuildVersion 24A94232>, error = invalidDigitCount(94232).
+objc[50708]: Class UIAccessibilityLoaderWebShared is implemented in both /private/var/run/com.apple.security.cryptexd/mnt/com.apple.iPhoneOS.SimulatorRuntime-v24.1.434.0.sSuNwl/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 27.0.simruntime/Contents/Resources/RuntimeRoot/System/Library/AccessibilityBundles/WebKit.axbundle/WebKit (0x1060e8398) and /private/var/run/com.apple.security.cryptexd/mnt/com.apple.iPhoneOS.SimulatorRuntime-v24.1.434.0.sSuNwl/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 27.0.simruntime/Contents/Resources/RuntimeRoot/System/Library/AccessibilityBundles/WebCore.axbundle/WebCore (0x1061f4310). This may cause spurious casting failures and mysterious crashes. One of the duplicates must be removed or renamed.
+    t =     1.80s         Setting up automation session
+    t =     4.50s         Wait for com.demo.MessyNote to idle
+    t =     7.67s Find the Target Application 'com.demo.MessyNote'
+    t =     7.95s Added attachment named '01 launched screenshot'
+    t =     7.95s Requesting snapshot of accessibility hierarchy for app with pid 50842
+    t =     8.16s Requesting snapshot of accessibility hierarchy for app with pid 50842
+    t =     8.20s Added attachment named '01 launched accessibility hierarchy'
+    t =     9.25s Checking `Expect predicate `exists == 1` for object "Demo Fixture Mode" Switch`
+    t =     9.26s     Checking existence of `"Demo Fixture Mode" Switch`
+    t =     9.32s Find the Target Application 'com.demo.MessyNote'
+    t =     9.43s Added attachment named 'Fixture switch screenshot'
+    t =     9.43s Requesting snapshot of accessibility hierarchy for app with pid 50842
+    t =     9.65s Requesting snapshot of accessibility hierarchy for app with pid 50842
+    t =     9.69s Added attachment named 'Fixture switch accessibility hierarchy'
+    t =     9.69s Find the "Demo Fixture Mode" Switch
+    t =     9.72s Tap "Demo Fixture Mode" Switch[0.90, 0.50]
+    t =     9.72s     Wait for com.demo.MessyNote to idle
+    t =     9.72s     Find the "Demo Fixture Mode" Switch
+    t =     9.75s     Check for interrupting elements affecting "Demo Fixture Mode" Switch
+    t =     9.85s     Synthesize event
+    t =     9.88s         Find the "Demo Fixture Mode" Switch
+    t =     9.94s         Find the "Demo Fixture Mode" Switch
+    t =    10.13s         Find the "Demo Fixture Mode" Switch
+    t =    10.50s     Wait for com.demo.MessyNote to idle
+    t =    12.88s Checking `Expect predicate `value == "1"` for object "Demo Fixture Mode" Switch`
+    t =    12.89s     Find the "Demo Fixture Mode" Switch
+    t =    12.94s Find the "Demo Fixture Mode" Switch
+    t =    12.97s Checking existence of `"隨手筆記或修改指令" TextView`
+    t =    13.00s Checking existence of `"隨手筆記或修改指令" TextField`
+    t =    13.02s Tap "隨手筆記或修改指令" TextField
+    t =    13.02s     Wait for com.demo.MessyNote to idle
+    t =    13.03s     Find the "隨手筆記或修改指令" TextField
+    t =    13.05s     Check for interrupting elements affecting "隨手筆記或修改指令" TextField
+    t =    13.08s     Synthesize event
+    t =    13.48s     Wait for com.demo.MessyNote to idle
+    t =    14.22s Find the "隨手筆記或修改指令" TextField
+    t =    14.28s Press "隨手筆記或修改指令" TextField for 1.2 seconds
+    t =    14.28s     Wait for com.demo.MessyNote to idle
+    t =    14.29s     Find the "隨手筆記或修改指令" TextField
+    t =    14.33s     Check for interrupting elements affecting "隨手筆記或修改指令" TextField
+    t =    14.37s     Synthesize event
+    t =    15.81s     Wait for com.demo.MessyNote to idle
+    t =    16.65s Checking existence of `"Select All" MenuItem`
+    t =    17.79s Checking `Expect predicate `exists == 1` for object "Select All" MenuItem`
+    t =    17.79s     Checking existence of `"Select All" MenuItem`
+    t =    17.84s Find the Target Application 'com.demo.MessyNote'
+    t =    17.96s Added attachment named 'Select All for input replacement screenshot'
+    t =    17.96s Requesting snapshot of accessibility hierarchy for app with pid 50842
+    t =    18.26s Requesting snapshot of accessibility hierarchy for app with pid 50842
+    t =    18.32s Added attachment named 'Select All for input replacement accessibility hierarchy'
+    t =    18.32s Tap "Select All" MenuItem
+    t =    18.32s     Wait for com.demo.MessyNote to idle
+    t =    18.32s     Find the "Select All" MenuItem
+    t =    18.37s     Check for interrupting elements affecting "Select All" MenuItem
+    t =    18.41s     Synthesize event
+    t =    18.71s     Wait for com.demo.MessyNote to idle
+    t =    19.43s Type '' into "隨手筆記或修改指令" TextField
+    t =    19.43s     Wait for com.demo.MessyNote to idle
+    t =    19.44s     Find the "隨手筆記或修改指令" TextField
+    t =    19.51s     Check for interrupting elements affecting "隨手筆記或修改指令" TextField
+    t =    19.56s     Synthesize event
+    t =    19.81s     Wait for com.demo.MessyNote to idle
+    t =    20.21s Type '下週五晚上跟一個不存在於 Conta...' into "隨手筆記或修改指令" TextField
+    t =    20.21s     Wait for com.demo.MessyNote to idle
+    t =    20.21s     Find the "隨手筆記或修改指令" TextField
+    t =    20.26s     Check for interrupting elements affecting "今天想做什麼？" TextField
+    t =    20.30s     Synthesize event
+    t =    20.96s     Wait for com.demo.MessyNote to idle
+    t =    20.97s Find the "今天想做什麼？" TextField
+    t =    21.01s Find the Target Application 'com.demo.MessyNote'
+    t =    21.12s Added attachment named '02 initial Chinese input and fixture ON screenshot'
+    t =    21.12s Requesting snapshot of accessibility hierarchy for app with pid 50842
+    t =    21.36s Requesting snapshot of accessibility hierarchy for app with pid 50842
+    t =    21.41s Added attachment named '02 initial Chinese input and fixture ON accessibility hierarchy'
+    t =    21.42s Checking existence of `"✨ Make it happen" Button`
+    t =    21.45s Find the "✨ Make it happen" Button
+    t =    21.50s Find the "✨ Make it happen" Button
+    t =    21.53s Tap "✨ Make it happen" Button
+    t =    21.53s     Wait for com.demo.MessyNote to idle
+    t =    21.54s     Find the "✨ Make it happen" Button
+    t =    21.57s     Check for interrupting elements affecting "✨ Make it happen" Button
+    t =    21.61s     Synthesize event
+    t =    21.91s     Wait for com.demo.MessyNote to idle
+    t =    22.37s Swipe up Target Application 'com.demo.MessyNote'
+    t =    22.37s     Wait for com.demo.MessyNote to idle
+    t =    22.37s     Find the Target Application 'com.demo.MessyNote'
+    t =    22.72s     Check for interrupting elements affecting "MessyNote" Application
+    t =    22.79s     Synthesize event
+    t =    23.29s     Wait for com.demo.MessyNote to idle
+    t =    24.96s Checking `Expect predicate `exists == 1` for object "Event · 尚待時間確認" StaticText`
+    t =    24.96s     Checking existence of `"Event · 尚待時間確認" StaticText`
+    t =    25.05s     Capturing element debug description
+    t =    25.98s Checking `Expect predicate `exists == 1` for object "Event · 尚待時間確認" StaticText`
+    t =    25.99s     Checking existence of `"Event · 尚待時間確認" StaticText`
+    t =    26.06s     Capturing element debug description
+    t =    26.99s Checking `Expect predicate `exists == 1` for object "Event · 尚待時間確認" StaticText`
+    t =    26.99s     Checking existence of `"Event · 尚待時間確認" StaticText`
+    t =    27.35s     Capturing element debug description
+    t =    27.97s Checking `Expect predicate `exists == 1` for object "Event · 尚待時間確認" StaticText`
+    t =    27.97s     Checking existence of `"Event · 尚待時間確認" StaticText`
+    t =    28.02s     Capturing element debug description
+    t =    28.96s Checking `Expect predicate `exists == 1` for object "Event · 尚待時間確認" StaticText`
+    t =    28.96s     Checking existence of `"Event · 尚待時間確認" StaticText`
+    t =    29.02s     Capturing element debug description
+    t =    29.95s Checking `Expect predicate `exists == 1` for object "Event · 尚待時間確認" StaticText`
+    t =    30.04s     Checking existence of `"Event · 尚待時間確認" StaticText`
+    t =    30.27s     Capturing element debug description
+    t =    31.00s Checking `Expect predicate `exists == 1` for object "Event · 尚待時間確認" StaticText`
+    t =    31.00s     Checking existence of `"Event · 尚待時間確認" StaticText`
+    t =    31.05s     Capturing element debug description
+    t =    31.99s Checking `Expect predicate `exists == 1` for object "Event · 尚待時間確認" StaticText`
+    t =    31.99s     Checking existence of `"Event · 尚待時間確認" StaticText`
+    t =    32.03s     Capturing element debug description
+    t =    32.97s Checking `Expect predicate `exists == 1` for object "Event · 尚待時間確認" StaticText`
+    t =    32.97s     Checking existence of `"Event · 尚待時間確認" StaticText`
+    t =    33.04s     Capturing element debug description
+    t =    33.98s Checking `Expect predicate `exists == 1` for object "Event · 尚待時間確認" StaticText`
+    t =    33.98s     Checking existence of `"Event · 尚待時間確認" StaticText`
+    t =    34.04s     Capturing element debug description
+    t =    34.97s Checking `Expect predicate `exists == 1` for object "Event · 尚待時間確認" StaticText`
+    t =    34.97s     Checking existence of `"Event · 尚待時間確認" StaticText`
+    t =    38.03s     Capturing element debug description
+    t =    38.97s Checking `Expect predicate `exists == 1` for object "Event · 尚待時間確認" StaticText`
+    t =    39.00s     Checking existence of `"Event · 尚待時間確認" StaticText`
+    t =    40.47s     Capturing element debug description
+    t =    40.98s Checking `Expect predicate `exists == 1` for object "Event · 尚待時間確認" StaticText`
+    t =    40.99s     Checking existence of `"Event · 尚待時間確認" StaticText`
+    t =    41.13s Find the Target Application 'com.demo.MessyNote'
+    t =    41.39s Added attachment named '03 pending draft screenshot'
+    t =    41.39s Requesting snapshot of accessibility hierarchy for app with pid 50842
+    t =    41.74s Requesting snapshot of accessibility hierarchy for app with pid 50842
+    t =    41.81s Added attachment named '03 pending draft accessibility hierarchy'
+    t =    41.82s Checking existence of `StaticText (First Match)`
+    t =    41.92s Find the StaticText (First Match)
+    t =    42.07s Find the "固定草稿日期：Friday, October 30, 2026" StaticText
+    t =    42.16s Find the "固定草稿日期：Friday, October 30, 2026" StaticText
+    t =    42.34s Added attachment named 'Captured pending date'
+    t =    42.34s Find the Target Application 'com.demo.MessyNote'
+    t =    42.52s Added attachment named '04 fixed Friday captured screenshot'
+    t =    42.52s Requesting snapshot of accessibility hierarchy for app with pid 50842
+    t =    42.87s Requesting snapshot of accessibility hierarchy for app with pid 50842
+    t =    42.94s Added attachment named '04 fixed Friday captured accessibility hierarchy'
+    t =    42.94s Find the "隨手筆記或修改指令" TextField
+    t =    42.99s Checking existence of `"隨手筆記或修改指令" TextField`
+    t =    43.04s Tap "隨手筆記或修改指令" TextField
+    t =    43.04s     Wait for com.demo.MessyNote to idle
+    t =    43.04s     Find the "隨手筆記或修改指令" TextField
+    t =    43.08s     Check for interrupting elements affecting "隨手筆記或修改指令" TextField
+    t =    43.13s     Synthesize event
+    t =    43.48s     Wait for com.demo.MessyNote to idle
+    t =    43.67s Find the "隨手筆記或修改指令" TextField
+    t =    43.97s Press "隨手筆記或修改指令" TextField for 1.2 seconds
+    t =    43.97s     Wait for com.demo.MessyNote to idle
+    t =    44.33s     Find the "隨手筆記或修改指令" TextField
+    t =    44.40s     Check for interrupting elements affecting "隨手筆記或修改指令" TextField
+    t =    44.45s     Synthesize event
+    t =    45.89s     Wait for com.demo.MessyNote to idle
+    t =    46.74s Checking existence of `"Select All" MenuItem`
+    t =    47.84s Checking `Expect predicate `exists == 1` for object "Select All" MenuItem`
+    t =    47.84s     Checking existence of `"Select All" MenuItem`
+    t =    47.92s Find the Target Application 'com.demo.MessyNote'
+    t =    48.05s Added attachment named 'Select All for input replacement screenshot'
+    t =    48.05s Requesting snapshot of accessibility hierarchy for app with pid 50842
+    t =    48.39s Requesting snapshot of accessibility hierarchy for app with pid 50842
+    t =    48.46s Added attachment named 'Select All for input replacement accessibility hierarchy'
+    t =    48.46s Tap "Select All" MenuItem
+    t =    48.46s     Wait for com.demo.MessyNote to idle
+    t =    48.47s     Find the "Select All" MenuItem
+    t =    48.52s     Check for interrupting elements affecting "Select All" MenuItem
+    t =    48.56s     Synthesize event
+    t =    48.87s     Wait for com.demo.MessyNote to idle
+    t =    49.39s Type '' into "隨手筆記或修改指令" TextField
+    t =    49.39s     Wait for com.demo.MessyNote to idle
+    t =    49.39s     Find the "隨手筆記或修改指令" TextField
+    t =    49.45s     Check for interrupting elements affecting "隨手筆記或修改指令" TextField
+    t =    49.50s     Synthesize event
+    t =    49.75s     Wait for com.demo.MessyNote to idle
+    t =    50.14s Type '晚上七點，吃飯一小時，同行者叫阿不存在' into "隨手筆記或修改指令" TextField
+    t =    50.14s     Wait for com.demo.MessyNote to idle
+    t =    50.14s     Find the "隨手筆記或修改指令" TextField
+    t =    50.19s     Check for interrupting elements affecting "今天想做什麼？" TextField
+    t =    50.25s     Synthesize event
+    t =    50.79s     Wait for com.demo.MessyNote to idle
+    t =    50.79s Find the "今天想做什麼？" TextField
+    t =    50.84s Find the Target Application 'com.demo.MessyNote'
+    t =    50.97s Added attachment named '05 follow-up Chinese input screenshot'
+    t =    50.97s Requesting snapshot of accessibility hierarchy for app with pid 50842
+    t =    51.37s Requesting snapshot of accessibility hierarchy for app with pid 50842
+    t =    51.43s Added attachment named '05 follow-up Chinese input accessibility hierarchy'
+    t =    51.43s Checking existence of `"✨ Make it happen" Button`
+    t =    51.48s Find the "✨ Make it happen" Button
+    t =    51.53s Tap "✨ Make it happen" Button
+    t =    51.53s     Wait for com.demo.MessyNote to idle
+    t =    51.54s     Find the "✨ Make it happen" Button
+    t =    51.58s     Check for interrupting elements affecting "✨ Make it happen" Button
+    t =    51.62s     Synthesize event
+    t =    51.93s     Wait for com.demo.MessyNote to idle
+    t =    52.30s Swipe up Target Application 'com.demo.MessyNote'
+    t =    52.30s     Wait for com.demo.MessyNote to idle
+    t =    52.30s     Find the Target Application 'com.demo.MessyNote'
+    t =    52.34s     Check for interrupting elements affecting "MessyNote" Application
+    t =    52.38s     Synthesize event
+    t =    52.81s     Wait for com.demo.MessyNote to idle
+    t =    54.37s Checking `Expect predicate `exists == 1` for object "Event · 請確認與修改" StaticText`
+    t =    54.39s     Checking existence of `"Event · 請確認與修改" StaticText`
+    t =    55.11s     Capturing element debug description
+    t =    55.35s Checking `Expect predicate `exists == 1` for object "Event · 請確認與修改" StaticText`
+    t =    55.36s     Checking existence of `"Event · 請確認與修改" StaticText`
+    t =    55.47s     Capturing element debug description
+    t =    56.30s Checking `Expect predicate `exists == 1` for object "Event · 請確認與修改" StaticText`
+    t =    56.30s     Checking existence of `"Event · 請確認與修改" StaticText`
+    t =    56.36s     Capturing element debug description
+    t =    57.39s Checking `Expect predicate `exists == 1` for object "Event · 請確認與修改" StaticText`
+    t =    57.39s     Checking existence of `"Event · 請確認與修改" StaticText`
+    t =    57.50s     Capturing element debug description
+    t =    58.34s Checking `Expect predicate `exists == 1` for object "Event · 請確認與修改" StaticText`
+    t =    58.34s     Checking existence of `"Event · 請確認與修改" StaticText`
+    t =    59.76s     Capturing element debug description
+    t =    60.39s Checking `Expect predicate `exists == 1` for object "Event · 請確認與修改" StaticText`
+    t =    60.39s     Checking existence of `"Event · 請確認與修改" StaticText`
+    t =    60.46s     Capturing element debug description
+    t =    61.39s Checking `Expect predicate `exists == 1` for object "Event · 請確認與修改" StaticText`
+    t =    61.40s     Checking existence of `"Event · 請確認與修改" StaticText`
+    t =    61.47s     Capturing element debug description
+    t =    62.40s Checking `Expect predicate `exists == 1` for object "Event · 請確認與修改" StaticText`
+    t =    62.40s     Checking existence of `"Event · 請確認與修改" StaticText`
+    t =    62.55s     Capturing element debug description
+    t =    63.38s Checking `Expect predicate `exists == 1` for object "Event · 請確認與修改" StaticText`
+    t =    63.38s     Checking existence of `"Event · 請確認與修改" StaticText`
+    t =    63.46s     Capturing element debug description
+    t =    64.46s Checking `Expect predicate `exists == 1` for object "Event · 請確認與修改" StaticText`
+    t =    64.48s     Checking existence of `"Event · 請確認與修改" StaticText`
+    t =    64.62s     Capturing element debug description
+    t =    65.34s Checking `Expect predicate `exists == 1` for object "Event · 請確認與修改" StaticText`
+    t =    65.34s     Checking existence of `"Event · 請確認與修改" StaticText`
+    t =    65.41s     Capturing element debug description
+    t =    66.35s Checking `Expect predicate `exists == 1` for object "Event · 請確認與修改" StaticText`
+    t =    66.35s     Checking existence of `"Event · 請確認與修改" StaticText`
+    t =    66.43s     Capturing element debug description
+    t =    67.36s Checking `Expect predicate `exists == 1` for object "Event · 請確認與修改" StaticText`
+    t =    67.36s     Checking existence of `"Event · 請確認與修改" StaticText`
+    t =    67.41s     Capturing element debug description
+    t =    68.37s Checking `Expect predicate `exists == 1` for object "Event · 請確認與修改" StaticText`
+    t =    68.40s     Checking existence of `"Event · 請確認與修改" StaticText`
+    t =    68.70s     Capturing element debug description
+    t =    69.40s Checking `Expect predicate `exists == 1` for object "Event · 請確認與修改" StaticText`
+    t =    69.40s     Checking existence of `"Event · 請確認與修改" StaticText`
+    t =    71.74s     Capturing element debug description
+    t =    72.35s Checking `Expect predicate `exists == 1` for object "Event · 請確認與修改" StaticText`
+    t =    72.35s     Checking existence of `"Event · 請確認與修改" StaticText`
+    t =    72.63s Find the Target Application 'com.demo.MessyNote'
+    t =    72.88s Added attachment named '06 completed event screenshot'
+    t =    72.88s Requesting snapshot of accessibility hierarchy for app with pid 50842
+    t =    73.26s Requesting snapshot of accessibility hierarchy for app with pid 50842
+    t =    73.33s Added attachment named '06 completed event accessibility hierarchy'
+    t =    73.33s Checking existence of `"Event · 尚待時間確認" StaticText`
+    t =    73.38s Checking existence of `DatePicker (First Match)`
+    t =    73.65s Find the DatePicker (First Match)
+    t =    74.95s Checking existence of `DatePicker at {{154.3, 706.0}, {215.7, 36.0}}`
+    t =    75.24s Requesting snapshot of accessibility hierarchy for app with pid 50842
+    t =    75.64s Requesting snapshot of accessibility hierarchy for app with pid 50842
+    t =    75.74s Requesting snapshot of accessibility hierarchy for app with pid 50842
+    t =    75.82s Find: Descendants matching type DatePicker
+    t =    75.82s Requesting snapshot of accessibility hierarchy for app with pid 50842
+    t =    75.94s Checking existence of `"持續 60 分鐘" Stepper`
+    t =    76.00s Find the "持續 60 分鐘" Stepper
+    t =    76.15s Checking existence of `"持續 60 分鐘" Stepper`
+    t =    76.21s Checking existence of `"參與者姓名" TextField`
+    t =    76.27s Swipe up Target Application 'com.demo.MessyNote'
+    t =    76.27s     Wait for com.demo.MessyNote to idle
+    t =    76.28s     Find the Target Application 'com.demo.MessyNote'
+    t =    76.34s     Check for interrupting elements affecting "MessyNote" Application
+    t =    76.51s     Synthesize event
+    t =    76.97s     Wait for com.demo.MessyNote to idle
+    t =    79.10s Checking existence of `"參與者姓名" TextField`
+    t =    79.20s Find the "參與者姓名" TextField
+    t =    79.29s Find the "參與者姓名" TextField
+    t =    79.34s Find the Target Application 'com.demo.MessyNote'
+    t =    79.49s Added attachment named '07 event date time duration and attendee screenshot'
+    t =    79.49s Requesting snapshot of accessibility hierarchy for app with pid 50842
+    t =    79.83s Requesting snapshot of accessibility hierarchy for app with pid 50842
+    t =    79.90s Added attachment named '07 event date time duration and attendee accessibility hierarchy'
+    t =    79.90s Checking existence of `"找不到可存取的聯絡人（可能受限於部分存取權）。" StaticText`
+    t =    79.95s Find the "找不到可存取的聯絡人（可能受限於部分存取權）。" StaticText
+    t =    81.04s Checking `Expect predicate `exists == 1` for object "找不到可存取的聯絡人（可能受限於部分存取權）。" StaticText`
+    t =    81.04s     Checking existence of `"找不到可存取的聯絡人（可能受限於部分存取權）。" StaticText`
+    t =    81.09s Find the Target Application 'com.demo.MessyNote'
+    t =    81.22s Added attachment named '08 empty Contacts result screenshot'
+    t =    81.22s Requesting snapshot of accessibility hierarchy for app with pid 50842
+    t =    81.52s Requesting snapshot of accessibility hierarchy for app with pid 50842
+    t =    81.59s Added attachment named '08 empty Contacts result accessibility hierarchy'
+    t =    81.59s Checking existence of `"此時段沒有衝突（查詢當下）" StaticText`
+    t =    81.64s Find the "此時段沒有衝突（查詢當下）" StaticText
+    t =    82.72s Checking `Expect predicate `exists == 1` for object "此時段沒有衝突（查詢當下）" StaticText`
+    t =    82.72s     Checking existence of `"此時段沒有衝突（查詢當下）" StaticText`
+    t =    82.79s Find the Target Application 'com.demo.MessyNote'
+    t =    82.93s Added attachment named '09 empty Calendar result screenshot'
+    t =    82.93s Requesting snapshot of accessibility hierarchy for app with pid 50842
+    t =    83.27s Requesting snapshot of accessibility hierarchy for app with pid 50842
+    t =    83.37s Added attachment named '09 empty Calendar result accessibility hierarchy'
+    t =    83.37s Checking existence of `"→ FindContactTool(阿不存在)" StaticText`
+    t =    83.42s Swipe up Target Application 'com.demo.MessyNote'
+    t =    83.42s     Wait for com.demo.MessyNote to idle
+    t =    83.43s     Find the Target Application 'com.demo.MessyNote'
+    t =    83.46s     Check for interrupting elements affecting "MessyNote" Application
+    t =    83.50s     Synthesize event
+    t =    83.93s     Wait for com.demo.MessyNote to idle
+    t =    84.89s Checking existence of `"→ FindContactTool(阿不存在)" StaticText`
+    t =    84.96s Find the "→ FindContactTool(阿不存在)" StaticText
+    t =    85.01s Checking existence of `"→ FindContactTool(阿不存在)" StaticText`
+    t =    85.05s Checking existence of `"→ CheckCalendarTool(7:00 PM)" StaticText`
+    t =    85.10s Find the "→ CheckCalendarTool(7:00 PM)" StaticText
+    t =    85.15s Checking existence of `"→ CheckCalendarTool(7:00 PM)" StaticText`
+    t =    85.19s Checking existence of `"已加入系統行事曆" StaticText`
+    t =    85.24s Find the Target Application 'com.demo.MessyNote'
+    t =    85.36s Added attachment named '10 true tool activity; no calendar save screenshot'
+    t =    85.36s Requesting snapshot of accessibility hierarchy for app with pid 50842
+    t =    86.12s Requesting snapshot of accessibility hierarchy for app with pid 50842
+    t =    86.19s Added attachment named '10 true tool activity; no calendar save accessibility hierarchy'
+    t =    86.19s Tear Down
+Test Case '-[MessyNoteUITests.CaseCUITests testCaseCNaturalLanguageCompletion]' passed (86.582 seconds).
+Test Suite 'CaseCUITests' passed at 2026-10-22 14:16:59.775.
+	 Executed 1 test, with 0 failures (0 unexpected) in 86.582 (86.592) seconds
+Test Suite 'MessyNoteUITests.xctest' passed at 2026-10-22 14:16:59.784.
+	 Executed 1 test, with 0 failures (0 unexpected) in 86.582 (86.601) seconds
+Test Suite 'Selected tests' passed at 2026-10-22 14:16:59.792.
+	 Executed 1 test, with 0 failures (0 unexpected) in 86.582 (86.613) seconds
+2026-10-22 14:16:59.899 xcodebuild[50702:4419589] [MT] IDESchemeActionSDKRecord: operatingSystemBuild = <DVTBuildVersion 24A94232>, error = invalidDigitCount(94232).
+2026-10-22 14:16:59.906 xcodebuild[50702:4419589] [MT] IDESchemeActionSDKRecord: operatingSystemBuild = <DVTBuildVersion 24A94232>, error = invalidDigitCount(94232).
+2026-10-22 14:16:59.918 xcodebuild[50702:4419589] [MT] IDESchemeActionSDKRecord: operatingSystemBuild = <DVTBuildVersion 24A94232>, error = invalidDigitCount(94232).
+2026-10-22 14:16:59.945 xcodebuild[50702:4419589] [MT] IDESchemeActionSDKRecord: operatingSystemBuild = <DVTBuildVersion 24A94232>, error = invalidDigitCount(94232).
+2026-10-22 14:16:59.946 xcodebuild[50702:4419589] [MT] IDESchemeActionSDKRecord: operatingSystemBuild = <DVTBuildVersion 24A94232>, error = invalidDigitCount(94232).
+2026-10-22 14:16:59.947 xcodebuild[50702:4419589] [MT] IDESchemeActionSDKRecord: operatingSystemBuild = <DVTBuildVersion 24A94232>, error = invalidDigitCount(94232).
+2026-10-22 14:17:00.227 xcodebuild[50702:4419589] [MT] IDETestOperationsObserverDebug: 97.678 elapsed -- Testing started completed.
+2026-10-22 14:17:00.227 xcodebuild[50702:4419589] [MT] IDETestOperationsObserverDebug: 0.000 sec, +0.000 sec -- start
+2026-10-22 14:17:00.227 xcodebuild[50702:4419589] [MT] IDETestOperationsObserverDebug: 97.678 sec, +97.678 sec -- end
+
+Test session results, code coverage, and logs:
+	/tmp/messynote-c-ui-validation/c-ui-second.xcresult
+
+** TEST EXECUTE SUCCEEDED **
+
+Testing started

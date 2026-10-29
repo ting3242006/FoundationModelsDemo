@@ -1,0 +1,11 @@
+Final v12 documentation verification
+Current manifest: docs/final-source-sha256.txt
+Portable manifest: docs/final-acceptance/sources.sha256
+Both SHA-256 checks: exit 0; 52 / 52 OK.
+Four v12 source files also match pre-UI freeze checksums: 4 / 4 OK.
+Markdown files checked: 22.
+Local linked files checked: 199; missing: 0; checker exit 0.
+Link check validates file existence; fragment anchors and external URLs are not requested/checked.
+Selected attachments: 42; each recorded source file exists.
+No product, test, project or scheme file changed during documentation work.
+No build, test, simulator operation, signing, install, commit or deployment during this documentation task.

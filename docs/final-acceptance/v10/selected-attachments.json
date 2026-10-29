@@ -1,0 +1,74 @@
+[
+  {
+    "stage": "10 true tool activity; no calendar save",
+    "originalAttachment": "61F02FCC-50B1-440F-8DD5-44988D4D94E9.txt",
+    "file": "c-tools.txt",
+    "sourceResult": "/private/tmp/messynote-clock-language-v10-validation/c-final.xcresult"
+  },
+  {
+    "stage": "10 true tool activity; no calendar save",
+    "originalAttachment": "93F3C7A7-29A8-421D-B985-A4FD4166C5D8.png",
+    "file": "c-tools.png",
+    "sourceResult": "/private/tmp/messynote-clock-language-v10-validation/c-final.xcresult"
+  },
+  {
+    "stage": "09 empty Calendar result",
+    "originalAttachment": "556CCE95-4DF0-4468-BFD3-1CF65BE57443.txt",
+    "file": "c-calendar.txt",
+    "sourceResult": "/private/tmp/messynote-clock-language-v10-validation/c-final.xcresult"
+  },
+  {
+    "stage": "09 empty Calendar result",
+    "originalAttachment": "2CC4E565-0255-4BD0-90C5-4F376ACB1FEE.png",
+    "file": "c-calendar.png",
+    "sourceResult": "/private/tmp/messynote-clock-language-v10-validation/c-final.xcresult"
+  },
+  {
+    "stage": "08 empty Contacts result",
+    "originalAttachment": "49365EF1-E7BC-47E4-ACA5-18D0B80C46B7.txt",
+    "file": "c-contacts.txt",
+    "sourceResult": "/private/tmp/messynote-clock-language-v10-validation/c-final.xcresult"
+  },
+  {
+    "stage": "08 empty Contacts result",
+    "originalAttachment": "5BC4E02B-4E60-462C-A6A9-91368D1C89D7.png",
+    "file": "c-contacts.png",
+    "sourceResult": "/private/tmp/messynote-clock-language-v10-validation/c-final.xcresult"
+  },
+  {
+    "stage": "07 event date time duration and attendee",
+    "originalAttachment": "64C375ED-EEEB-42FC-BDDE-D3D1462D99C7.txt",
+    "file": "c-event.txt",
+    "sourceResult": "/private/tmp/messynote-clock-language-v10-validation/c-final.xcresult"
+  },
+  {
+    "stage": "07 event date time duration and attendee",
+    "originalAttachment": "CE214833-4BAA-4260-85D4-B808C0FDE6ED.png",
+    "file": "c-event.png",
+    "sourceResult": "/private/tmp/messynote-clock-language-v10-validation/c-final.xcresult"
+  },
+  {
+    "stage": "05 follow-up Chinese input",
+    "originalAttachment": "153CC77D-07CE-4036-8123-B4A1E4444491.txt",
+    "file": "c-followup.txt",
+    "sourceResult": "/private/tmp/messynote-clock-language-v10-validation/c-final.xcresult"
+  },
+  {
+    "stage": "05 follow-up Chinese input",
+    "originalAttachment": "710FEA58-20EB-4C83-B8DD-1AB757399334.png",
+    "file": "c-followup.png",
+    "sourceResult": "/private/tmp/messynote-clock-language-v10-validation/c-final.xcresult"
+  },
+  {
+    "stage": "04 fixed Friday captured",
+    "originalAttachment": "64F8BDB5-A142-41FB-9A0D-4D0DAA025A61.txt",
+    "file": "c-fixed-friday.txt",
+    "sourceResult": "/private/tmp/messynote-clock-language-v10-validation/c-final.xcresult"
+  },
+  {
+    "stage": "04 fixed Friday captured",
+    "originalAttachment": "33925101-1B0D-4D78-BE03-AE05D6F274B0.png",
+    "file": "c-fixed-friday.png",
+    "sourceResult": "/private/tmp/messynote-clock-language-v10-validation/c-final.xcresult"
+  }
+]

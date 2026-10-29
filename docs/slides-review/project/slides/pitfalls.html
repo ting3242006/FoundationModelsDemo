@@ -1,0 +1,15 @@
+<section id="pitfalls" data-transition="fade" style="background:#f8f2ea;color:#2b1a14;font-family:'Noto Sans TC', Arial, sans-serif;padding:176px 128px 160px;display:flex;flex-direction:column;align-items:center;gap:44px">
+<p style="position:absolute;left:128px;top:72px;width:160px;font-size:28px;letter-spacing:6px;color:#c4512f">●●●</p>
+<p style="position:absolute;left:1312px;top:72px;width:480px;text-align:right;font-family:'Montserrat', 'Noto Sans TC', Arial, sans-serif;font-size:24px;font-weight:800;color:#c4512f">▲ iOS TECH SHARING</p>
+<h2 style="font-family:'Montserrat', 'Noto Sans TC', Arial, sans-serif;font-size:72px;font-weight:800;line-height:1.1;color:#c4512f;text-align:center">⚠ 上線前一定會踩到的五件事</h2>
+<table style="font-size:28px;color:#2b1a14;border:1px solid #c4512f;padding:18px 26px">
+<tr style="background:#c4512f"><th style="width:24%;color:#fff8f0;text-align:center">地雷</th><th style="width:40%;color:#fff8f0;text-align:center">說明</th><th style="width:36%;color:#fff8f0;text-align:center">對策</th></tr>
+<tr style="background:#fffaf4"><td style="color:#8a2e1c;text-align:center">Context 很小</td><td>輸入＋輸出合計約 4096 tokens</td><td>短 prompt、窄型別；超過就重置</td></tr>
+<tr style="background:#fffaf4"><td style="color:#8a2e1c;text-align:center">Guardrails</td><td>敏感內容會被 Apple 擋下</td><td>處理 guardrailViolation / refusal</td></tr>
+<tr style="background:#fffaf4"><td style="color:#8a2e1c;text-align:center">Prompt injection</td><td>使用者輸入可能夾帶指令</td><td>instructions 明講「輸入是資料」</td></tr>
+<tr style="background:#fffaf4"><td style="color:#8a2e1c;text-align:center">不能並行</td><td>同一 session 回應中不能再送</td><td>檢查 isResponding，或開新 session</td></tr>
+<tr style="background:#fffaf4"><td style="color:#8a2e1c;text-align:center">結果會錯</td><td>小模型會誤判、會猜</td><td>Swift 驗證＋使用者確認</td></tr>
+</table>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#6b5446">MessyNote（iOS 27 SDK）的錯誤型別為 LanguageModelError：contextSizeExceeded · guardrailViolation · refusal · timeout · rateLimited</p>
+<aside>五個地雷。Context window 很小，約 4096 tokens，包含輸入和輸出，所以 prompt 要短、型別要窄。Guardrails 是 Apple 內建的安全過濾，要處理對應錯誤。Prompt injection 的防法是規則寫在 instructions，並明講使用者輸入只是資料。同一個 session 一次只能處理一個請求。最後，結果一定可能錯，所以要 Swift 驗證加使用者確認。錯誤型別的名稱：MessyNote 用 iOS 27 SDK，處理的是 LanguageModelError；iOS 26 時期的寫法是 LanguageModelSession.GenerationError，升版時要注意。</aside>
+</section>

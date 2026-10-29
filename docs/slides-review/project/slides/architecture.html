@@ -1,0 +1,28 @@
+<section id="architecture" data-transition="fade" style="background:#f8f2ea;color:#2b1a14;font-family:'Noto Sans TC', Arial, sans-serif;padding:176px 128px 128px;display:flex;flex-direction:column;gap:48px">
+<p style="position:absolute;left:128px;top:72px;width:160px;font-size:28px;letter-spacing:6px;color:#c4512f">●●●</p>
+<p style="position:absolute;left:1312px;top:72px;width:480px;text-align:right;font-family:'Montserrat', 'Noto Sans TC', Arial, sans-serif;font-size:24px;font-weight:800;color:#c4512f">▲ iOS TECH SHARING</p>
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:700;letter-spacing:3px;color:#8a2e1c">架構</p>
+<h2 style="font-family:'Montserrat', 'Noto Sans TC', Arial, sans-serif;font-size:72px;font-weight:800;line-height:1.1;color:#c4512f">模型和 Swift 輪流接力，最後交給人</h2>
+</div>
+<div style="display:flex;flex-direction:column;gap:48px">
+<div style="display:flex;flex-direction:row;align-items:center;gap:20px">
+<div style="flex:1;display:flex;flex-direction:column;gap:8px;background:#fffaf4;border:1px solid #e3cdbb;border-radius:4px;padding:24px 28px"><p style="font-family:'Montserrat', Arial, sans-serif;font-size:32px;font-weight:800;color:#6b5446">01 · 人</p><p style="font-size:28px;line-height:1.35;color:#2b1a14">使用者輸入筆記</p></div>
+<x-connector style="width:52px;color:#c4512f;border-width:3px"></x-connector>
+<div style="flex:1;display:flex;flex-direction:column;gap:8px;background:#c4512f;border-radius:4px;padding:24px 28px"><p style="font-family:'Montserrat', Arial, sans-serif;font-size:32px;font-weight:800;color:#fff8f0">02 · 模型</p><p style="font-size:28px;line-height:1.35;color:#fff8f0">抽取 EventDraft<br>typed streaming</p></div>
+<x-connector style="width:52px;color:#c4512f;border-width:3px"></x-connector>
+<div style="flex:1;display:flex;flex-direction:column;gap:8px;background:#2b1a14;border-radius:4px;padding:24px 28px"><p style="font-family:'Montserrat', Arial, sans-serif;font-size:32px;font-weight:800;color:#f2a65a">03 · Swift</p><p style="font-size:28px;line-height:1.35;color:#f8f2ea">DateResolver<br>驗證日期時間</p></div>
+<x-connector style="width:52px;color:#c4512f;border-width:3px"></x-connector>
+<div style="flex:1;display:flex;flex-direction:column;gap:8px;background:#c4512f;border-radius:4px;padding:24px 28px"><p style="font-family:'Montserrat', Arial, sans-serif;font-size:32px;font-weight:800;color:#fff8f0">04 · 模型</p><p style="font-size:28px;line-height:1.35;color:#fff8f0">呼叫唯讀工具<br>聯絡人 → 行事曆</p></div>
+</div>
+<div style="display:flex;flex-direction:row;align-items:center;gap:20px">
+<div style="flex:1;display:flex;flex-direction:column;gap:8px;background:#2b1a14;border-radius:4px;padding:24px 28px"><p style="font-family:'Montserrat', Arial, sans-serif;font-size:32px;font-weight:800;color:#f2a65a">05 · Swift</p><p style="font-size:28px;line-height:1.35;color:#f8f2ea">ToolLedger 記錄證據<br>計算空檔與衝突</p></div>
+<x-connector style="width:52px;color:#c4512f;border-width:3px"></x-connector>
+<div style="flex:1;display:flex;flex-direction:column;gap:8px;background:#fffaf4;border:1px solid #e3cdbb;border-radius:4px;padding:24px 28px"><p style="font-family:'Montserrat', Arial, sans-serif;font-size:32px;font-weight:800;color:#6b5446">06 · 人</p><p style="font-size:28px;line-height:1.35;color:#2b1a14">選聯絡人、編輯<br>最後確認畫面</p></div>
+<x-connector style="width:52px;color:#c4512f;border-width:3px"></x-connector>
+<div style="flex:1;display:flex;flex-direction:column;gap:8px;background:#2b1a14;border-radius:4px;padding:24px 28px"><p style="font-family:'Montserrat', Arial, sans-serif;font-size:32px;font-weight:800;color:#f2a65a">07 · Swift</p><p style="font-size:28px;line-height:1.35;color:#f8f2ea">CalendarWriter<br>EventKit 寫入</p></div>
+</div>
+</div>
+<p style="font-size:26px;line-height:1.4;color:#6b5446;border-top:1px solid #c4512f;padding:20px 0 0"><span style="color:#c4512f;font-weight:700">陶土色</span>＝模型推論　<span style="color:#2b1a14;font-weight:700">深棕色</span>＝確定性的 Swift　<span style="font-weight:700">米白</span>＝使用者</p>
+<aside>七個步驟，模型只出現在第 2 和第 4 步。日期由 Swift 算，衝突和空檔由 Swift 算，寫入只有一個入口 CalendarWriter.save，而且只能從最後確認畫面觸發。UI 上顯示的衝突結果來自 ToolLedger 裡已驗證的資料，不採用模型自由文字講的「沒有衝突」。</aside>
+</section>

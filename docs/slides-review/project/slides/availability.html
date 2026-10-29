@@ -1,0 +1,25 @@
+<section id="availability" data-transition="fade" style="background:#f8f2ea;color:#2b1a14;font-family:'Noto Sans TC', Arial, sans-serif;padding:176px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<p style="position:absolute;left:128px;top:72px;width:160px;font-size:28px;letter-spacing:6px;color:#c4512f">●●●</p>
+<p style="position:absolute;left:1312px;top:72px;width:480px;text-align:right;font-family:'Montserrat', 'Noto Sans TC', Arial, sans-serif;font-size:24px;font-weight:800;color:#c4512f">▲ iOS TECH SHARING</p>
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:700;letter-spacing:3px;color:#8a2e1c">① 可用性檢查</p>
+<h2 style="font-family:'Montserrat', 'Noto Sans TC', Arial, sans-serif;font-size:72px;font-weight:800;line-height:1.1;color:#c4512f">不能用時，它會告訴你為什麼</h2>
+</div>
+<div style="display:flex;gap:56px;flex:1">
+<div style="width:880px;display:flex;flex-direction:column;justify-content:center;background:#2b1a14;border-radius:4px;padding:40px 44px">
+<p style="font-family:'JetBrains Mono', 'Noto Sans TC', 'Courier New', monospace;font-size:24px;line-height:1.55;color:#f8f2ea">let model = <span style="color:#f2a65a">SystemLanguageModel</span>.default<br>switch model.<span style="color:#f2a65a">availability</span> {<br>case .available:<br>&#160;&#160;&#160;&#160;return model.<span style="color:#f2a65a">supportsLocale</span>(locale)<br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;? .available : .unavailable(...)<br>case .unavailable(let reason):<br>&#160;&#160;&#160;&#160;switch reason {<br>&#160;&#160;&#160;&#160;case .deviceNotEligible: ...<br>&#160;&#160;&#160;&#160;case .appleIntelligenceNotEnabled: ...<br>&#160;&#160;&#160;&#160;case .modelNotReady: ...<br>&#160;&#160;&#160;&#160;@unknown default: ...</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;justify-content:center">
+<p style="font-size:24px;font-weight:700;letter-spacing:3px;color:#8a2e1c;padding:0 0 16px">MESSYNOTE 顯示的訊息</p>
+<div style="display:flex;flex-direction:column;border-top:1px solid #c4512f">
+<p style="font-size:27px;line-height:1.45;color:#2b1a14;border-bottom:1px solid #e3cdbb;padding:14px 0">此裝置不支援 Apple Intelligence</p>
+<p style="font-size:27px;line-height:1.45;color:#2b1a14;border-bottom:1px solid #e3cdbb;padding:14px 0">請在設定中開啟 Apple Intelligence</p>
+<p style="font-size:27px;line-height:1.45;color:#2b1a14;border-bottom:1px solid #e3cdbb;padding:14px 0">系統模型尚未就緒，可能仍在下載</p>
+<p style="font-size:27px;line-height:1.45;color:#2b1a14;border-bottom:1px solid #e3cdbb;padding:14px 0">不支援目前語系</p>
+</div>
+<p style="font-size:24px;line-height:1.45;color:#6b5446;padding:16px 0 0">App 回到前景時自動重新檢查</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#6b5446">MessyNote/AI/ModelState.swift</p>
+<aside>availability 會回傳不可用的具體原因，不要只顯示「不能用」。MessyNote 把四種狀況分開顯示，modelNotReady 是最常見的——模型還在下載，過一陣子就好，所以 App 回到前景時會重新檢查一次。</aside>
+</section>

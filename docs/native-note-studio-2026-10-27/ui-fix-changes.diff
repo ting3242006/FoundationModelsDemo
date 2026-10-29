@@ -1,0 +1,262 @@
+--- /private/tmp/fmdemo-ai-log-before.swift
++++ /Users/yitingsung/Developer/FMDemo/MessyNoteUITests/CaseCUITests.swift
+@@ -64,7 +64,15 @@
+         add(capturedDate)
+         checkpoint("04 fixed Friday captured", app: app)
+ 
+-        for _ in 0..<8 { if input.isHittable { break }; scroll(app, towardTop: true) }
++        for _ in 0..<8 {
++            let frame = input.frame
++            let bottom = app.keyboards.firstMatch.exists ? app.keyboards.firstMatch.frame.minY - 20 : app.frame.maxY - 40
++            if frame.minY >= 120, frame.maxY <= bottom { break }
++            scroll(app, towardTop: frame.minY < 120)
++        }
++        XCTAssertGreaterThanOrEqual(input.frame.minY, 120, "補充時間的輸入框必須完整位於導覽列下方。")
++        let inputBottom = app.keyboards.firstMatch.exists ? app.keyboards.firstMatch.frame.minY - 20 : app.frame.maxY - 40
++        XCTAssertLessThanOrEqual(input.frame.maxY, inputBottom, "補充時間的輸入框必須完整位於鍵盤上方。")
+         try replaceText(in: input, with: "晚上七點，吃飯一小時，同行者叫阿不存在", app: app)
+         checkpoint("05 follow-up Chinese input", app: app)
+         reveal(generate, app: app)
+@@ -102,8 +110,18 @@
+         try waitFor(noConflicts, stage: "09 empty Calendar result", app: app)
+         let log = app.buttons["AI 處理紀錄"]
+         reveal(log, app: app)
++        // The pinned next action can overlap a control that XCTest reports as hittable.
++        let visibleBottom = app.keyboards.firstMatch.exists
++            ? app.keyboards.firstMatch.frame.minY - 20 : app.frame.maxY - 160
++        for _ in 0..<8 {
++            if log.frame.minY >= 120, log.frame.maxY <= visibleBottom { break }
++            scroll(app, towardTop: log.frame.minY < 120)
++        }
++        XCTAssertGreaterThanOrEqual(log.frame.minY, 120)
++        XCTAssertLessThanOrEqual(log.frame.maxY, visibleBottom, "AI紀錄按鈕必須完整位於固定底欄上方。")
+         log.tap()
+         let contactCall = app.staticTexts["→ FindContactTool(阿不存在)"]
++        try waitFor(contactCall, stage: "AI activity expanded", app: app, timeout: 5)
+         reveal(contactCall, app: app)
+         XCTAssertTrue(contactCall.exists, "必須有真實Contacts工具activity。")
+         let calendarCall = app.staticTexts["→ CheckCalendarTool(\(atSeven.formatted(date: .omitted, time: .shortened)))"]
+--- /private/tmp/fmdemo-input-before.swift
++++ /Users/yitingsung/Developer/FMDemo/MessyNoteUITests/ScenarioABUITests.swift
+@@ -164,7 +164,11 @@
+         try replaceText(in: input, with: text, app: app)
+         checkpoint(stage, app: app)
+         let generate = app.buttons["整理成活動"]
+-        reveal(generate, app: app)
++        if app.buttons["檢查並加入"].exists {
++            try revealSubmissionAbovePinnedAction(generate, app: app)
++        } else {
++            reveal(generate, app: app)
++        }
+         XCTAssertTrue(generate.isEnabled, "模型不可用不得skip或當作通過。")
+         let cancel = app.buttons["取消"]
+         XCTAssertFalse(cancel.exists, "本次提交前不應仍有上一輪生成。")
+@@ -182,6 +186,70 @@
+             checkpoint(stage + " observed real partial section", app: app)
+         }
+         scrollDown(app)
++    }
++
++    @MainActor
++    private func revealSubmissionAbovePinnedAction(_ button: XCUIElement, app: XCUIApplication) throws {
++        let nextAction = app.buttons["檢查並加入"]
++        for attempt in 0..<8 {
++            let window = app.windows.firstMatch.frame
++            let visibleTop = window.minY + 120
++            let keyboardTop = app.keyboards.firstMatch.exists ? app.keyboards.firstMatch.frame.minY : window.maxY
++            let visibleBottom = min(keyboardTop, nextAction.frame.minY) - 20
++            let frame = button.frame
++            let geometry = XCTAttachment(string: "window=\(window), generate=\(frame), keyboardTop=\(keyboardTop), nextAction=\(nextAction.frame), visible=\(visibleTop)...\(visibleBottom)")
++            geometry.name = "Submission geometry \(attempt + 1)"
++            geometry.lifetime = .keepAlways
++            add(geometry)
++            if frame.minY >= visibleTop, frame.maxY <= visibleBottom {
++                XCTAssertTrue(button.isHittable, "整理按鈕必須完整位於固定底欄上方且可點擊。")
++                return
++            }
++            guard visibleBottom - visibleTop > 80 else { break }
++            let movingDown = frame.minY < visibleTop
++            let distance = min(movingDown ? visibleTop - frame.minY + 20 : frame.maxY - visibleBottom + 20,
++                               visibleBottom - visibleTop - 40)
++            let startY = movingDown ? visibleTop + 20 : visibleBottom - 20
++            let endY = movingDown ? startY + distance : startY - distance
++            app.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: (startY - window.minY) / window.height))
++                .press(forDuration: 0.05, thenDragTo: app.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: (endY - window.minY) / window.height)))
++        }
++        checkpoint("Submission still covered before tap", app: app)
++        throw NSError(domain: "MessyNoteAcceptanceUI", code: 9, userInfo: [NSLocalizedDescriptionKey: "整理按鈕仍被導覽列、固定操作列或鍵盤遮住，尚未提交。"])
++    }
++
++    @MainActor
++    private func focusInputAbovePinnedAction(_ input: XCUIElement, app: XCUIApplication) throws {
++        input.tap()
++        let nextAction = app.buttons["檢查並加入"]
++        // The initial note has no pinned action; preserve its existing editing path.
++        guard nextAction.exists else { return }
++        for attempt in 0..<8 {
++            if attempt > 0 { input.tap() }
++            guard app.keyboards.firstMatch.waitForExistence(timeout: 5) else {
++                throw NSError(domain: "MessyNoteAcceptanceUI", code: 7, userInfo: [NSLocalizedDescriptionKey: "輸入框未取得鍵盤焦點，未操作編輯選單。"])
++            }
++            let window = app.windows.firstMatch.frame
++            let visibleTop = window.minY + 120
++            let visibleBottom = min(app.keyboards.firstMatch.frame.minY - 20, nextAction.frame.minY - 20)
++            let frame = input.frame
++            let geometry = XCTAttachment(string: "window=\(window), input=\(frame), keyboard=\(app.keyboards.firstMatch.frame), nextAction=\(nextAction.frame), visible=\(visibleTop)...\(visibleBottom)")
++            geometry.name = "Focused input geometry \(attempt + 1)"
++            geometry.lifetime = .keepAlways
++            add(geometry)
++            if frame.minY >= visibleTop, frame.maxY <= visibleBottom { return }
++            guard visibleBottom - visibleTop > 80 else { break }
++            // Both endpoints stay in the scroll viewport, clear of the keyboard and pinned action.
++            let movingDown = frame.minY < visibleTop
++            let distance = min(movingDown ? visibleTop - frame.minY + 20 : frame.maxY - visibleBottom + 20,
++                               visibleBottom - visibleTop - 40)
++            let startY = movingDown ? visibleTop + 20 : visibleBottom - 20
++            let endY = movingDown ? startY + distance : startY - distance
++            app.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: (startY - window.minY) / window.height))
++                .press(forDuration: 0.05, thenDragTo: app.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: (endY - window.minY) / window.height)))
++        }
++        checkpoint("Input still covered before edit menu", app: app)
++        throw NSError(domain: "MessyNoteAcceptanceUI", code: 8, userInfo: [NSLocalizedDescriptionKey: "輸入框仍被導覽列、固定操作列或鍵盤遮住，未操作編輯選單。"])
+     }
+ 
+    @MainActor
+
+--- /private/tmp/fmdemo-switch-fallback-before.swift
++++ /Users/yitingsung/Developer/FMDemo/MessyNoteUITests/ScenarioABUITests.swift
+@@ -135,7 +135,14 @@
+             XCTAssertEqual(XCTWaiter.wait(for: [tappable], timeout: 5), .completed, "必須定位可操作的具名switch。")
+             let track = fixture.switches.firstMatch
+             XCTAssertTrue(track.exists, "必須定位具名switch內的真實track。")
+-            track.coordinate(withNormalizedOffset: CGVector(dx: 0.35, dy: 0.5)).tap()
++            if attempt == 1 {
++                track.coordinate(withNormalizedOffset: CGVector(dx: 0.35, dy: 0.5)).tap()
++            } else {
++                let offThumb = track.coordinate(withNormalizedOffset: CGVector(dx: 0.25, dy: 0.5))
++                let onEnd = track.coordinate(withNormalizedOffset: CGVector(dx: 0.75, dy: 0.5))
++                offThumb.press(forDuration: 0.05, thenDragTo: onEnd,
++                               withVelocity: XCUIGestureVelocity(rawValue: 100), thenHoldForDuration: 0.2)
++            }
+             let enabled = XCTNSPredicateExpectation(predicate: NSPredicate(format: "value == %@", "1"), object: fixture)
+             _ = XCTWaiter.wait(for: [enabled], timeout: 5)
+             checkpoint("Fixture labeled switch attempt \(attempt)", app: app)
+@@ -199,7 +267,7 @@
+             guard let value = rawValue as? String else { return false }
+             return value.isEmpty || (value == expectedPlaceholder && field.placeholderValue == expectedPlaceholder)
+         }
+-        input.tap()
++        try focusInputAbovePinnedAction(input, app: app)
+         inputValueCheckpoint("Before clear", input: input)
+         if !emptyField.evaluate(with: input) {
+            guard let current = input.value as? String, !current.isEmpty, current != expectedPlaceholder else {
+
+--- /private/tmp/fmdemo-controlled-scroll-before.swift
++++ /Users/yitingsung/Developer/FMDemo/MessyNoteUITests/ScenarioABUITests.swift
+@@ -197,10 +197,7 @@
+             let keyboardTop = app.keyboards.firstMatch.exists ? app.keyboards.firstMatch.frame.minY : window.maxY
+             let visibleBottom = min(keyboardTop, nextAction.frame.minY) - 20
+             let frame = button.frame
+-            let geometry = XCTAttachment(string: "window=\(window), generate=\(frame), keyboardTop=\(keyboardTop), nextAction=\(nextAction.frame), visible=\(visibleTop)...\(visibleBottom)")
+-            geometry.name = "Submission geometry \(attempt + 1)"
+-            geometry.lifetime = .keepAlways
+-            add(geometry)
++            pinnedGeometry("Submission before drag \(attempt + 1)", element: button, app: app)
+             if frame.minY >= visibleTop, frame.maxY <= visibleBottom {
+                 XCTAssertTrue(button.isHittable, "整理按鈕必須完整位於固定底欄上方且可點擊。")
+                 return
+@@ -211,21 +208,31 @@
+                                visibleBottom - visibleTop - 40)
+             let startY = movingDown ? visibleTop + 20 : visibleBottom - 20
+             let endY = movingDown ? startY + distance : startY - distance
+-            app.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: (startY - window.minY) / window.height))
+-                .press(forDuration: 0.05, thenDragTo: app.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: (endY - window.minY) / window.height)))
++            controlledEdgeDrag(from: startY, to: endY, app: app)
++            pinnedGeometry("Submission after drag \(attempt + 1)", element: button, app: app)
+         }
++        if isAbovePinnedAction(button, app: app) {
++            XCTAssertTrue(button.isHittable, "整理按鈕必須完整位於固定底欄上方且可點擊。")
++            return
++        }
+         checkpoint("Submission still covered before tap", app: app)
+         throw NSError(domain: "MessyNoteAcceptanceUI", code: 9, userInfo: [NSLocalizedDescriptionKey: "整理按鈕仍被導覽列、固定操作列或鍵盤遮住，尚未提交。"])
+     }
+ 
+     @MainActor
+     private func focusInputAbovePinnedAction(_ input: XCUIElement, app: XCUIApplication) throws {
+-        input.tap()
+         let nextAction = app.buttons["檢查並加入"]
++        if nextAction.exists { pinnedGeometry("Input before initial focus", element: input, app: app) }
++        input.tap()
++        if nextAction.exists { pinnedGeometry("Input after initial focus", element: input, app: app) }
+         // The initial note has no pinned action; preserve its existing editing path.
+         guard nextAction.exists else { return }
+         for attempt in 0..<8 {
+-            if attempt > 0 { input.tap() }
++            if !app.keyboards.firstMatch.exists {
++                pinnedGeometry("Input before focus \(attempt + 1)", element: input, app: app)
++                input.tap()
++                pinnedGeometry("Input after focus \(attempt + 1)", element: input, app: app)
++            }
+             guard app.keyboards.firstMatch.waitForExistence(timeout: 5) else {
+                 throw NSError(domain: "MessyNoteAcceptanceUI", code: 7, userInfo: [NSLocalizedDescriptionKey: "輸入框未取得鍵盤焦點，未操作編輯選單。"])
+             }
+@@ -233,10 +240,7 @@
+             let visibleTop = window.minY + 120
+             let visibleBottom = min(app.keyboards.firstMatch.frame.minY - 20, nextAction.frame.minY - 20)
+             let frame = input.frame
+-            let geometry = XCTAttachment(string: "window=\(window), input=\(frame), keyboard=\(app.keyboards.firstMatch.frame), nextAction=\(nextAction.frame), visible=\(visibleTop)...\(visibleBottom)")
+-            geometry.name = "Focused input geometry \(attempt + 1)"
+-            geometry.lifetime = .keepAlways
+-            add(geometry)
++            pinnedGeometry("Input before drag \(attempt + 1)", element: input, app: app)
+             if frame.minY >= visibleTop, frame.maxY <= visibleBottom { return }
+             guard visibleBottom - visibleTop > 80 else { break }
+             // Both endpoints stay in the scroll viewport, clear of the keyboard and pinned action.
+@@ -245,14 +249,47 @@
+                                visibleBottom - visibleTop - 40)
+             let startY = movingDown ? visibleTop + 20 : visibleBottom - 20
+             let endY = movingDown ? startY + distance : startY - distance
+-            app.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: (startY - window.minY) / window.height))
+-                .press(forDuration: 0.05, thenDragTo: app.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: (endY - window.minY) / window.height)))
++            controlledEdgeDrag(from: startY, to: endY, app: app)
++            pinnedGeometry("Input after drag \(attempt + 1)", element: input, app: app)
+         }
++        if !app.keyboards.firstMatch.exists {
++            pinnedGeometry("Input before final focus", element: input, app: app)
++            input.tap()
++            pinnedGeometry("Input after final focus", element: input, app: app)
++        }
++        if app.keyboards.firstMatch.waitForExistence(timeout: 5), isAbovePinnedAction(input, app: app) { return }
+         checkpoint("Input still covered before edit menu", app: app)
+         throw NSError(domain: "MessyNoteAcceptanceUI", code: 8, userInfo: [NSLocalizedDescriptionKey: "輸入框仍被導覽列、固定操作列或鍵盤遮住，未操作編輯選單。"])
+     }
+ 
+     @MainActor
++    private func controlledEdgeDrag(from startY: CGFloat, to endY: CGFloat, app: XCUIApplication) {
++        let window = app.windows.firstMatch
++        let origin = window.coordinate(withNormalizedOffset: .zero)
++        let start = origin.withOffset(CGVector(dx: 10, dy: startY - window.frame.minY))
++        let end = origin.withOffset(CGVector(dx: 10, dy: endY - window.frame.minY))
++        start.press(forDuration: 0.05, thenDragTo: end,
++                    withVelocity: XCUIGestureVelocity(rawValue: 100), thenHoldForDuration: 0.2)
++    }
++
++    @MainActor
++    private func isAbovePinnedAction(_ element: XCUIElement, app: XCUIApplication) -> Bool {
++        let window = app.windows.firstMatch.frame
++        let keyboardTop = app.keyboards.firstMatch.exists ? app.keyboards.firstMatch.frame.minY : window.maxY
++        let bottom = min(keyboardTop, app.buttons["檢查並加入"].frame.minY) - 20
++        return element.frame.minY >= window.minY + 120 && element.frame.maxY <= bottom
++    }
++
++    @MainActor
++    private func pinnedGeometry(_ stage: String, element: XCUIElement, app: XCUIApplication) {
++        let keyboard = app.keyboards.firstMatch
++        let attachment = XCTAttachment(string: "app=\(app.frame), window=\(app.windows.firstMatch.frame), target=\(element.frame), keyboardExists=\(keyboard.exists), keyboard=\(keyboard.exists ? keyboard.frame : .zero), nextAction=\(app.buttons["檢查並加入"].frame)")
++        attachment.name = stage
++        attachment.lifetime = .keepAlways
++        add(attachment)
++    }
++
++    @MainActor

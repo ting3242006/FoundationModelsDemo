@@ -1,0 +1,12 @@
+# v12 diagnostics excerpt (2026-10-22 23:29–23:33)
+
+23:29:40 C initial merge: Oct 30; hour=nil minute=0.
+23:29:42 C initial clock.complete: sourceAccepted=false explicit=false hour=nil minute=nil.
+23:30:03 C follow-up merge retains Oct 30; hour=nil minute=0.
+23:30:04 C follow-up clock.complete: sourceAccepted=true explicit=true hour=19 minute=0; review start 2026-10-30T11:00:00Z.
+23:31:11 B initial merge: Oct 28; hour=nil minute=0.
+23:31:13 B initial clock.complete: sourceAccepted=true explicit=true hour=15 minute=0; review start 2026-10-28T07:00:00Z.
+23:32:44 B follow-up baseline: Oct 28 15:00.
+23:32:52 B revision changes=time hour=16 minute=30; merge retains Oct 28; review start 2026-10-28T08:30:00Z.
+
+Source lines: /private/tmp/messynote-initial-clock-v8-validation/model-diagnostics.log:68-89.

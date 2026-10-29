@@ -1,0 +1,101 @@
+Attributes: Application, 0x10fc48c80, pid: 71020, label: 'MessyNote'
+Element subtree:
+ →Application, 0x10fc48c80, pid: 71020, label: 'MessyNote'
+    Window (Main), 0x10fc48dc0, {{0.0, 0.0}, {402.0, 874.0}}
+      Other, 0x10fc48f00, {{0.0, 0.0}, {402.0, 874.0}}
+        Other, 0x10fc49040, {{0.0, 0.0}, {402.0, 874.0}}
+          Other, 0x10fc49180, {{0.0, 0.0}, {402.0, 874.0}}
+            Other, 0x10fc492c0, {{0.0, 0.0}, {402.0, 874.0}}
+              Other, 0x10fc49400, {{0.0, 0.0}, {402.0, 874.0}}
+                NavigationBar, 0x10fc49540, {{0.0, 62.0}, {402.0, 54.0}}, identifier: 'MessyNote'
+                  StaticText, 0x10fc49680, {{156.0, 73.7}, {89.7, 20.7}}, label: 'MessyNote'
+                  Button, 0x10fc497c0, {{346.0, 66.0}, {36.0, 36.0}}, label: '設定'
+                Other, 0x10fc49900, {{0.0, 0.0}, {402.0, 874.0}}
+                  Other, 0x10fc49a40, {{0.0, 0.0}, {402.0, 874.0}}
+                    Other, 0x10fc49b80, {{0.0, 0.0}, {402.0, 874.0}}
+                      Other, 0x10fc49cc0, {{0.0, 0.0}, {402.0, 874.0}}
+                        ScrollView, 0x10fc49e00, {{0.0, 0.0}, {402.3, 874.0}}
+                          Other, 0x10fc49f40, {{0.0, 0.0}, {402.3, 874.0}}
+                            Other, 0x10fc4a080, {{0.0, 0.0}, {402.3, 156.0}}
+                          Other, 0x10fc4a1c0, {{0.0, 0.0}, {402.3, 874.0}}
+                          Other, 0x10fc4a300, {{0.0, 116.0}, {402.3, 1779.3}}
+                            StaticText, 0x10fc4a440, {{20.0, 136.0}, {258.0, 40.7}}, label: '把想法，排進生活'
+                            StaticText, 0x10fc4a580, {{20.0, 188.7}, {354.0, 42.3}}, label: '記下時間、地點和同行的人，讓筆記慢慢成為一個計畫。'
+                            StaticText, 0x10fc4a6c0, {{21.3, 244.3}, {142.3, 18.3}}, label: '裝置端模型可使用'
+                            StaticText, 0x10fc4a800, {{22.0, 275.0}, {115.7, 18.0}}, label: '示範資料模式'
+                            StaticText, 0x10fc4a940, {{20.0, 299.3}, {334.0, 30.3}}, label: '真實模型推論＋示範聯絡人與行事曆查詢。儲存仍會寫入系統行事曆。'
+                            Button, 0x10fc4aa80, {{40.0, 373.7}, {322.3, 52.0}}, label: '筆記與修改指令'
+                              StaticText, 0x10fc4abc0, {{40.0, 373.7}, {322.3, 52.0}}, label: '筆記與修改指令'
+                              Image, 0x10fc4ad00, {{43.0, 390.0}, {18.3, 18.3}}, identifier: 'square.and.pencil', label: 'Compose'
+                              Image, 0x10fc4ae40, {{354.7, 393.7}, {7.0, 12.0}}, identifier: 'collapsed'
+                            StaticText, 0x10fc4af80, {{40.0, 489.7}, {48.0, 14.3}}, label: '活動預覽'
+                            Other, 0x10fc4b0c0, {{40.0, 524.0}, {322.3, 276.7}}
+                              StaticText, 0x10fc4b200, {{112.3, 524.0}, {250.0, 54.3}}, label: '跟一個不存在於 Contacts 的人吃飯'
+                              StaticText, 0x10fc4b340, {{54.0, 538.0}, {28.3, 18.0}}, label: 'Nov'
+                              StaticText, 0x10fc4b480, {{56.8, 558.0}, {22.7, 40.7}}, label: '6'
+                              StaticText, 0x10fc4b5c0, {{112.3, 586.3}, {196.7, 20.3}}, label: 'Friday, November 6, 2026'
+                              StaticText, 0x10fc4b700, {{112.3, 614.7}, {205.0, 20.3}}, label: '7:00 PM–8:00 PM · 60 分鐘'
+                              StaticText, 0x10fc4b840, {{112.3, 643.0}, {61.0, 14.3}}, label: 'Asia/Taipei'
+                              StaticText, 0x10fc4b980, {{41.3, 699.0}, {126.7, 20.7}}, label: '尚未指定地點'
+                              Image, 0x10fc4bac0, {{41.3, 699.0}, {16.0, 19.7}}, identifier: 'mappin.and.ellipse', label: 'Remove Map Pin'
+                              StaticText, 0x10fc4bc00, {{42.0, 740.0}, {92.3, 20.3}}, label: '阿不存在'
+                              Image, 0x10fc4bd40, {{42.0, 742.3}, {14.7, 15.7}}, identifier: 'person', label: 'Person Silhouette'
+                              Image, 0x10fc4be80, {{41.7, 782.0}, {15.7, 17.3}}, identifier: 'bell', label: 'Notifications'
+                              StaticText, 0x10f9d2080, {{41.7, 780.3}, {76.0, 20.3}}, label: '不提醒'
+                            StaticText, 0x10fbae6c0, {{40.0, 888.7}, {30.0, 18.0}}, identifier: 'eventEditorDisclosure', label: '標題'
+                            TextField, 0x10fbafe80, {{40.0, 914.7}, {322.3, 34.0}}, identifier: 'eventEditorDisclosure', placeholderValue: '標題', value: 跟一個不存在於 Contacts 的...
+                            StaticText, 0x10fbaf480, {{40.0, 976.5}, {34.0, 20.3}}, label: '開始'
+                            DatePicker, 0x10fbafac0, {{149.3, 968.7}, {213.0, 36.0}}, identifier: 'eventEditorDisclosure'
+                              Button, 0x10fbafd40, {{149.3, 968.7}, {213.0, 36.0}}, label: 'Date and Time Picker', value: 7:00 PM, Nov 6, 2026
+                                Button, 0x10fbafc00, {{154.0, 968.7}, {118.0, 36.0}}, label: 'Nov 6, 2026'
+                                Button, 0x10fbaf980, {{276.0, 968.7}, {86.3, 36.0}}, label: '7:00 PM'
+                            StaticText, 0x10fbaf700, {{40.0, 1024.7}, {96.7, 14.3}}, identifier: 'eventEditorDisclosure', label: '時區：Asia/Taipei'
+                            Stepper, 0x10fbaf840, {{40.0, 1059.0}, {322.3, 32.0}}, identifier: 'eventEditorDisclosure', label: '持續 60 分鐘', value: 60
+                              Button, 0x106fd8280, {{268.3, 1059.0}, {47.0, 32.0}}, identifier: 'eventEditorDisclosure-Decrement', label: '持續 60 分鐘, Decrement', value: 60
+                              Button, 0x106fdaa80, {{315.3, 1059.0}, {47.0, 32.0}}, identifier: 'eventEditorDisclosure-Increment', label: '持續 60 分鐘, Increment', value: 60
+                            StaticText, 0x106fdad00, {{40.0, 1111.0}, {30.0, 18.0}}, identifier: 'eventEditorDisclosure', label: '地點'
+                            TextField, 0x106fdabc0, {{40.0, 1137.0}, {322.3, 34.0}}, identifier: 'eventEditorDisclosure', placeholderValue: '地點'
+                            StaticText, 0x106fd8500, {{40.0, 1191.0}, {74.7, 18.0}}, identifier: 'eventEditorDisclosure', label: '參與者姓名'
+                            TextField, 0x106fd8780, {{40.0, 1217.0}, {322.3, 34.0}}, identifier: 'eventEditorDisclosure', placeholderValue: '參與者姓名', value: 阿不存在
+                            StaticText, 0x106fda1c0, {{40.0, 1271.0}, {30.0, 18.0}}, identifier: 'eventEditorDisclosure', label: '筆記'
+                            TextField, 0x106fd8a00, {{46.0, 1301.0}, {310.3, 42.3}}, identifier: 'eventEditorDisclosure', label: '活動筆記', placeholderValue: '筆記'
+                              Other, 0x106fd8140, {{46.0, 1319.2}, {310.3, 21.2}}, label: 'Horizontal scroll bar, 1 page', value: 0%
+                                Other, 0x106fd9540, {{49.0, 1337.3}, {304.3, 3.0}}
+                            Button, 0x106fd8dc0, {{39.8, 820.7}, {322.7, 581.0}}, identifier: 'eventEditorDisclosure', label: '編輯'
+                              StaticText, 0x106fd9e00, {{40.0, 820.7}, {322.3, 52.0}}, label: '編輯'
+                              Image, 0x106fd8c80, {{42.0, 839.3}, {17.7, 15.0}}, identifier: 'slider.horizontal.3', label: 'Edit'
+                              Image, 0x106fd8000, {{351.2, 844.2}, {12.0, 7.0}}, identifier: 'expanded'
+                            Button, 0x106fd8640, {{40.0, 1367.3}, {91.0, 34.3}}, identifier: 'eventEditorDisclosure', label: '提醒, 不提醒'
+                              StaticText, 0x106fd9cc0, {{52.0, 1374.3}, {50.7, 20.3}}, label: '不提醒'
+                            StaticText, 0x106fda6c0, {{41.3, 1465.6}, {111.0, 20.3}}, label: '參與者確認'
+                            StaticText, 0x106fda800, {{40.0, 1502.0}, {320.3, 42.3}}, label: '找不到可存取的聯絡人（可能受限於部分存取權）。'
+                            Switch, 0x106fda580, {{40.0, 1560.3}, {322.3, 28.0}}, label: '保留原姓名，繼續但不指定聯絡人', value: 0
+                              StaticText, 0x106fda940, {{40.0, 1564.2}, {253.0, 20.3}}, label: '保留原姓名，繼續但不指定聯絡人'
+                              Switch, 0x106fd8b40, {{301.3, 1560.3}, {63.0, 28.0}}, value: 0
+                            StaticText, 0x10fb1e940, {{40.0, 1604.3}, {238.7, 14.3}}, label: '僅保存參與者姓名到事件筆記，不發送邀請。'
+                            StaticText, 0x10fb1ed00, {{42.0, 1682.7}, {111.7, 20.3}}, label: '行事曆查詢'
+                            StaticText, 0x10fb1ee40, {{41.3, 1719.0}, {245.7, 20.3}}, label: '此時段沒有衝突（查詢當下）'
+                            Button, 0x10fb1f480, {{40.0, 1803.3}, {322.3, 52.0}}, identifier: 'activityDisclosure', label: 'AI 處理紀錄'
+                              StaticText, 0x10fb1ef80, {{40.0, 1803.3}, {322.3, 52.0}}, label: 'AI 處理紀錄'
+                              Image, 0x10fb1e800, {{42.0, 1821.7}, {17.7, 15.0}}, identifier: 'text.alignleft', label: 'Align Left'
+                              Image, 0x10fb1e6c0, {{354.7, 1823.3}, {7.0, 12.0}}, identifier: 'collapsed'
+                          Other, 0x10fb1e440, {{369.0, 116.0}, {30.0, 599.7}}, label: 'Vertical scroll bar, 3 pages', value: 0%
+                            Other, 0x10fb1f980, {{396.0, 119.0}, {3.0, 252.7}}
+                          Other, 0x10fb1fd40, {{369.0, 116.0}, {30.0, 599.7}}, label: 'Vertical scroll bar, 3 pages', value: 0%
+                            Other, 0x10fb1fac0, {{396.0, 119.0}, {3.0, 252.7}}
+                        Button, 0x10fb1fc00, {{20.0, 735.7}, {362.0, 70.0}}, label: '檢查並加入', Disabled
+                          StaticText, 0x10fb1fe80, {{20.0, 735.7}, {362.0, 70.0}}, label: '檢查並加入', Disabled
+                          Image, 0x10fb1f340, {{146.0, 762.0}, {22.0, 18.7}}, identifier: 'calendar.badge.plus', label: 'Add To Calendar', Disabled
+                        StaticText, 0x10fb1f5c0, {{20.0, 813.7}, {202.7, 14.3}}, label: '先確認內容，下一步才會寫入行事曆。'
+                Toolbar, 0x10fb1f840, {{0.0, 0.0}, {402.0, 874.0}}, identifier: 'Toolbar', label: 'Toolbar'
+                  Other, 0x10fb1f700, {{0.0, 0.0}, {402.0, 874.0}}
+    Window, 0x10fb1ebc0, {{0.0, 0.0}, {402.0, 874.0}}
+      Other, 0x10fb1f200, {{0.0, 0.0}, {402.0, 874.0}}
+        Other, 0x10fb1f0c0, {{0.0, 0.0}, {402.0, 874.0}}
+Path to element:
+ →Application, 0x10fc48c80, pid: 71020, label: 'MessyNote'
+Query chain:
+ →Find: Target Application 'com.demo.MessyNote'
+  Output: {
+    Application, 0x10fb1ea80, pid: 71020, label: 'MessyNote'
+  }

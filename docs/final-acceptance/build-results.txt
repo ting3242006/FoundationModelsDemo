@@ -1,0 +1,13 @@
+2026-10-22 current product candidate
+Unit: Passed, 54 tests / 0 failed / 0 skipped. xcresult parameter expansion: 69 runs.
+Unit result: /private/tmp/messynote-timing-final/unit-final.xcresult
+A-D original suite: Failed, 3 passed / 1 failed / 0 skipped. A/C/D passed; B failed at Select All before follow-up submission.
+A-D result: /private/tmp/messynote-timing-final/a-d-final.xcresult
+B overall acceptance remains incomplete. Prior run reached correct 16:30 fields/tools/contact selection/review with 1,440 reminder, but failed formatting selector before cancellation. Final run failed clear assertion after fixture ON, before generation. See b-run-comparison.md; no all-green UI claim.
+Final B UI build-for-testing: exit 0, TEST BUILD SUCCEEDED (test build only, not test pass).
+Overall status: acceptance incomplete; not IMPLEMENTATION_COMPLETE or MERGE_READY.
+Release: exit 0, BUILD SUCCEEDED.
+Command: xcodebuild -project MessyNote.xcodeproj -scheme MessyNote -configuration Release -destination 'generic/platform=iOS' -derivedDataPath /private/tmp/messynote-timing-final/release CODE_SIGNING_ALLOWED=NO build
+Release log: /private/tmp/messynote-timing-final-validation/release-build.log
+No app installation or execution on physical hardware established.
+Summary JSON copies preserve original verdict/counts and redact deviceId only.

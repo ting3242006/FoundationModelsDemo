@@ -1,0 +1,46 @@
+{
+  "devicesAndConfigurations": [
+    {
+      "device": {
+        "architecture": "arm64",
+        "deviceId": "[REDACTED]",
+        "deviceName": "MessyNote Case C QA",
+        "modelName": "iPhone 18 Pro",
+        "osBuildNumber": "24A434",
+        "osVersion": "27.0",
+        "platform": "iOS Simulator"
+      },
+      "expectedFailures": 0,
+      "failedTests": 1,
+      "passedTests": 0,
+      "skippedTests": 0,
+      "testPlanConfiguration": {
+        "configurationId": "1",
+        "configurationName": "Test Scheme Action"
+      }
+    }
+  ],
+  "environmentDescription": "MessyNoteAcceptanceUI · Built with macOS 27.0.1",
+  "expectedFailures": 0,
+  "failedTests": 1,
+  "finishTime": 1792657363.952,
+  "passedTests": 0,
+  "result": "Failed",
+  "runtimeWarnings": [],
+  "skippedTests": 0,
+  "startTime": 1792657310.785,
+  "statistics": [],
+  "testFailures": [
+    {
+      "failureText": "XCTAssertTrue failed - 刪除後只能是空字串或此欄位的確切placeholder，不能殘留原筆記。",
+      "targetName": "MessyNoteUITests",
+      "testIdentifier": 1,
+      "testIdentifierString": "ScenarioABUITests/testScenarioBAndFollowUp()",
+      "testIdentifierURL": "test://com.apple.xcode/MessyNote/MessyNoteUITests/ScenarioABUITests/testScenarioBAndFollowUp",
+      "testName": "testScenarioBAndFollowUp()"
+    }
+  ],
+  "title": "Test - MessyNoteAcceptanceUI",
+  "topInsights": [],
+  "totalTestCount": 1
+}
